@@ -1,0 +1,53 @@
+:root {
+    --bege-claro: #fdf8f2;
+    --bege-escuro: #e8d5c4;
+    --marrom-texto: #4a3728;
+    --dourado: #c5a059;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--marrom-texto);
+    background-color: var(--bege-claro);
+    margin: 0;
+}
+
+h1, h2 { font-family: 'Playfair Display', serif; }
+
+header {
+    background: #fff;
+    padding: 20px 5%;
+    border-bottom: 1px solid var(--bege-escuro);
+}
+
+nav { display: flex; justify-content: space-between; align-items: center; }
+
+nav ul { list-style: none; display: flex; gap: 20px; }
+
+nav ul li a { text-decoration: none; color: var(--marrom-texto); font-weight: 600; }
+
+.hero {
+    height: 80vh;
+    background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=1287&auto=format&fit=crop') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content { background: rgba(74, 55, 40, 0.7); padding: 40px; border-radius: 10px; }
+
+.btn {
+    background: var(--dourado);
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+/* Estilos para a página Casamentos */
+.wedding-section { padding: 50px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.card-doce { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
