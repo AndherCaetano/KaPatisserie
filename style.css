@@ -1,53 +1,54 @@
 :root {
-    --bege-claro: #fdf8f2;
-    --bege-escuro: #e8d5c4;
-    --marrom-texto: #4a3728;
-    --dourado: #c5a059;
+    --primary: #4a3728; /* Marrom Café */
+    --secondary: #c5a059; /* Dourado */
+    --bg: #fdf8f2; /* Off-white */
+    --text: #5d4a3b;
+    --white: #ffffff;
 }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    color: var(--marrom-texto);
-    background-color: var(--bege-claro);
-    margin: 0;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background-color: var(--bg); color: var(--text); font-family: 'Poppins', sans-serif; line-height: 1.6; }
+h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
-h1, h2 { font-family: 'Playfair Display', serif; }
-
+/* HEADER */
 header {
-    background: #fff;
-    padding: 20px 5%;
-    border-bottom: 1px solid var(--bege-escuro);
-}
-
-nav { display: flex; justify-content: space-between; align-items: center; }
-
-nav ul { list-style: none; display: flex; gap: 20px; }
-
-nav ul li a { text-decoration: none; color: var(--marrom-texto); font-weight: 600; }
-
-.hero {
-    height: 80vh;
-    background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=1287&auto=format&fit=crop') center/cover;
+    background: var(--white);
+    padding: 15px 5%;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
+.logo { font-size: 1.3rem; font-weight: 700; color: var(--primary); text-decoration: none; letter-spacing: 1px; }
+.logo span { color: var(--secondary); font-size: 0.7rem; display: block; font-weight: 300; }
 
-.hero-content { background: rgba(74, 55, 40, 0.7); padding: 40px; border-radius: 10px; }
+nav ul { display: flex; list-style: none; gap: 20px; }
+nav a { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 0.8rem; }
+nav a:hover { color: var(--secondary); }
 
-.btn {
-    background: var(--dourado);
-    color: white;
-    padding: 12px 25px;
-    text-decoration: none;
-    border-radius: 5px;
-    display: inline-block;
-    margin-top: 20px;
+/* SEÇÕES */
+.container { padding: 60px 10%; text-align: center; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px; }
+
+/* ESTILO CÍRCULOS (PÁGINA KITS) */
+.cat-item { text-decoration: none; color: inherit; transition: 0.3s; display: block; }
+.cat-item:hover { transform: translateY(-10px); }
+.circle-frame {
+    width: 200px; height: 200px; border-radius: 50%;
+    border: 4px solid var(--secondary); margin: 0 auto 15px;
+    overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
+.circle-frame img { width: 100%; height: 100%; object-fit: cover; }
 
-/* Estilos para a página Casamentos */
-.wedding-section { padding: 50px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-.card-doce { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+/* CARDS DOCERIA */
+.card { background: var(--white); padding: 20px; border-radius: 15px; text-align: center; border: 1px solid #eee; }
+.card img { width: 100%; border-radius: 10px; margin-bottom: 15px; }
+.price { color: var(--secondary); font-weight: 700; font-size: 1.3rem; margin: 10px 0; }
+
+/* BOTÕES */
+.btn { background: var(--primary); color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-weight: 600; text-decoration: none; display: inline-block; transition: 0.3s; }
+.btn:hover { background: var(--secondary); transform: scale(1.05); }
+
+/* CARRINHO */
+.cart-float { position: fixed; bottom: 30px; right: 30px; background: var(--secondary); color: white; padding: 15px 30px; border-radius: 50px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.2); display: none; font-weight: bold; }
