@@ -1,261 +1,82 @@
-/* =========================================
-   PALETA DE CORES E FONTES (IDENTIDADE)
-   ========================================= */
+/* PALETA DE CORES DO PORTFÓLIO */
 :root {
-    --marrom-primario: #4a3728; /* Marrom Café do Portfólio */
-    --dourado-principal: #c5a059; /* Dourado para detalhes e bordas */
-    --bege-fundo: #fdf8f2; /* Bege claríssimo para o fundo do site */
-    --bege-escuro: #e8d5c4; /* Bege para áreas de destaque */
-    --texto-cor: #5d4a3b;
+    --marrom-box: rgba(74, 55, 40, 0.9);
+    --marrom-texto: #4a3728;
+    --dourado: #c5a059;
+    --bege-fundo: #fdf8f2;
     --branco: #ffffff;
-    
-    /* Fontes de Luxo */
-    --fonte-titulo: 'Playfair Display', serif;
-    --fonte-corpo: 'Poppins', sans-serif;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background-color: var(--bege-fundo); font-family: 'Poppins', sans-serif; color: var(--marrom-texto); }
 
-body {
-    background-color: var(--bege-fundo);
-    color: var(--texto-cor);
-    font-family: var(--fonte-corpo);
-    line-height: 1.6;
-}
-
-h1, h2, h3, h4 {
-    font-family: var(--fonte-titulo);
-    font-weight: 700;
-    color: var(--marrom-primario);
-}
-
-/* =========================================
-   HEADER (MENU) - SOFISTICADO
-   ========================================= */
+/* HEADER PADRÃO */
 header {
     background: var(--branco);
     padding: 20px 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
     box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    position: sticky; top: 0; z-index: 1000;
 }
+.logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--marrom-texto); text-decoration: none; }
+.logo span { display: block; font-size: 0.7rem; color: var(--dourado); font-weight: 300; letter-spacing: 2px; text-transform: uppercase; }
 
-.logo {
-    font-size: 1.4rem;
-    text-decoration: none;
-    letter-spacing: 1px;
-}
+nav ul { display: flex; list-style: none; gap: 20px; align-items: center; }
+nav a { text-decoration: none; color: var(--marrom-texto); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
+.nav-btn { background: var(--marrom-texto); color: white !important; padding: 10px 20px; border-radius: 5px; }
 
-.logo span {
-    display: block;
-    font-size: 0.7rem;
-    color: var(--dourado-principal);
-    font-weight: 300;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 25px;
-    align-items: center;
-}
-
-nav a {
-    text-decoration: none;
-    color: var(--marrom-primario);
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    transition: 0.3s;
-}
-
-nav a:hover {
-    color: var(--dourado-principal);
-}
-
-/* Botão de Destaque no Menu (Fazer Encomenda) */
-.nav-btn {
-    background: var(--marrom-primario);
-    color: var(--branco) !important;
-    padding: 10px 20px;
-    border-radius: 5px;
-}
-
-.nav-btn:hover {
-    background: var(--dourado-principal);
-    color: var(--marrom-primario) !important;
-}
-
-/* =========================================
-   HERO SECTION (A QUE ESTÁ COM ERRO)
-   ========================================= */
-/* Vamos replicar o box marrom centralizado do portfólio */
+/* HERO SECTION (IMAGEM 1) */
 .hero {
     height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 0 5%;
-    /* Imagem de fundo opcional aqui */
-    background: url('img/hero-fundo.jpg') center/cover; 
-    position: relative;
+    background: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)), url('../img/hero-fundo.jpg') center/cover;
 }
-
-/* Camada escura para dar contraste ao box central */
-.hero::after {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.1);
-    z-index: 1;
-}
-
 .hero-content {
-    position: relative;
-    z-index: 2;
-    background: rgba(74, 55, 40, 0.9); /* O Box Marrom com transparência do portfólio */
+    background: var(--marrom-box);
     padding: 60px 40px;
     border-radius: 4px;
     max-width: 800px;
-    color: var(--branco);
-    border: 1px solid var(--dourado-principal); /* Borda dourada do portfólio */
+    color: white;
+    border: 1px solid var(--dourado);
     box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
-
-.hero-content h1 {
-    font-size: 3.5rem;
-    color: var(--branco); /* Forçar branco dentro do box */
-    margin-bottom: 20px;
+.hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin-bottom: 20px; }
+.btn-principal {
+    background: transparent; color: var(--dourado); border: 1px solid var(--dourado);
+    padding: 12px 35px; text-decoration: none; font-weight: 600; text-transform: uppercase; display: inline-block;
 }
 
-.hero-content p {
-    font-size: 1.1rem;
-    margin-bottom: 30px;
-    font-weight: 300;
-    letter-spacing: 1px;
-}
-
-/* Botão Dourado Estilo Portfólio */
-.btn-gold {
-    background: transparent;
-    color: var(--dourado-principal);
-    border: 1px solid var(--dourado-principal);
-    padding: 12px 30px;
-    text-decoration: none;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    transition: 0.3s;
-}
-
-.btn-gold:hover {
-    background: var(--dourado-principal);
-    color: var(--marrom-primario);
-}
-
-/* =========================================
-   SEÇÃO KITS (CÍRCULOS ANIMADOS ESTILO STORIES)
-   ========================================= */
-.kits-section {
-    padding: 80px 10%;
-    text-align: center;
-}
-
-.kits-title {
-    font-size: 2.5rem;
-    margin-bottom: 50px;
-}
-
+/* SEÇÃO KITS (CÍRCULOS ANIMADOS ESTILO STORIES) */
 .kits-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px; padding: 60px 10%;
+}
+.kit-item { text-decoration: none; color: inherit; text-align: center; }
+.stories-circle {
+    width: 200px; height: 200px; border-radius: 50%;
+    margin: 0 auto 15px; padding: 4px;
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    animation: rotateBorder 8s linear infinite;
+}
+.inner-img {
+    width: 100%; height: 100%; border-radius: 50%;
+    border: 3px solid white; overflow: hidden;
+}
+.inner-img img { width: 100%; height: 100%; object-fit: cover; }
+
+@keyframes rotateBorder {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
-.kit-item {
-    text-align: center;
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
-
-/* O CONTAINER DO CÍRCULO - ONDE A MÁGICA ACONTECE */
-.stories-circle-container {
-    width: 200px;
-    height: 200px;
-    margin: 0 auto 15px;
-    position: relative;
-    padding: 5px; /* Espaço para a borda animada */
-    border-radius: 50%;
-    
-    /* A Borda em degradê estilo Stories */
-    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
-    
-    /* A ANIMAÇÃO: Gira continuamente */
-    animation: storiesRotate 10s linear infinite; 
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-/* O Círculo Interno com a Imagem */
-.circle-inner {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid var(--branco); /* Borda branca interna para destacar a imagem */
-}
-
-.circle-inner img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.kit-item h3 {
-    font-size: 1.1rem;
-    color: var(--marrom-primario);
-    margin-top: 15px;
-}
-
-.kit-item p {
-    font-size: 0.8rem;
-    color: #777;
-    font-style: italic;
-}
-
-/* DEFINIÇÃO DA ANIMAÇÃO DE ROTAÇÃO */
-@keyframes storiesRotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* =========================================
-   RESPONSIVIDADE (MOBILE)
-   ========================================= */
-@media (max-width: 768px) {
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-    header {
-        flex-direction: column;
-        gap: 15px;
-    }
-    .kits-grid {
-        grid-template-columns: 1fr;
-    }
-}
+/* CARDS DE PRODUTOS */
+.grid-produtos { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; padding: 40px 10%; }
+.card { background: white; padding: 25px; border-radius: 15px; text-align: center; border: 1px solid #eee; }
+.card img { width: 100%; border-radius: 10px; margin-bottom: 15px; }
+.price { color: var(--dourado); font-weight: 700; font-size: 1.4rem; }
