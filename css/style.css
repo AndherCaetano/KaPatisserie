@@ -1,78 +1,261 @@
+/* =========================================
+   PALETA DE CORES E FONTES (IDENTIDADE)
+   ========================================= */
 :root {
-    --primary: #4a3728; /* Marrom Chocolate */
-    --secondary: #c5a059; /* Dourado */
-    --bg-light: #fdf8f2; /* Bege Off-White */
-    --bg-dark: #eee0d5; /* Bege mais escuro para fundos */
-    --text: #5d4a3b;
-    --white: #ffffff;
+    --marrom-primario: #4a3728; /* Marrom Café do Portfólio */
+    --dourado-principal: #c5a059; /* Dourado para detalhes e bordas */
+    --bege-fundo: #fdf8f2; /* Bege claríssimo para o fundo do site */
+    --bege-escuro: #e8d5c4; /* Bege para áreas de destaque */
+    --texto-cor: #5d4a3b;
+    --branco: #ffffff;
+    
+    /* Fontes de Luxo */
+    --fonte-titulo: 'Playfair Display', serif;
+    --fonte-corpo: 'Poppins', sans-serif;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background-color: var(--bg-light); color: var(--text); font-family: 'Poppins', sans-serif; line-height: 1.6; }
-h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-/* HEADER PADRÃO */
+body {
+    background-color: var(--bege-fundo);
+    color: var(--texto-cor);
+    font-family: var(--fonte-corpo);
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--fonte-titulo);
+    font-weight: 700;
+    color: var(--marrom-primario);
+}
+
+/* =========================================
+   HEADER (MENU) - SOFISTICADO
+   ========================================= */
 header {
-    background: var(--white);
-    padding: 15px 5%;
+    background: var(--branco);
+    padding: 20px 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky; top: 0; z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
 }
-.logo { font-size: 1.3rem; font-weight: 700; color: var(--primary); text-decoration: none; letter-spacing: 1px; }
-.logo span { color: var(--secondary); font-size: 0.7rem; display: block; font-weight: 300; }
 
-nav ul { display: flex; list-style: none; gap: 20px; align-items: center;}
-nav a { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; }
-nav a:hover { color: var(--secondary); }
-.nav-btn { background: var(--primary); color: white !important; padding: 8px 15px; border-radius: 5px; }
-
-/* SEÇÕES GERAIS */
-.container { padding: 60px 10%; text-align: center; }
-.section-title { margin-bottom: 20px; font-size: 2.5rem; color: var(--primary); }
-.section-subtitle { margin-bottom: 60px; color: #777; max-width: 600px; margin-left: auto; margin-right: auto; }
-
-/* GRID DE PRODUTOS/CARDS */
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-
-/* CARDS DOCERIA E SALGADELA */
-.card { background: var(--white); padding: 25px; border-radius: 15px; text-align: center; border: 1px solid #f0f0f0; transition: transform 0.3s; }
-.card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-.card img { width: 100%; border-radius: 10px; margin-bottom: 20px; }
-.price { color: var(--secondary); font-weight: 700; font-size: 1.3rem; margin: 15px 0; }
-.badge { position: absolute; top: 15px; left: 15px; background: var(--secondary); color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.7rem; }
-
-/* ESTILO CÍRCULOS (PÁGINA KITS) */
-.kits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; }
-.cat-item { text-decoration: none; color: inherit; transition: 0.3s; text-align: center; }
-.cat-item:hover { transform: scale(1.05); }
-.circle-frame {
-    width: 200px; height: 200px; border-radius: 50%;
-    border: 4px solid var(--secondary); margin: 0 auto 15px;
-    overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+.logo {
+    font-size: 1.4rem;
+    text-decoration: none;
+    letter-spacing: 1px;
 }
-.circle-frame img { width: 100%; height: 100%; object-fit: cover; }
-.cat-item h3 { color: var(--primary); font-size: 1.1rem; margin-top: 15px; }
-.cat-item p { font-size: 0.8rem; color: #777; font-style: italic; }
 
-/* BOTÕES GERAIS */
-.btn { background: var(--primary); color: white !important; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-weight: 600; text-decoration: none; display: inline-block; transition: 0.3s; }
-.btn:hover { background: var(--secondary); }
+.logo span {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--dourado-principal);
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
 
-/* PÁGINAS INTERNAS DETALHADAS */
-.detalhe-wrapper { display: flex; flex-wrap: wrap; gap: 50px; align-items: center; padding: 60px 10%; text-align: left; }
-.detalhe-img { flex: 1; min-width: 300px; }
-.detalhe-img img { width: 100%; border-radius: 20px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-.detalhe-info { flex: 1; min-width: 300px; }
-.lista-features { margin: 25px 0; list-style: none; }
-.lista-features li { margin-bottom: 15px; font-size: 0.9rem; }
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    align-items: center;
+}
 
-/* CONTATO E FORMULÁRIO */
-.contato-form { max-width: 500px; margin: 0 auto; text-align: left; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-.contato-form input, .contato-form date, .contato-form select { width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #ddd; }
-.insta-profile { border: 1px solid #eee; padding: 20px; border-radius: 15px; display: flex; align-items: center; gap: 15px; max-width: 350px; margin: 0 auto 30px; }
+nav a {
+    text-decoration: none;
+    color: var(--marrom-primario);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
 
-/* CARRINHO FLUTUANTE */
-.cart-float { position: fixed; bottom: 30px; right: 30px; background: var(--secondary); color: white; padding: 15px 30px; border-radius: 50px; cursor: pointer; box-shadow: 0 10px 20px rgba(0,0,0,0.3); display: none; font-weight: bold; z-index: 1000; }
+nav a:hover {
+    color: var(--dourado-principal);
+}
+
+/* Botão de Destaque no Menu (Fazer Encomenda) */
+.nav-btn {
+    background: var(--marrom-primario);
+    color: var(--branco) !important;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.nav-btn:hover {
+    background: var(--dourado-principal);
+    color: var(--marrom-primario) !important;
+}
+
+/* =========================================
+   HERO SECTION (A QUE ESTÁ COM ERRO)
+   ========================================= */
+/* Vamos replicar o box marrom centralizado do portfólio */
+.hero {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 5%;
+    /* Imagem de fundo opcional aqui */
+    background: url('img/hero-fundo.jpg') center/cover; 
+    position: relative;
+}
+
+/* Camada escura para dar contraste ao box central */
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.1);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    background: rgba(74, 55, 40, 0.9); /* O Box Marrom com transparência do portfólio */
+    padding: 60px 40px;
+    border-radius: 4px;
+    max-width: 800px;
+    color: var(--branco);
+    border: 1px solid var(--dourado-principal); /* Borda dourada do portfólio */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    color: var(--branco); /* Forçar branco dentro do box */
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Botão Dourado Estilo Portfólio */
+.btn-gold {
+    background: transparent;
+    color: var(--dourado-principal);
+    border: 1px solid var(--dourado-principal);
+    padding: 12px 30px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.btn-gold:hover {
+    background: var(--dourado-principal);
+    color: var(--marrom-primario);
+}
+
+/* =========================================
+   SEÇÃO KITS (CÍRCULOS ANIMADOS ESTILO STORIES)
+   ========================================= */
+.kits-section {
+    padding: 80px 10%;
+    text-align: center;
+}
+
+.kits-title {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+}
+
+.kits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+.kit-item {
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* O CONTAINER DO CÍRCULO - ONDE A MÁGICA ACONTECE */
+.stories-circle-container {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 15px;
+    position: relative;
+    padding: 5px; /* Espaço para a borda animada */
+    border-radius: 50%;
+    
+    /* A Borda em degradê estilo Stories */
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+    
+    /* A ANIMAÇÃO: Gira continuamente */
+    animation: storiesRotate 10s linear infinite; 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* O Círculo Interno com a Imagem */
+.circle-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--branco); /* Borda branca interna para destacar a imagem */
+}
+
+.circle-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.kit-item h3 {
+    font-size: 1.1rem;
+    color: var(--marrom-primario);
+    margin-top: 15px;
+}
+
+.kit-item p {
+    font-size: 0.8rem;
+    color: #777;
+    font-style: italic;
+}
+
+/* DEFINIÇÃO DA ANIMAÇÃO DE ROTAÇÃO */
+@keyframes storiesRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* =========================================
+   RESPONSIVIDADE (MOBILE)
+   ========================================= */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .kits-grid {
+        grid-template-columns: 1fr;
+    }
+}
