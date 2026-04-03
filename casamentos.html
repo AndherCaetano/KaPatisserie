@@ -1,15 +1,42 @@
-<section class="wedding-header" style="text-align:center; padding: 60px;">
-    <h2>Casamentos e Noivados</h2>
-    <p>Elegância e Romance para o seu dia perfeito.</p>
-</section>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Casamentos e Noivados | Karla Tavares</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .detalhe-wrapper { display: flex; flex-wrap: wrap; gap: 40px; align-items: center; padding: 60px 10%; text-align: left; }
+        .detalhe-img { flex: 1; min-width: 300px; }
+        .detalhe-img img { width: 100%; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .detalhe-info { flex: 1; min-width: 300px; }
+        .lista-features { margin: 20px 0; list-style: none; }
+        .lista-features li { margin-bottom: 10px; }
+        .lista-features li::before { content: "💍 "; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">K. TAVARES <span>PÂTISSERIE</span></a>
+        <nav><ul><li><a href="kits.html">VOLTAR AOS KITS</a></li></ul></nav>
+    </header>
 
-<section class="wedding-section">
-    <div class="info-text">
-        <h3>Bolos Personalizados</h3>
-        <p>Naked Cakes, Clássicos e criações únicas com sabores premium como Pistache e Frutas Vermelhas.</p>
-        <a href="https://api.whatsapp.com/send?phone=5521995805279" class="btn">Agendar Degustação</a>
+    <div class="detalhe-wrapper">
+        <div class="detalhe-img">
+            <img src="https://images.unsplash.com/photo-1522673607200-164883214c98?w=800" alt="Casamento">
+        </div>
+        <div class="detalhe-info">
+            <h2 style="font-size: 2.5rem; color: var(--primary);">Elegância e Romance</h2>
+            <p>Seu dia perfeito merece doces que contem uma história. Criamos bolos e mesas de doces personalizadas para casamentos e noivados.</p>
+            <ul class="lista-features">
+                <li>Bolos de Andares (Clássicos ou Naked)</li>
+                <li>Mesa de Doces Finos e Macarons</li>
+                <li>Lembrancinhas Personalizadas</li>
+                <li>Degustação Agendada</li>
+            </ul>
+            <p><i>Orçamento sob consulta mediante projeto personalizado.</i></p>
+            <br>
+            <a href="contato.html" class="btn">SOLICITAR ORÇAMENTO</a>
+        </div>
     </div>
-    <div class="image-placeholder">
-        <img src="https://images.unsplash.com/photo-1535254973040-607b474cb80d?q=80&w=1000&auto=format&fit=crop" style="width:100%; border-radius:15px;">
-    </div>
-</section>
+</body>
+</html>
