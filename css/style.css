@@ -1,82 +1,93 @@
-/* PALETA DE CORES DO PORTFÓLIO */
 :root {
-    --marrom-box: rgba(74, 55, 40, 0.9);
-    --marrom-texto: #4a3728;
+    --marrom: #4a3728;
     --dourado: #c5a059;
     --bege-fundo: #fdf8f2;
     --branco: #ffffff;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background-color: var(--bege-fundo); font-family: 'Poppins', sans-serif; color: var(--marrom-texto); }
+body { background-color: var(--bege-fundo); font-family: 'Poppins', sans-serif; color: var(--marrom); overflow-x: hidden; }
 
-/* HEADER PADRÃO */
+/* HEADER */
 header {
     background: var(--branco);
-    padding: 20px 8%;
+    padding: 15px 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     position: sticky; top: 0; z-index: 1000;
 }
-.logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--marrom-texto); text-decoration: none; }
-.logo span { display: block; font-size: 0.7rem; color: var(--dourado); font-weight: 300; letter-spacing: 2px; text-transform: uppercase; }
+.logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--marrom); text-decoration: none; }
+.logo span { display: block; font-size: 0.7rem; color: var(--dourado); letter-spacing: 2px; text-transform: uppercase; }
 
 nav ul { display: flex; list-style: none; gap: 20px; align-items: center; }
-nav a { text-decoration: none; color: var(--marrom-texto); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
-.nav-btn { background: var(--marrom-texto); color: white !important; padding: 10px 20px; border-radius: 5px; }
+nav a { text-decoration: none; color: var(--marrom); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
 
-/* HERO SECTION (IMAGEM 1) */
+/* HERO SECTION - COMPOSIÇÃO IGUAL À IMAGEM 1 */
 .hero {
     height: 80vh;
+    background-color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     text-align: center;
-    background: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)), url('../img/hero-fundo.jpg') center/cover;
-}
-.hero-content {
-    background: var(--marrom-box);
-    padding: 60px 40px;
-    border-radius: 4px;
-    max-width: 800px;
-    color: white;
-    border: 1px solid var(--dourado);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-}
-.hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin-bottom: 20px; }
-.btn-principal {
-    background: transparent; color: var(--dourado); border: 1px solid var(--dourado);
-    padding: 12px 35px; text-decoration: none; font-weight: 600; text-transform: uppercase; display: inline-block;
 }
 
-/* SEÇÃO KITS (CÍRCULOS ANIMADOS ESTILO STORIES) */
-.kits-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 30px; padding: 60px 10%;
+/* O Piso de Madeira no fundo */
+.hero-bg-wood {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 35%;
+    background: url('http://googleusercontent.com/image_collection/image_retrieval/8628837926587981502_0') center/cover;
+    z-index: 1;
+    opacity: 0.6;
 }
-.kit-item { text-decoration: none; color: inherit; text-align: center; }
+
+/* Elementos Flutuantes (Bolo e Potes) */
+.side-img {
+    position: absolute;
+    bottom: 10%;
+    z-index: 3;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+}
+.img-left { left: 5%; height: 400px; }
+.img-right { right: 5%; height: 350px; }
+
+.hero-content {
+    z-index: 5;
+    max-width: 600px;
+    padding-bottom: 50px;
+}
+.hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; line-height: 1.1; margin-bottom: 15px; }
+.hero-content h1 span { color: var(--dourado); }
+.hero-content p { font-weight: 300; color: #666; margin-bottom: 30px; }
+
+.btn-gold {
+    background: var(--dourado);
+    color: white;
+    padding: 15px 40px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
+}
+
+/* CÍRCULOS ANIMADOS STORIES */
+.kits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; padding: 60px 10%; }
 .stories-circle {
-    width: 200px; height: 200px; border-radius: 50%;
+    width: 180px; height: 180px; border-radius: 50%;
     margin: 0 auto 15px; padding: 4px;
     background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-    animation: rotateBorder 8s linear infinite;
+    animation: rotateStories 10s linear infinite;
 }
-.inner-img {
-    width: 100%; height: 100%; border-radius: 50%;
-    border: 3px solid white; overflow: hidden;
-}
+.inner-img { width: 100%; height: 100%; border-radius: 50%; border: 3px solid white; overflow: hidden; }
 .inner-img img { width: 100%; height: 100%; object-fit: cover; }
 
-@keyframes rotateBorder {
+@keyframes rotateStories {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
-
-/* CARDS DE PRODUTOS */
-.grid-produtos { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; padding: 40px 10%; }
-.card { background: white; padding: 25px; border-radius: 15px; text-align: center; border: 1px solid #eee; }
-.card img { width: 100%; border-radius: 10px; margin-bottom: 15px; }
-.price { color: var(--dourado); font-weight: 700; font-size: 1.4rem; }
