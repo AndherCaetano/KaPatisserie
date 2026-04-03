@@ -2,153 +2,19 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Karla Tavares Pâtisserie | Home</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <style>
-        /* =========================================
-           PALETA DE CORES E IDENTIDADE VISUAL
-           ========================================= */
-        :root {
-            --marrom-chocolate: #4a3728; /* Cor principal do Box */
-            --dourado-luxo: #c5a059; /* Bordas e detalhes */
-            --bege-claro: #fdf8f2; /* Fundo do Site */
-            --branco: #ffffff;
-            --texto-marrom: #5d4a3b;
-        }
-
-        /* Configurações Globais */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background-color: var(--bege-claro); 
-            font-family: 'Poppins', sans-serif; 
-            color: var(--texto-marrom); 
-            line-height: 1.6; 
-        }
-
-        /* Títulos Serifados (Sophistication) */
-        h1, h2 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--branco); }
-
-        /* =========================================
-           HEADER (MENU) - SOFISTICADO
-           ========================================= */
-        header {
-            background: var(--branco);
-            padding: 20px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky; top: 0; z-index: 1000;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-        }
-
-        .logo { font-size: 1.4rem; text-decoration: none; color: var(--marrom-chocolate); letter-spacing: 1px; }
-        .logo span { display: block; font-size: 0.7rem; color: var(--dourado-luxo); font-weight: 300; letter-spacing: 2px; text-transform: uppercase; }
-
-        nav ul { display: flex; list-style: none; gap: 25px; align-items: center; }
-        nav a { text-decoration: none; color: var(--marrom-chocolate); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; transition: 0.3s; }
-        nav a:hover { color: var(--dourado-luxo); }
-
-        /* Botão Destaque no Menu */
-        .nav-btn { background: var(--marrom-chocolate); color: var(--branco) !important; padding: 10px 20px; border-radius: 5px; }
-        .nav-btn:hover { background: var(--dourado-luxo); color: var(--marrom-chocolate) !important; }
-
-        /* =========================================
-           HERO SECTION (O BOX CENTRALIZADO)
-           ========================================= */
-        .hero {
-            height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 0 5%;
-            /* Imagem de Fundo Elegante */
-            background: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), url('https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=1200&q=80') center/cover;
-            position: relative;
-        }
-
-        /* O Box Marrom com Transparência e Borda Dourada */
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            background: rgba(74, 55, 40, 0.9); /* Marrom Chocolate do Portfólio */
-            padding: 60px 40px;
-            border-radius: 4px;
-            max-width: 800px;
-            color: var(--branco);
-            border: 1px solid var(--dourado-luxo); /* Borda dourada do portfólio */
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-
-        .hero-content h1 { font-size: 3.5rem; margin-bottom: 20px; }
-        .hero-content p { font-size: 1.1rem; font-weight: 300; margin-bottom: 30px; letter-spacing: 1px; }
-
-        /* Botão Estilo Portfólio */
-        .btn-principal {
-            background: transparent;
-            color: var(--dourado-luxo);
-            border: 1px solid var(--dourado-luxo);
-            padding: 12px 35px;
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            transition: 0.4s;
-        }
-        .btn-principal:hover { background: var(--dourado-luxo); color: var(--marrom-chocolate); }
-
-        /* =========================================
-           DOCERIA (A VITRINE QUE DESAPARECEU)
-           ========================================= */
-        .doceria-section {
-            padding: 80px 10%;
-            text-align: center;
-        }
-        .section-title { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--marrom-chocolate); margin-bottom: 50px; }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        /* Cards Elegantes */
-        .product-card {
-            background: var(--branco);
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-            border: 1px solid #f0f0f0;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-
-        .product-card img { width: 100%; border-radius: 10px; margin-bottom: 20px; }
-        .product-card h4 { font-size: 1.2rem; margin-bottom: 10px; }
-        .price { color: var(--dourado-luxo); font-weight: 700; font-size: 1.3rem; margin: 15px 0; }
-        .btn-add { background: var(--marrom-chocolate); color: var(--branco); border: none; padding: 10px 20px; width: 100%; border-radius: 5px; cursor: pointer; font-weight: 600; text-transform: uppercase; }
-
-        /* =========================================
-           RESPONSIVIDADE (MOBILE)
-           ========================================= */
-        @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2rem; }
-            header { flex-direction: column; gap: 15px; }
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-
     <header>
         <a href="index.html" class="logo">K. TAVARES <span>PÂTISSERIE</span></a>
         <nav>
             <ul>
                 <li><a href="doceria.html">Doceria</a></li>
-                <li><a href="salgadela.html">Salgadelo</a></li>
+                <li><a href="salgadela.html">Salgadela</a></li>
                 <li><a href="kits.html">Kits Festa</a></li>
-                <li><a href="contato.html" class="nav-btn">ENCOMENDAS</a></li>
+                <li><a href="contato.html" class="nav-btn">Encomendas</a></li>
             </ul>
         </nav>
     </header>
@@ -156,34 +22,10 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Arte em cada doce.</h1>
-            <p>Confeitaria artesanal sofisticada no Rio de Janeiro. De bolos monumentais a doces individuais perfeitos.</p>
+            <p>Confeitaria artesanal sofisticada no Rio de Janeiro.</p>
+            <br>
             <a href="contato.html" class="btn-principal">Solicitar Orçamento</a>
         </div>
     </section>
-
-    <section class="doceria-section">
-        <h2 class="section-title">A DOCERIA: DOCES GOURMET</h2>
-        <div class="product-grid">
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1541696490-8744a5db0228?q=80&w=300" alt="Brownie">
-                <h4>Mini Brownie</h4>
-                <p class="price">R$ 3,50</p>
-                <button class="btn-add">Adicionar</button>
-            </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1570476505311-47e847189bf7?q=80&w=300" alt="Brigadeiro">
-                <h4>Cento de Brigadeiros</h4>
-                <p class="price">R$ 120,00</p>
-                <button class="btn-add">Adicionar</button>
-            </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?q=80&w=300" alt="Naked Cake">
-                <h4>Naked Cake (kg)</h4>
-                <p class="price">R$ 60,00</p>
-                <button class="btn-add">Adicionar</button>
-            </div>
-        </div>
-    </section>
-
 </body>
 </html>
