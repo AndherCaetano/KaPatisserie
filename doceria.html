@@ -4,72 +4,30 @@
     <meta charset="UTF-8">
     <title>A Doceria | Karla Tavares</title>
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <nav>
-            <div class="logo">K. TAVARES <span>PÂTISSERIE</span></div>
-            <ul>
-                <li><a href="index.html">VOLTAR</a></li>
-            </ul>
-        </nav>
+        <a href="index.html" class="logo">K. TAVARES <span>PÂTISSERIE</span></a>
+        <nav><ul><li><a href="index.html">VOLTAR</a></li></ul></nav>
     </header>
-
-    <section class="store-header">
-        <h1>A Doceria</h1>
-        <p>Monte sua seleção de delícias e finalize pelo WhatsApp</p>
-    </section>
-
-    <main class="container">
-        <h3 class="category-title">⚡ Ofertas Expirando</h3>
-        <div class="product-grid">
-            <div class="product-card">
-                <div class="badge">Promo ⚡</div>
-                <img src="img/doce-1.jpg" alt="Doce">
-                <h4>Mini Brownie (Unid)</h4>
+    <div class="container">
+        <h2 class="section-title">A DOCERIA</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1541696490-8744a5db0228?w=300">
+                <h4>Mini Brownie</h4>
                 <p class="price">R$ 3,50</p>
-                <button onclick="add('Mini Brownie', 3.50)">ADICIONAR</button>
+                <button class="btn" onclick="add('Mini Brownie', 3.50)">ADICIONAR</button>
             </div>
-        </div>
-
-        <h3 class="category-title">✨ Doces Gourmet</h3>
-        <div class="product-grid">
-            <div class="product-card">
-                <img src="img/doce-2.jpg" alt="Doce">
-                <h4>Cento de Brigadeiros</h4>
-                <p class="price">R$ 120,00</p>
-                <button onclick="add('Cento Brigadeiros', 120.00)">ADICIONAR</button>
             </div>
-            <div class="product-card">
-                <img src="img/doce-3.jpg" alt="Doce">
-                <h4>Naked Cake (kg)</h4>
-                <p class="price">R$ 60,00</p>
-                <button onclick="add('Naked Cake KG', 60.00)">ADICIONAR</button>
-            </div>
-        </div>
-    </main>
-
-    <div id="cart-float" class="cart-float" onclick="checkout()">
-        <span id="cart-count">0</span> itens no pedido - FINALIZAR ➔
     </div>
-
+    <div id="cart" class="cart-float" onclick="checkout()">🛒 FINALIZAR (<span id="c">0</span>)</div>
     <script>
         let cart = [];
-        function add(n, p) {
-            cart.push({name: n, price: p});
-            document.getElementById('cart-count').innerText = cart.length;
-            document.getElementById('cart-float').style.display = 'block';
-        }
-
-        function checkout() {
-            let msg = "Olá Karla! Gostaria de encomendar:\n\n";
-            let total = 0;
-            cart.forEach(item => {
-                msg += `• ${item.name} - R$ ${item.price.toFixed(2)}\n`;
-                total += item.price;
-            });
-            msg += `\n*Total Estimado: R$ ${total.toFixed(2)}*`;
+        function add(n,p){ cart.push({n,p}); document.getElementById('c').innerText = cart.length; document.getElementById('cart').style.display='block'; }
+        function checkout(){ 
+            let msg = "Olá! Gostaria de pedir:\n";
+            cart.forEach(i => msg += `- ${i.n}\n`);
             window.open(`https://api.whatsapp.com/send?phone=5521995805279&text=${encodeURIComponent(msg)}`);
         }
     </script>
