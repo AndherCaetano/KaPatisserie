@@ -4,31 +4,55 @@
     <meta charset="UTF-8">
     <title>Encomendas | Karla Tavares</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <a href="index.html" class="logo">K. TAVARES <span>PÂTISSERIE</span></a>
         <nav><ul><li><a href="index.html">VOLTAR</a></li></ul></nav>
     </header>
+
     <div class="container">
         <h2 class="section-title">FAÇA SUA ENCOMENDA</h2>
-        <div style="max-width: 500px; margin: 0 auto; text-align: left; background: white; padding: 30px; border-radius: 15px;">
-            <p>Nome: <input type="text" id="n" style="width:100%; padding:10px; margin-bottom:15px; border-radius:5px; border:1px solid #ddd;"></p>
-            <p>Data do Evento: <input type="date" id="d" style="width:100%; padding:10px; margin-bottom:15px; border-radius:5px; border:1px solid #ddd;"></p>
-            <p>Tipo de Doce: <input type="text" id="t" style="width:100%; padding:10px; margin-bottom:15px; border-radius:5px; border:1px solid #ddd;"></p>
-            <button class="btn" onclick="send()" style="width:100%;">PEDIR ORÇAMENTO</button>
+        
+        <div class="insta-profile">
+            <img src="img/logo-insta.jpg" style="width: 70px; border-radius: 50%;">
+            <div>
+                <strong>@kpatisseriee</strong>
+                <p style="font-size: 0.8rem;">265 posts | 2.009 seguidores</p>
+            </div>
         </div>
-        <div style="margin-top: 40px;">
-            <h3>(21) 99580-5279</h3>
+
+        <div class="contato-form">
+            <h3>Pedidos e Orçamentos</h3>
+            <br>
+            Nome: <input type="text" id="nome">
+            WhatsApp: <input type="text" id="tel">
+            Data do Evento: <input type="date" id="data">
+            Tipo de Pedido: 
+            <select id="tipo">
+                <option value="Doces Gourmet">Doces Gourmet</option>
+                <option value="Kit Infantil">Kit Infantil</option>
+                <option value="Casamento">Casamento / Noivado</option>
+                <option value="Salgados">Salgadela (Salgados)</option>
+                <option value="Páscoa/Natal">Pedidos Especiais (Sazonais)</option>
+            </select>
+            <button class="btn" style="width:100%;" onclick="sendForm()">Enviar via WhatsApp</button>
+        </div>
+        
+        <div style="margin-top: 40px; color: var(--primary);">
+            <p><b>(21) 99580-5279</b></p>
             <p>📍 Rio de Janeiro</p>
         </div>
     </div>
     <script>
-        function send(){
-            const n = document.getElementById('n').value;
-            const d = document.getElementById('d').value;
-            const t = document.getElementById('t').value;
-            const msg = `Olá! Meu nome é ${n}. Gostaria de um orçamento para ${t} na data ${d}.`;
+        function sendForm(){
+            const n=document.getElementById('nome').value;
+            const t=document.getElementById('tel').value;
+            const d=document.getElementById('data').value;
+            const tp=document.getElementById('tipo').value;
+            if(!n || !t) return alert("Preencha nome e WhatsApp.");
+            let msg=`Olá Karla! Vi seu site e quero um orçamento:\nNome: ${n}\nTel: ${t}\nData: ${d}\nPedido: ${tp}`;
             window.open(`https://api.whatsapp.com/send?phone=5521995805279&text=${encodeURIComponent(msg)}`);
         }
     </script>
