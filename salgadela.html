@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Salgadela | Karla Tavares</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">K. TAVARES <span>PÂTISSERIE</span></a>
+        <nav><ul><li><a href="index.html">VOLTAR</a></li></ul></nav>
+    </header>
+
+    <div class="container">
+        <h2 class="section-title">NOSSOS SALGADOS ARTESANAIS</h2>
+        <p class="section-subtitle">Para lanches e festas, disponíveis fritos ou congelados para retirada ou encomenda.</p>
+        
+        <div class="grid">
+            <div class="card">
+                <img src="img/coxinha.jpg" alt="Coxinha">
+                <h4>Coxinha de Frango c/ Catupiry</h4>
+                <p>A clássica e mais pedida.</p>
+                <p class="price">R$ 8,50 (unid)</p>
+                <button class="btn" onclick="add('Coxinha Frango', 8.50)">ADICIONAR</button>
+            </div>
+            <div class="card">
+                <img src="img/empadinha.jpg" alt="Empadinha">
+                <h4>Empadinha de Palmito</h4>
+                <p>Massa que derrete na boca.</p>
+                <p class="price">R$ 7,00 (unid)</p>
+                <button class="btn" onclick="add('Empadinha Palmito', 7.00)">ADICIONAR</button>
+            </div>
+            <div class="card">
+                <div class="badge">Kit Festa</div>
+                <img src="img/cento-salgados.jpg" alt="Cento de Salgados">
+                <h4>Cento Salgados Fritos</h4>
+                <p>Variados: Coxinha, Kibe, Risole.</p>
+                <p class="price">R$ 95,00</p>
+                <button class="btn" onclick="add('Cento Salgados Fritos', 95.00)">ADICIONAR</button>
+            </div>
+        </div>
+    </div>
+    <div id="cart" class="cart-float" onclick="checkout()">🛒 FINALIZAR (<span id="count">0</span>)</div>
+    <script>
+        let cart=[];function add(n,p){cart.push({n,p});document.getElementById('count').innerText=cart.length;document.getElementById('cart').style.display='block';}
+        function checkout(){
+            if(cart.length===0) return;
+            let msg="Olá Karla! Quero pedir salgados pelo site:\n";
+            cart.forEach(i=>msg+=`- ${i.n}\n`);
+            window.open(`https://api.whatsapp.com/send?phone=5521995805279&text=${encodeURIComponent(msg)}`);
+        }
+    </script>
+</body>
+</html>
