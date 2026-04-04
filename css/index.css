@@ -1,140 +1,136 @@
 /* =========================================
-   PALETA DE CORES E FONTES (KARLA TAVARES)
+   PALETA DE CORES E FONTES
    ========================================= */
 :root {
-    --marrom-cafe: #4a3728; /* Marrom Texto */
-    --dourado-premium: #b08d57; /* Dourado Botão */
-    --bege-fundo: #fdfaf7; /* Fundo do site */
+    --marrom-cafe: #4a3728;
+    --dourado: #b89355;
     --branco: #ffffff;
-    /* COR MEL SATURADA (IDÊNTICA AO ORIGINAL) */
-    --madeira-mel: #e3b074; 
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background-color: var(--branco); font-family: 'Poppins', sans-serif; overflow-x: hidden; }
 
-/* HEADER QUE SE REPETE */
+/* =========================================
+   HEADER (ESTRUTURA IDENTICA AO PROJETO)
+   ========================================= */
 header {
     background: var(--branco);
-    padding: 15px 8%;
+    padding: 20px 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #f0efed;
-    position: sticky; top: 0; z-index: 1000;
+    height: 100px;
 }
 
-.brand-right h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--marrom-cafe); }
-nav ul { display: flex; list-style: none; gap: 30px; }
-nav a { text-decoration: none; color: var(--marrom-cafe); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; }
-nav a.active { color: var(--dourado-premium); }
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.leaf-icon { height: 35px; }
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--marrom-cafe);
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+nav ul li a.active { color: var(--dourado); font-weight: 600; }
+
+.header-right { text-align: right; }
+.header-right h2 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 1.6rem; 
+    color: var(--marrom-cafe);
+    line-height: 1;
+}
+.header-right p { 
+    font-size: 10px; 
+    letter-spacing: 3px; 
+    color: var(--dourado); 
+    text-transform: uppercase;
+    margin-top: 5px;
+}
 
 /* =========================================
-   HERO SECTION (BANNER 3D)
+   HERO SECTION (BANNER COM MESA REAL)
    ========================================= */
 .hero {
-    height: 85vh;
+    height: 80vh;
+    background-color: #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
-    background: #fff;
-    /* Profundidade para criar a mesa */
-    perspective: 1500px; 
 }
 
-/* MESA DE MADEIRA COM VEIOS VERTICAIS E TOM MEL */
-.wood-floor-3d {
+/* A MESA COM A SUA IMAGEM ORIGINAL */
+.wood-table {
     position: absolute;
-    bottom: -150px; /* Alinhado ao horizonte da mesa */
-    width: 250%; /* Mais largo para cobrir a perspectiva lateral */
-    height: 600px;
-    
-    /* 1. Degradê de perspectiva para veios verticais idênticos ao original */
-    background: 
-        repeating-conic-gradient(
-            from 180deg at 50% -100px, 
-            transparent 0%, 
-            transparent 1%, 
-            rgba(74, 55, 40, 0.1) 1.1%, 
-            transparent 1.2%
-        ),
-        /* 2. Textura de madeira sutil */
-        url('https://www.transparenttextures.com/patterns/wood-pattern.png'),
-        /* 3. Cor base saturada tom Mel */
-        var(--madeira-mel);
-    
-    /* Inclinação agressiva para parecer plano */
-    transform: rotateX(85deg) translateY(0);
-    z-index: 1;
-    box-shadow: inset 0 30px 60px rgba(0,0,0,0.2);
-    border-top: 5px solid #c59d6d;
+    bottom: 0;
+    width: 100%;
+    height: 220px; /* Altura da mesa no vídeo/foto */
+    /* Usando a sua imagem real para os veios serem perfeitos */
+    background: url('../img/madeira-mesa.png') no-repeat bottom center;
+    background-size: 100% 100%;
+    z-index: 5;
 }
 
-/* CONTEÚDO CENTRAL (TÍTULO E CTN) */
+/* CONTEÚDO CENTRAL */
 .hero-content {
-    position: relative;
-    z-index: 20;
+    z-index: 10;
     text-align: center;
-    max-width: 850px;
-    margin-bottom: 200px; /* Sobe o texto para limpar o espaço da mesa */
+    max-width: 900px;
+    margin-bottom: 120px; /* Sobe o texto para não cobrir a mesa */
 }
 
 .hero-content h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 4.2rem;
+    font-size: 4rem;
     color: var(--marrom-cafe);
-    line-height: 1.05;
-    margin-bottom: 25px;
+    line-height: 1.1;
+    margin-bottom: 20px;
 }
 
 .hero-content p {
     font-size: 1.2rem;
     color: #666;
-    margin-bottom: 35px;
+    margin-bottom: 40px;
     font-weight: 300;
 }
 
-/* BOTÃO CTN DOURADO */
 .btn-cta {
-    background: var(--dourado-premium);
+    background-color: var(--dourado);
     color: white;
-    padding: 18px 50px;
+    padding: 16px 45px;
     text-decoration: none;
     border-radius: 50px;
     font-weight: 600;
     text-transform: uppercase;
-    font-size: 0.95rem;
-    display: inline-block;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 15px rgba(176, 141, 87, 0.3);
+    font-size: 14px;
+    box-shadow: 0 4px 15px rgba(184, 147, 85, 0.3);
 }
 
-/* PRODUTOS FLUTUANTES (BOLO E POTES) */
-.product {
+/* PRODUTOS APOIADOS NA MESA */
+.hero-product {
     position: absolute;
+    bottom: 40px; /* Ajuste para "sentar" na mesa */
     z-index: 15;
-    /* Sombra projetada na mesa para realismo */
-    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.25));
-    pointer-events: none;
+    filter: drop-shadow(0 15px 15px rgba(0,0,0,0.1));
 }
 
-.left-cake {
-    left: 8%;
-    bottom: 50px; /* Ajustado para "tocar" as tábuas */
-    height: 520px;
-}
-
-.right-jars {
-    right: 8%;
-    bottom: 50px; /* Ajustado para "tocar" as tábuas */
-    height: 440px;
-}
-
-/* RESPONSIVIDADE */
-@media (max-width: 1024px) {
-    .left-cake, .right-jars { display: none; }
-    .hero-content h1 { font-size: 2.5rem; }
-}
+.left-cake { left: 5%; height: 480px; }
+.right-jars { right: 5%; height: 400px; }
