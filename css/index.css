@@ -10,17 +10,8 @@
     --madeira-mel: #e3b074; 
 }
 
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-}
-
-body { 
-    background-color: var(--branco); 
-    font-family: 'Poppins', sans-serif; 
-    overflow-x: hidden; 
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background-color: var(--branco); font-family: 'Poppins', sans-serif; overflow-x: hidden; }
 
 h1, h2 {
     font-family: 'Playfair Display', serif;
@@ -117,7 +108,7 @@ nav a:hover {
     perspective: 1500px; 
 }
 
-/* MESA DE MADEIRA COM VEIOS VERTICAIS E TOM MEL */
+/* MESA DE MADEIRA COM VEIOS VERTICAIS E TOM MEL (3D) */
 .wood-floor-3d {
     position: absolute;
     bottom: -150px; /* Alinhado ao horizonte da mesa */
@@ -183,7 +174,7 @@ nav a:hover {
     box-shadow: 0 8px 15px rgba(176, 141, 87, 0.3);
 }
 
-/* PRODUTOS FLUTUANTES (BOLO E POTES) */
+/* PRODUTOS FLUTUANTES (BOLO E POTES) SENTADOS NO PISO */
 .product {
     position: absolute;
     z-index: 15;
@@ -193,14 +184,14 @@ nav a:hover {
 }
 
 .left-cake {
-    left: 8%;
-    bottom: 50px; /* Ajustado para "tocar" as tábuas */
+    left: 8%; /* Ajuste fino do posicionamento lateral */
+    bottom: 50px; /* "Sentado" no piso de madeira */
     height: 520px;
 }
 
 .right-jars {
-    right: 8%;
-    bottom: 50px; /* Ajustado para "tocar" as tábuas */
+    right: 8%; /* Ajuste fino do posicionamento lateral */
+    bottom: 50px; /* "Sentado" no piso de madeira */
     height: 440px;
 }
 
