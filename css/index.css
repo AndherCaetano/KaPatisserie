@@ -2,29 +2,18 @@
    PALETA DE CORES E FONTES (KARLA TAVARES)
    ========================================= */
 :root {
-    --marrom-cafe: #4a3728;
-    --dourado-premium: #b08d57;
-    --bege-fundo: #fdfaf7;
+    --marrom-cafe: #4a3728; /* Marrom Texto */
+    --dourado-premium: #b08d57; /* Dourado Botão */
+    --bege-fundo: #fdfaf7; /* Fundo do site */
     --branco: #ffffff;
-    /* Ajuste do tom mel para um carvalho mais quente e saturado */
-    --madeira-mel: #d4a373; 
+    /* COR MEL SATURADA (IDÊNTICA AO ORIGINAL) */
+    --madeira-mel: #e3b074; 
 }
 
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background-color: var(--branco); font-family: 'Poppins', sans-serif; overflow-x: hidden; }
 
-body { 
-    background-color: var(--branco); 
-    font-family: 'Poppins', sans-serif; 
-    overflow-x: hidden; 
-}
-
-/* =========================================
-   HEADER (MENU ESQUERDA | LOGO DIREITA)
-   ========================================= */
+/* HEADER QUE SE REPETE */
 header {
     background: var(--branco);
     padding: 15px 8%;
@@ -32,55 +21,13 @@ header {
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #f0efed;
-    position: sticky; 
-    top: 0; 
-    z-index: 1000;
+    position: sticky; top: 0; z-index: 1000;
 }
 
-.header-left { 
-    display: flex; 
-    align-items: center; 
-    gap: 30px; 
-}
-
-.nav-links { 
-    display: flex; 
-    list-style: none; 
-    gap: 25px; 
-}
-
-.nav-links a { 
-    text-decoration: none; 
-    color: var(--marrom-cafe); 
-    font-size: 0.85rem; 
-    font-weight: 500; 
-    text-transform: uppercase; 
-    letter-spacing: 1px; 
-}
-
-.nav-links a.active { 
-    color: var(--dourado-premium); 
-    font-weight: 600; 
-}
-
-.brand-right { 
-    text-align: right; 
-}
-
-.brand-right h2 { 
-    font-family: 'Playfair Display', serif; 
-    font-size: 1.6rem; 
-    color: var(--marrom-cafe); 
-    line-height: 1; 
-}
-
-.brand-right p { 
-    font-size: 0.6rem; 
-    letter-spacing: 3px; 
-    color: var(--dourado-premium); 
-    text-transform: uppercase; 
-    margin-top: 5px; 
-}
+.brand-right h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--marrom-cafe); }
+nav ul { display: flex; list-style: none; gap: 30px; }
+nav a { text-decoration: none; color: var(--marrom-cafe); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; }
+nav a.active { color: var(--dourado-premium); }
 
 /* =========================================
    HERO SECTION (BANNER 3D)
@@ -94,51 +41,45 @@ header {
     position: relative;
     overflow: hidden;
     background: #fff;
-    /* Perspective ajustada para achatar a mesa e dar realismo */
+    /* Profundidade para criar a mesa */
     perspective: 1500px; 
 }
 
-/* MESA DE MADEIRA REFORMULADA */
+/* MESA DE MADEIRA COM VEIOS VERTICAIS E TOM MEL */
 .wood-floor-3d {
     position: absolute;
-    bottom: -50px; 
-    width: 200%; 
-    height: 380px; /* Mais alta para parecer mais "grossa" */
+    bottom: -150px; /* Alinhado ao horizonte da mesa */
+    width: 250%; /* Mais largo para cobrir a perspectiva lateral */
+    height: 600px;
     
-    /* Mix de cores e texturas para veios idênticos ao original */
+    /* 1. Degradê de perspectiva para veios verticais idênticos ao original */
     background: 
-        linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.1) 100%),
-        repeating-linear-gradient(0deg, rgba(0,0,0,0.05) 0px, rgba(0,0,0,0.05) 1px, transparent 1px, transparent 30px),
+        repeating-conic-gradient(
+            from 180deg at 50% -100px, 
+            transparent 0%, 
+            transparent 1%, 
+            rgba(74, 55, 40, 0.1) 1.1%, 
+            transparent 1.2%
+        ),
+        /* 2. Textura de madeira sutil */
         url('https://www.transparenttextures.com/patterns/wood-pattern.png'),
+        /* 3. Cor base saturada tom Mel */
         var(--madeira-mel);
     
-    /* Ângulo de 75 graus para criar o plano da mesa de trabalho */
-    transform: rotateX(75deg); 
+    /* Inclinação agressiva para parecer plano */
+    transform: rotateX(85deg) translateY(0);
     z-index: 1;
-    
-    /* Borda frontal da mesa (Espessura) */
-    border-top: 12px solid #a67c52; 
-    box-shadow: 0 50px 100px rgba(0,0,0,0.3);
+    box-shadow: inset 0 30px 60px rgba(0,0,0,0.2);
+    border-top: 5px solid #c59d6d;
 }
 
-/* Veios da madeira (Linhas horizontais de perspectiva) */
-.wood-floor-3d::after {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: repeating-linear-gradient(90deg, 
-        transparent, 
-        transparent 110px, 
-        rgba(74, 55, 40, 0.08) 111px);
-}
-
-/* CONTEÚDO CENTRAL */
+/* CONTEÚDO CENTRAL (TÍTULO E CTN) */
 .hero-content {
     position: relative;
     z-index: 20;
     text-align: center;
     max-width: 850px;
-    margin-bottom: 120px; /* Sobe o texto para limpar o espaço da mesa */
+    margin-bottom: 200px; /* Sobe o texto para limpar o espaço da mesa */
 }
 
 .hero-content h1 {
@@ -146,13 +87,13 @@ header {
     font-size: 4.2rem;
     color: var(--marrom-cafe);
     line-height: 1.05;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .hero-content p {
     font-size: 1.2rem;
     color: #666;
-    margin-bottom: 40px;
+    margin-bottom: 35px;
     font-weight: 300;
 }
 
@@ -160,48 +101,40 @@ header {
 .btn-cta {
     background: var(--dourado-premium);
     color: white;
-    padding: 16px 50px;
+    padding: 18px 50px;
     text-decoration: none;
     border-radius: 50px;
     font-weight: 600;
     text-transform: uppercase;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     display: inline-block;
-    transition: 0.3s ease;
+    transition: all 0.3s ease;
     box-shadow: 0 8px 15px rgba(176, 141, 87, 0.3);
 }
 
-/* PRODUTOS SENTADOS NA MESA */
+/* PRODUTOS FLUTUANTES (BOLO E POTES) */
 .product {
     position: absolute;
     z-index: 15;
     /* Sombra projetada na mesa para realismo */
-    filter: drop-shadow(0 25px 15px rgba(0,0,0,0.15));
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.25));
     pointer-events: none;
 }
 
 .left-cake {
-    left: 5%;
-    bottom: 80px; /* Posicionado exatamente sobre a madeira */
-    height: 550px;
+    left: 8%;
+    bottom: 50px; /* Ajustado para "tocar" as tábuas */
+    height: 520px;
 }
 
 .right-jars {
-    right: 5%;
-    bottom: 80px; /* Posicionado exatamente sobre a madeira */
-    height: 480px;
+    right: 8%;
+    bottom: 50px; /* Ajustado para "tocar" as tábuas */
+    height: 440px;
 }
 
-/* =========================================
-   RESPONSIVIDADE
-   ========================================= */
-@media (max-width: 1200px) {
-    .left-cake { left: 2%; height: 450px; }
-    .right-jars { right: 2%; height: 400px; }
-}
-
-@media (max-width: 768px) {
+/* RESPONSIVIDADE */
+@media (max-width: 1024px) {
     .left-cake, .right-jars { display: none; }
-    .hero-content h1 { font-size: 2.8rem; }
-    .wood-floor-3d { height: 200px; }
+    .hero-content h1 { font-size: 2.5rem; }
 }
