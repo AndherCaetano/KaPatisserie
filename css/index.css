@@ -1,4 +1,4 @@
-/* PALETA DE CORES EXATA */
+/* CONFIGURAÇÕES GERAIS */
 :root {
     --dourado-logo: #b89355;
     --marrom-texto: #3a2a1d;
@@ -9,7 +9,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background-color: var(--bege-fundo); font-family: 'Poppins', sans-serif; overflow-x: hidden; }
 
-/* CABEÇALHO - DESIGN IDENTICO À IMAGEM */
+/* CABEÇALHO - ALINHAMENTO IGUAL À IMAGEM 2 */
 header {
     background-color: var(--branco);
     width: 100%;
@@ -38,7 +38,7 @@ header {
 }
 
 .header-leaf {
-    height: 40px;
+    height: 35px;
     width: auto;
 }
 
@@ -54,6 +54,7 @@ nav ul li a {
     font-size: 14px;
     font-weight: 500;
     letter-spacing: 2px;
+    text-transform: uppercase;
     transition: 0.3s;
 }
 
@@ -61,17 +62,13 @@ nav ul li a.active {
     color: var(--dourado-logo);
 }
 
-nav ul li a:hover {
-    color: var(--dourado-logo);
-}
-
-/* Logo da Direita */
+/* Lado Direito do Cabeçalho */
 .logo-section .main-logo-header {
-    height: 65px;
+    height: 60px;
     width: auto;
 }
 
-/* HERO SECTION - CENÁRIO DE CONFEITARIA */
+/* HERO SECTION - O CENÁRIO */
 .hero {
     height: calc(100vh - 100px);
     background-color: #fff;
@@ -84,6 +81,7 @@ nav ul li a:hover {
 
 .hero-inner {
     width: 90%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -93,56 +91,80 @@ nav ul li a:hover {
 
 .hero-text {
     text-align: center;
-    max-width: 700px;
-    margin-bottom: 80px;
+    max-width: 750px;
+    margin-bottom: 120px; /* Sobe o texto para dar destaque ao piso */
 }
 
 .hero-text h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 3.2rem;
+    font-size: 3.5rem;
     color: var(--marrom-texto);
-    margin-bottom: 15px;
-    line-height: 1.2;
+    margin-bottom: 20px;
+    line-height: 1.1;
 }
 
 .hero-text p {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     color: #666;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
     font-weight: 300;
 }
 
 .btn-hero {
     background-color: #b08d57;
     color: white;
-    padding: 15px 40px;
+    padding: 16px 45px;
     text-decoration: none;
     border-radius: 50px;
     font-size: 13px;
     font-weight: 600;
-    letter-spacing: 1px;
-    transition: 0.3s;
+    letter-spacing: 1.5px;
+    transition: 0.4s;
+    box-shadow: 0 5px 15px rgba(176, 141, 87, 0.3);
 }
 
-/* PRODUTOS LATERAIS */
+.btn-hero:hover {
+    background-color: var(--marrom-texto);
+    transform: translateY(-2px);
+}
+
+/* PRODUTOS LATERAIS - SENTADOS NO PISO */
 .hero-product {
     position: absolute;
-    bottom: -20px;
+    bottom: 50px; /* Alinhado ao topo do piso */
     z-index: 15;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.12));
+    pointer-events: none; /* Deixa o clique passar para o fundo */
 }
 
-.left-cake { left: 0; height: 420px; }
-.right-jars { right: 0; height: 380px; }
+.left-cake {
+    left: -20px;
+    height: 480px;
+}
 
-/* PISO DE MADEIRA */
+.right-jars {
+    right: 0;
+    height: 420px;
+}
+
+/* PISO DE MADEIRA - PERSPECTIVA IGUAL À REFERÊNCIA */
 .floor-wood {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 180px;
+    height: 200px; /* Altura do piso no ângulo da foto */
     background: url('https://www.transparenttextures.com/patterns/wood-pattern.png'), 
-                linear-gradient(to bottom, #d2b48c, #a0522d);
+                linear-gradient(to bottom, #d2b48c 0%, #a0522d 100%);
     z-index: 5;
     border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+/* AJUSTE PARA TELAS MENORES */
+@media (max-width: 1100px) {
+    .left-cake, .right-jars {
+        height: 300px;
+    }
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
 }
