@@ -1,170 +1,118 @@
-/* CONFIGURAÇÕES GERAIS */
+/* CONFIGURAÇÕES GERAIS KARLA TAVARES */
 :root {
-    --dourado-logo: #b89355;
-    --marrom-texto: #3a2a1d;
-    --bege-fundo: #fdfaf7;
+    --marrom-texto: #4a3728; /* Marrom Café do Portfólio */
+    --dourado-premium: #c5a059; /* Dourado para detalhes e bordas */
+    --bege-fundo: #fdf8f2; /* Fundo Bege Claro */
     --branco: #ffffff;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background-color: var(--bege-fundo); font-family: 'Poppins', sans-serif; overflow-x: hidden; }
 
-/* CABEÇALHO - ALINHAMENTO IGUAL À IMAGEM 2 */
-header {
-    background-color: var(--branco);
-    width: 100%;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #eee5db;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
+h1 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--branco); }
 
-.header-container {
-    width: 90%;
-    max-width: 1400px;
-    margin: 0 auto;
+/* HEADER IDENTICO AO PROJETO (Regerei para garantir o padrão) */
+header {
+    background: var(--branco);
+    padding: 15px 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid #f0efed;
+    position: sticky; top: 0; z-index: 1000;
 }
 
-.nav-section {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-}
+.logo-inicio { display: flex; align-items: center; gap: 10px; }
+.logo-inicio span { color: var(--dourado-premium); font-weight: 600; text-transform: uppercase; font-size: 0.9rem; }
 
-.header-leaf {
-    height: 35px;
-    width: auto;
-}
+nav ul { display: flex; list-style: none; gap: 30px; }
+nav a { text-decoration: none; color: var(--marrom-texto); font-weight: 400; font-size: 0.85rem; text-transform: uppercase; }
 
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 35px;
-}
+.brand-right { text-align: right; }
+.brand-right h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; line-height: 1; color: var(--marrom-texto); }
+.brand-right p { font-size: 0.6rem; letter-spacing: 3px; color: var(--dourado-premium); text-transform: uppercase; }
 
-nav ul li a {
-    text-decoration: none;
-    color: var(--marrom-texto);
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    transition: 0.3s;
-}
-
-nav ul li a.active {
-    color: var(--dourado-logo);
-}
-
-/* Lado Direito do Cabeçalho */
-.logo-section .main-logo-header {
-    height: 60px;
-    width: auto;
-}
-
-/* HERO SECTION - O CENÁRIO */
+/* HERO SECTION - COMPOSIÇÃO DE CENÁRIO (PISO + PRODUTOS) */
 .hero {
-    height: calc(100vh - 100px);
-    background-color: #fff;
-    position: relative;
+    height: 80vh;
+    background-color: #fdfcfb;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
+    text-align: center;
     overflow: hidden;
 }
 
-.hero-inner {
-    width: 90%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* O Box Marrom Centralizado do Portfólio */
+.hero-content {
     position: relative;
-    z-index: 10;
+    z-index: 20;
+    background: rgba(74, 55, 40, 0.9); /* O Marrom do Portfólio */
+    padding: 60px 40px;
+    border-radius: 4px;
+    max-width: 800px;
+    color: var(--branco);
+    border: 1px solid var(--dourado-premium); /* Borda Dourada */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    margin-bottom: 60px; /* Sobe o texto para dar destaque ao piso */
 }
 
-.hero-text {
-    text-align: center;
-    max-width: 750px;
-    margin-bottom: 120px; /* Sobe o texto para dar destaque ao piso */
-}
+.hero-content h1 { font-size: 3.5rem; margin-bottom: 20px; line-height: 1.1; }
+.hero-content p { font-size: 1.1rem; font-weight: 300; margin-bottom: 30px; letter-spacing: 1px; }
 
-.hero-text h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
-    color: var(--marrom-texto);
-    margin-bottom: 20px;
-    line-height: 1.1;
-}
-
-.hero-text p {
-    font-size: 1.15rem;
-    color: #666;
-    margin-bottom: 35px;
-    font-weight: 300;
-}
-
-.btn-hero {
-    background-color: #b08d57;
-    color: white;
-    padding: 16px 45px;
+/* Botão Dourado Estilo Portfólio */
+.btn-gold {
+    background: transparent;
+    color: var(--dourado-premium);
+    border: 1px solid var(--dourado-premium);
+    padding: 12px 35px;
     text-decoration: none;
-    border-radius: 50px;
-    font-size: 13px;
+    font-size: 0.8rem;
     font-weight: 600;
-    letter-spacing: 1.5px;
-    transition: 0.4s;
-    box-shadow: 0 5px 15px rgba(176, 141, 87, 0.3);
+    text-transform: uppercase;
+    transition: 0.3s;
 }
+.btn-gold:hover { background: var(--dourado-premium); color: var(--marrom-texto); }
 
-.btn-hero:hover {
-    background-color: var(--marrom-texto);
-    transform: translateY(-2px);
-}
-
-/* PRODUTOS LATERAIS - SENTADOS NO PISO */
-.hero-product {
-    position: absolute;
-    bottom: 50px; /* Alinhado ao topo do piso */
-    z-index: 15;
-    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.12));
-    pointer-events: none; /* Deixa o clique passar para o fundo */
-}
-
-.left-cake {
-    left: -20px;
-    height: 480px;
-}
-
-.right-jars {
-    right: 0;
-    height: 420px;
-}
-
-/* PISO DE MADEIRA - PERSPECTIVA IGUAL À REFERÊNCIA */
-.floor-wood {
+/* CENÁRIO (PISO E PRODUTOS LATERAIS) */
+/* O Piso de Madeira no ângulo exato do projeto */
+.wood-floor {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 200px; /* Altura do piso no ângulo da foto */
+    height: 180px; /* Altura do piso no ângulo da foto */
+    /* Degradê amadeirado combinado com textura transparente que simula tábuas */
     background: url('https://www.transparenttextures.com/patterns/wood-pattern.png'), 
                 linear-gradient(to bottom, #d2b48c 0%, #a0522d 100%);
-    z-index: 5;
+    z-index: 1;
     border-top: 1px solid rgba(0,0,0,0.1);
 }
 
-/* AJUSTE PARA TELAS MENORES */
-@media (max-width: 1100px) {
-    .left-cake, .right-jars {
-        height: 300px;
-    }
-    .hero-text h1 {
-        font-size: 2.5rem;
-    }
+/* Posicionamento do Bolo (Esquerdo) */
+.product-left {
+    position: absolute;
+    left: 10%; /* Ajuste fino do posicionamento lateral */
+    bottom: 50px; /* "Sentado" no piso de madeira */
+    height: 450px;
+    z-index: 10;
+    filter: drop-shadow(10px 10px 20px rgba(0,0,0,0.1));
+}
+
+/* Posicionamento dos Potes (Direito) */
+.product-right {
+    position: absolute;
+    right: 10%; /* Ajuste fino do posicionamento lateral */
+    bottom: 50px; /* "Sentado" no piso de madeira */
+    height: 380px;
+    z-index: 10;
+    filter: drop-shadow(-10px 10px 20px rgba(0,0,0,0.1));
+}
+
+/* RESPONSIVIDADE (Ajuste para mobile) */
+@media (max-width: 1024px) {
+    .product-left, .product-right { display: none; }
+    .hero-content h1 { font-size: 2.5rem; }
+    header { flex-direction: column; gap: 15px; }
 }
