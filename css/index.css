@@ -1,244 +1,148 @@
-/* =========================================
-   PALETA DE CORES E FONTES (IDENTIDADE)
-   ========================================= */
+/* PALETA DE CORES EXATA */
 :root {
-    --marrom-primario: #4a3728; /* Marrom Café do Portfólio */
-    --dourado-principal: #c5a059; /* Dourado para detalhes e bordas */
-    --bege-fundo: #fdf8f2; /* Bege claríssimo para o fundo do site */
+    --dourado-logo: #b89355;
+    --marrom-texto: #3a2a1d;
+    --bege-fundo: #fdfaf7;
     --branco: #ffffff;
-    
-    /* Fontes de Luxo */
-    --fonte-titulo: 'Playfair Display', serif;
-    --fonte-corpo: 'Poppins', sans-serif;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background-color: var(--bege-fundo); font-family: 'Poppins', sans-serif; overflow-x: hidden; }
 
-body {
-    background-color: var(--bege-fundo);
-    font-family: var(--fonte-corpo);
-    line-height: 1.6;
-    overflow-x: hidden; /* Evita rolagem horizontal indesejada */
-}
-
-h1 {
-    font-family: var(--fonte-titulo);
-    font-weight: 700;
-}
-
-/* =========================================
-   HEADER (MENU) - EXATAMENTE COMO NO PROJETO
-   ========================================= */
+/* CABEÇALHO - DESIGN IDENTICO À IMAGEM */
 header {
-    background: var(--branco);
-    padding: 20px 8%;
+    background-color: var(--branco);
+    width: 100%;
+    height: 100px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid #eee5db;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
 }
 
-/* Área da Esquerda (SVG e Início) */
-.header-left {
+.header-container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-section {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 40px;
 }
 
-.icon-leaf {
-    width: 24px;
-    height: 24px;
-    stroke: var(--dourado-principal);
+.header-leaf {
+    height: 40px;
+    width: auto;
 }
 
-.inicio-link {
-    text-decoration: none;
-    color: var(--dourado-principal);
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-}
-
-/* Menu Central (Sobre, Portfólio, Contato) */
 nav ul {
     display: flex;
     list-style: none;
-    gap: 25px;
-    align-items: center;
+    gap: 35px;
 }
 
-nav a {
+nav ul li a {
     text-decoration: none;
-    color: var(--marrom-primario);
-    font-size: 0.8rem;
-    font-weight: 400;
-    text-transform: uppercase;
-}
-
-nav a:hover {
-    color: var(--dourado-principal);
-}
-
-/* LOGO ÁREA (DIREITA) */
-.logo-area {
-    text-align: right;
-    line-height: 1;
-}
-
-.logo-area h2 {
-    font-family: var(--fonte-titulo);
-    font-size: 1.5rem;
-    color: var(--marrom-primario);
-}
-
-.logo-area span {
-    display: block;
-    font-size: 0.6rem;
-    color: var(--marrom-primario);
-    font-weight: 300;
+    color: var(--marrom-texto);
+    font-size: 14px;
+    font-weight: 500;
     letter-spacing: 2px;
-    text-transform: uppercase;
+    transition: 0.3s;
 }
 
-/* =========================================
-   HERO SECTION (A COMPOSIÇÃO DE CENÁRIO)
-   ========================================= */
+nav ul li a.active {
+    color: var(--dourado-logo);
+}
+
+nav ul li a:hover {
+    color: var(--dourado-logo);
+}
+
+/* Logo da Direita */
+.logo-section .main-logo-header {
+    height: 65px;
+    width: auto;
+}
+
+/* HERO SECTION - CENÁRIO DE CONFEITARIA */
 .hero {
-    height: 80vh;
+    height: calc(100vh - 100px);
+    background-color: #fff;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    padding: 0 5%;
-    background-color: var(--branco);
-    position: relative;
     overflow: hidden;
 }
 
-/* Camada de sobreposição sutil para o box central */
-.hero::after {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(255,255,255,0.1);
-    z-index: 2;
-}
-
-/* O Box Marrom com transparência e borda dourada */
-.hero-content {
+.hero-inner {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     z-index: 10;
-    background: rgba(74, 55, 40, 0.9); /* O Box Marrom do portfólio */
-    padding: 60px 40px;
-    border-radius: 4px;
-    max-width: 800px;
-    color: var(--branco);
-    border: 1px solid var(--dourado-principal); /* Borda dourada do portfólio */
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-    margin-bottom: 50px; /* Espaço para as imagens laterais aparecerem */
 }
 
-.hero-content h1 {
-    font-size: 3.5rem;
-    color: var(--branco); /* Forçar branco dentro do box */
-    margin-bottom: 20px;
-    line-height: 1.1;
+.hero-text {
+    text-align: center;
+    max-width: 700px;
+    margin-bottom: 80px;
 }
 
-.hero-content p {
+.hero-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2rem;
+    color: var(--marrom-texto);
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.hero-text p {
     font-size: 1.1rem;
-    font-weight: 300;
+    color: #666;
     margin-bottom: 30px;
-    letter-spacing: 1px;
+    font-weight: 300;
 }
 
-/* Botão Dourado Estilo Portfólio */
-.btn-principal {
-    background: transparent;
-    color: var(--dourado-principal);
-    border: 1px solid var(--dourado-principal);
-    padding: 12px 35px;
+.btn-hero {
+    background-color: #b08d57;
+    color: white;
+    padding: 15px 40px;
     text-decoration: none;
-    font-size: 0.8rem;
+    border-radius: 50px;
+    font-size: 13px;
     font-weight: 600;
-    text-transform: uppercase;
-    transition: 0.4s;
-    display: inline-block;
+    letter-spacing: 1px;
+    transition: 0.3s;
 }
 
-.btn-principal:hover {
-    background: var(--dourado-principal);
-    color: var(--marrom-primario);
+/* PRODUTOS LATERAIS */
+.hero-product {
+    position: absolute;
+    bottom: -20px;
+    z-index: 15;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
 }
 
-/* =========================================
-   CENÁRIO (PISO E PRODUTOS)
-   ========================================= */
-/* Piso amadeirado na base com ângulo simulado */
-.wood-floor {
+.left-cake { left: 0; height: 420px; }
+.right-jars { right: 0; height: 380px; }
+
+/* PISO DE MADEIRA */
+.floor-wood {
     position: absolute;
     bottom: 0;
     width: 100%;
     height: 180px;
-    /* Degradê amadeirado combinado com textura que simula tábuas */
     background: url('https://www.transparenttextures.com/patterns/wood-pattern.png'), 
-                linear-gradient(to bottom, #d2b48c 0%, #a0522d 100%);
-    z-index: 1;
+                linear-gradient(to bottom, #d2b48c, #a0522d);
+    z-index: 5;
     border-top: 1px solid rgba(0,0,0,0.1);
-}
-
-/* POSICIONAMENTO DO BOLO E DOS POTES */
-.product-left {
-    position: absolute;
-    left: 8%; /* Ajuste fino do posicionamento */
-    bottom: 50px; /* "Sentado" no piso de madeira */
-    height: 450px;
-    z-index: 10;
-    filter: drop-shadow(10px 10px 20px rgba(0,0,0,0.1));
-}
-
-.product-right {
-    position: absolute;
-    right: 8%; /* Ajuste fino do posicionamento */
-    bottom: 50px; /* "Sentado" no piso de madeira */
-    height: 380px;
-    z-index: 10;
-    filter: drop-shadow(-10px 10px 20px rgba(0,0,0,0.1));
-}
-
-/* =========================================
-   RESPONSIVIDADE (MOBILE)
-   ========================================= */
-@media (max-width: 1024px) {
-    /* Esconder imagens laterais em telas menores */
-    .product-left, .product-right {
-        display: none;
-    }
-    .hero-content {
-        margin-bottom: 0;
-        padding: 40px;
-    }
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-    header {
-        flex-direction: column;
-        gap: 15px;
-        padding: 20px 5%;
-    }
-    nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
-    }
-    .logo-area {
-        text-align: center;
-    }
 }
