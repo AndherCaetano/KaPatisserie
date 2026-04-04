@@ -6,7 +6,8 @@
     --dourado-premium: #b08d57;
     --bege-fundo: #fdfaf7;
     --branco: #ffffff;
-    --madeira-mel: #e3b074; /* Tom exato da foto original */
+    /* Ajuste do tom mel para um carvalho mais quente e saturado */
+    --madeira-mel: #d4a373; 
 }
 
 * { 
@@ -55,16 +56,11 @@ header {
     font-weight: 500; 
     text-transform: uppercase; 
     letter-spacing: 1px; 
-    transition: 0.3s;
 }
 
 .nav-links a.active { 
     color: var(--dourado-premium); 
     font-weight: 600; 
-}
-
-.nav-links a:hover {
-    color: var(--dourado-premium);
 }
 
 .brand-right { 
@@ -98,37 +94,42 @@ header {
     position: relative;
     overflow: hidden;
     background: #fff;
-    perspective: 1200px; /* Profundidade do cenário */
+    /* Perspective ajustada para achatar a mesa e dar realismo */
+    perspective: 1500px; 
 }
 
-/* PISO DE MADEIRA 3D (Efeito de Mesa Plana) */
+/* MESA DE MADEIRA REFORMULADA */
 .wood-floor-3d {
     position: absolute;
-    bottom: -110px; /* Ajuste para o horizonte da mesa */
-    width: 180%; 
-    height: 400px;
+    bottom: -50px; 
+    width: 200%; 
+    height: 380px; /* Mais alta para parecer mais "grossa" */
+    
+    /* Mix de cores e texturas para veios idênticos ao original */
     background: 
         linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.1) 100%),
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.05) 0px, rgba(0,0,0,0.05) 1px, transparent 1px, transparent 30px),
         url('https://www.transparenttextures.com/patterns/wood-pattern.png'),
         var(--madeira-mel);
-    background-size: 350px;
     
-    /* Ângulo de inclinação para parecer uma mesa real */
-    transform: rotateX(88deg); 
+    /* Ângulo de 75 graus para criar o plano da mesa de trabalho */
+    transform: rotateX(75deg); 
     z-index: 1;
-    box-shadow: inset 0 30px 60px rgba(0,0,0,0.2);
-    border-top: 5px solid #c59d6d;
+    
+    /* Borda frontal da mesa (Espessura) */
+    border-top: 12px solid #a67c52; 
+    box-shadow: 0 50px 100px rgba(0,0,0,0.3);
 }
 
-/* Linhas das tábuas de madeira */
+/* Veios da madeira (Linhas horizontais de perspectiva) */
 .wood-floor-3d::after {
     content: "";
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     background-image: repeating-linear-gradient(90deg, 
         transparent, 
-        transparent 90px, 
-        rgba(74, 55, 40, 0.12) 91px);
+        transparent 110px, 
+        rgba(74, 55, 40, 0.08) 111px);
 }
 
 /* CONTEÚDO CENTRAL */
@@ -137,7 +138,7 @@ header {
     z-index: 20;
     text-align: center;
     max-width: 850px;
-    margin-bottom: 160px; /* Sobe o texto para limpar o espaço da mesa */
+    margin-bottom: 120px; /* Sobe o texto para limpar o espaço da mesa */
 }
 
 .hero-content h1 {
@@ -159,67 +160,48 @@ header {
 .btn-cta {
     background: var(--dourado-premium);
     color: white;
-    padding: 18px 50px;
+    padding: 16px 50px;
     text-decoration: none;
     border-radius: 50px;
     font-weight: 600;
     text-transform: uppercase;
     font-size: 0.9rem;
     display: inline-block;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 20px rgba(176, 141, 87, 0.4);
+    transition: 0.3s ease;
+    box-shadow: 0 8px 15px rgba(176, 141, 87, 0.3);
 }
 
-.btn-cta:hover { 
-    transform: scale(1.05); 
-    background: var(--marrom-cafe); 
-}
-
-/* PRODUTOS FLUTUANTES (SENTADOS NO PISO) */
+/* PRODUTOS SENTADOS NA MESA */
 .product {
     position: absolute;
     z-index: 15;
-    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.25));
+    /* Sombra projetada na mesa para realismo */
+    filter: drop-shadow(0 25px 15px rgba(0,0,0,0.15));
     pointer-events: none;
 }
 
 .left-cake {
-    left: 7%;
-    bottom: 60px; /* "Toca" a madeira */
-    height: 520px;
+    left: 5%;
+    bottom: 80px; /* Posicionado exatamente sobre a madeira */
+    height: 550px;
 }
 
 .right-jars {
-    right: 7%;
-    bottom: 60px; /* "Toca" a madeira */
-    height: 440px;
+    right: 5%;
+    bottom: 80px; /* Posicionado exatamente sobre a madeira */
+    height: 480px;
 }
 
 /* =========================================
    RESPONSIVIDADE
    ========================================= */
-@media (max-width: 1100px) {
-    .left-cake, .right-jars {
-        height: 350px;
-    }
-    .hero-content h1 {
-        font-size: 2.8rem;
-    }
-    .hero-content {
-        margin-bottom: 100px;
-    }
+@media (max-width: 1200px) {
+    .left-cake { left: 2%; height: 450px; }
+    .right-jars { right: 2%; height: 400px; }
 }
 
 @media (max-width: 768px) {
-    .left-cake, .right-jars {
-        display: none;
-    }
-    header {
-        flex-direction: column;
-        gap: 15px;
-        padding: 20px 5%;
-    }
-    .nav-links {
-        gap: 15px;
-    }
+    .left-cake, .right-jars { display: none; }
+    .hero-content h1 { font-size: 2.8rem; }
+    .wood-floor-3d { height: 200px; }
 }
