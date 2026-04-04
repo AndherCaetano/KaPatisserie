@@ -2,43 +2,48 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Karla Tavares Pâtisserie</title>
-    <link rel="stylesheet" href="css/index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karla Tavares Pâtisserie | Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 
     <header>
         <div class="header-left">
-            <img src="img/folha.png" alt="Folha" class="leaf-icon">
-            <nav>
-                <ul>
-                    <li><a href="index.html" class="active">Início</a></li>
-                    <li><a href="sobre.html">Sobre</a></li>
-                    <li><a href="portfolio.html">Portfólio</a></li>
-                    <li><a href="contato.html">Contato</a></li>
-                </ul>
-            </nav>
+            <svg class="icon-leaf" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 20A7 7 0 0 1 11 6A7 7 0 0 1 11 20M11 13H5M11 13H17"></path>
+            </svg>
+            <a href="index.html" class="inicio-link">Início</a>
         </div>
         
-        <div class="header-right">
+        <nav>
+            <ul>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="kits.html">Portfólio</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+
+        <div class="logo-area">
             <h2>Karla Tavares</h2>
-            <p>Pâtisserie</p>
+            <span>C O N F E I T A R I A</span>
         </div>
     </header>
 
     <section class="hero">
-        <img src="img/bolo-casamento.png" class="hero-product left-cake" alt="Bolo">
+        <img src="https://images.unsplash.com/photo-1535254973040-607b474cb80d?auto=format&fit=crop&w=600&q=80" class="product left-cake" alt="Bolo de Casamento">
 
         <div class="hero-content">
-            <h1>Arte em Cada Doce. <br>Karla Tavares Pâtisserie.</h1>
+            <h1>Arte em cada doce. <br>Karla Tavares Pâtisserie.</h1>
             <p>Confeitaria artesanal sofisticada no Rio de Janeiro. <br>De bolos monumentais a doces individuais perfeitos.</p>
-            <a href="portfolio.html" class="btn-cta">Conheça nosso trabalho</a>
+            <a href="contato.html" class="btn-cta">Solicitar Orçamento</a>
         </div>
 
-        <img src="img/potes-doces.png" class="hero-product right-jars" alt="Doces">
+        <img src="https://images.unsplash.com/photo-1541696490-8744a5db0228?auto=format&fit=crop&w=400&q=80" class="product right-jars" alt="Potes de Doces">
 
-        <div class="wood-table"></div>
+        <div class="wood-floor-3d"></div>
     </section>
 
 </body>
