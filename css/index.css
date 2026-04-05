@@ -18,7 +18,7 @@ body {
 }
 
 /* =========================================
-   2. HEADER
+   2. HEADER (INTOCÁVEL)
    ========================================= */
 header {
     background: var(--branco);
@@ -49,7 +49,7 @@ header {
 .assinatura-img { height: 55px !important; width: auto; }
 
 /* =========================================
-   3. HERO (POSICIONAMENTO DOS TEXTOS)
+   3. HERO (CONFIGURAÇÃO ORIGINAL DESKTOP)
    ========================================= */
 .hero {
     height: calc(100vh - 90px);
@@ -79,25 +79,21 @@ header {
 .cta-gold { background: var(--dourado-folha); }
 .cta-brown { background: var(--marrom-logo); }
 
-/* =========================================
-   4. PRODUTOS E MESA (FAIXA BRANCA FINA)
-   ========================================= */
+/* DOCES E MESA - POSIÇÃO ORIGINAL DESKTOP */
 .product { 
     position: absolute; z-index: 30; 
     filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15)); 
     height: 480px; 
-    /* Ajuste para alinhar base com o fim da mesa */
-    bottom: 25px; 
+    bottom: 45px; /* Alinhamento exato para faixa branca fina no Desktop */
 }
 .left-cake { left: 4%; }
 .right-jars { right: 4%; }
 
 .wood-table {
     position: absolute; 
-    /* Desce a mesa para deixar a faixa branca fina de 1,5 dedos */
-    bottom: -150px; 
+    bottom: -150px; /* Enterra a mesa para deixar a linha branca fina */
     width: 200%; 
-    height: 500px; /* Aumentei a mesa para garantir profundidade */
+    height: 500px;
     background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.1) 100%),
                 repeating-conic-gradient(from 180deg at 50% -100px, transparent 0%, transparent 1%, rgba(74, 55, 40, 0.1) 1.1%, transparent 1.2%),
                 var(--madeira-mel);
@@ -107,7 +103,7 @@ header {
 }
 
 /* =========================================
-   5. RESPONSIVIDADE (MOBILE AJUSTADO)
+   4. RESPONSIVIDADE (MOBILE SEM DANIFICAR DESKTOP)
    ========================================= */
 .menu-toggle { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; }
 .menu-toggle span { width: 22px; height: 3px; background: var(--marrom-logo); }
@@ -123,11 +119,12 @@ header {
     .nav-menu.active { display: block; }
     .nav-menu ul { flex-direction: column; align-items: center; gap: 25px; }
 
+    /* Ajuste para o texto não sumir e ativar rolagem se necessário */
     .hero { 
         height: auto; 
         min-height: calc(100vh - 90px); 
         padding-top: 20px; 
-        padding-bottom: 120px; /* Reduzi o vácuo mobile */
+        padding-bottom: 120px; /* Ajuste para smartphone físico */
         justify-content: flex-start;
     }
 
@@ -136,22 +133,22 @@ header {
     .sub-patisserie { font-size: 2rem; }
     .cta-group { flex-direction: column; align-items: center; }
 
-    /* DOCES NA MESA NO MOBILE COM FAIXA FINA */
+    /* DOCES NA MESA NO MOBILE - RESOLVE CORTE DA BASE */
     .product { 
         height: 230px; 
-        bottom: 20px; /* Alinha com a nova base fina */
+        bottom: 35px; /* Eleva levemente para aparecer a base na mesa amadeirada */
     }
     .left-cake { left: 2%; }
     .right-jars { right: 2%; }
 
     .wood-table { 
         height: 400px; 
-        bottom: -150px; 
+        bottom: -150px; /* Mantém a faixa branca fina solicitada */
     }
 }
 
 /* Telas Pequenas (iPhone SE) */
 @media (max-width: 360px) {
     .hero-content h1 { font-size: 1.8rem; }
-    .product { height: 180px; bottom: 15px; }
+    .product { height: 180px; bottom: 30px; }
 }
