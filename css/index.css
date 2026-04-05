@@ -48,7 +48,7 @@ header {
 .assinatura-img { height: 55px !important; width: auto; }
 
 /* =========================================
-   3. HERO DESKTOP (BLINDADO - ABSOLUTO)
+   3. HERO DESKTOP (RESTAURADO E BLINDADO)
    ========================================= */
 .hero {
     height: calc(100vh - 90px);
@@ -60,7 +60,7 @@ header {
 .hero-content {
     position: relative; z-index: 20; text-align: center;
     width: 90%; max-width: 650px;
-    margin-top: -60px; 
+    margin-top: -60px; /* Sobe o texto os dois dedos solicitados */
 }
 
 .hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; line-height: 1.1; margin-bottom: 15px; color: var(--marrom-logo); }
@@ -73,7 +73,7 @@ header {
     font-weight: 600; text-transform: uppercase; font-size: 12px; color: white;
 }
 
-/* PRODUTOS DESKTOP (POSIÇÃO FIXA APROVADA) */
+/* DOCES E MESA DESKTOP - POSIÇÃO ORIGINAL LADO A LADO */
 .product { 
     position: absolute; z-index: 30; 
     filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15)); 
@@ -92,7 +92,7 @@ header {
 }
 
 /* =========================================
-   4. RESPONSIVIDADE (TABLETS E SMARTPHONES)
+   4. RESPONSIVIDADE (TABLETS E MOBILE LADO A LADO)
    ========================================= */
 .menu-toggle { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; }
 .menu-toggle span { width: 22px; height: 3px; background: var(--marrom-logo); }
@@ -108,52 +108,43 @@ header {
     .nav-menu.active { display: block; }
     .nav-menu ul { flex-direction: column; align-items: center; gap: 25px; }
 
-    /* MUDANÇA PARA FLOW: Evita sobreposição (Imagens 1 e 2) */
+    /* MOBILE: VOLTANDO AO LADO A LADO COM SCROLL */
     .hero { 
         height: auto; 
         min-height: calc(100vh - 90px); 
         justify-content: flex-start;
         padding-top: 40px;
-        padding-bottom: 40px; /* Faixa branca de 1,5 dedos no fundo */
+        padding-bottom: 300px; /* Garante espaço para a mesa no fim do scroll */
     }
 
     .hero-content { 
         margin-top: 0; 
-        margin-bottom: 60px; /* ESPAÇO DE "DOIS DEDOS" ENTRE BOTÃO E PRODUTOS */
+        margin-bottom: 60px; /* Espaço de 2 dedos garantido entre botão e produtos */
     }
 
-    /* Container para manter produtos lado a lado e na mesa no mobile */
-    .mobile-products-container {
-        display: flex;
-        justify-content: space-around;
-        align-items: flex-end;
-        width: 100%;
-        position: relative;
-        padding-bottom: 60px; /* Profundidade da mesa no fluxo */
-        z-index: 30;
-    }
-
-    /* Ajuste de Tamanho (Resolve "Formigas" na Imagem 3) */
+    /* Doces voltam para absolute nas laterais sobre a mesa */
     .product { 
-        position: relative; /* Muda de absolute para relative para respeitar o espaço */
-        height: 380px; /* Aumentado significativamente para Tablets */
-        bottom: 0; 
-        left: auto; 
-        right: auto;
+        height: 250px; /* Tamanho proporcional para celulares e tablets */
+        bottom: 100px; /* Alinhado sobre a mesa amadeirada */
     }
+    .left-cake { left: 2%; }
+    .right-jars { right: 2%; }
 
     .wood-table { 
-        height: 550px; 
-        bottom: -40px; /* Ajuste para a faixa branca final */
+        height: 400px; 
+        bottom: -110px; /* Faixa branca de 1,5 dedos no fundo */
     }
 }
 
-/* Ajuste Fino para Smartphones (iPhone/Galaxy) */
-@media (max-width: 480px) {
-    .hero-content h1 { font-size: 2.2rem; }
-    .hero-content { margin-bottom: 50px; }
-    
-    .product { 
-        height: 260px; /* Tamanho ideal para smartphone */
-    }
+/* Ajuste para Tablets (produtos maiores para não parecerem "formigas") */
+@media (min-width: 600px) and (max-width: 1024px) {
+    .product { height: 350px; bottom: 120px; }
+    .hero { padding-bottom: 450px; }
+}
+
+/* Telas Pequenas (iPhone SE) */
+@media (max-width: 360px) {
+    .hero-content h1 { font-size: 1.8rem; }
+    .product { height: 180px; bottom: 90px; }
+    .hero { padding-bottom: 250px; }
 }
