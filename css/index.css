@@ -8,14 +8,12 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background-color: var(--branco); font-family: 'Poppins', sans-serif; overflow-x: hidden; }
 
-/* --- HEADER REPARADO --- */
+/* HEADER */
 header {
     background: var(--branco);
-    width: 100%;
-    height: 100px;
+    width: 100%; height: 90px;
     border-bottom: 1px solid #f2f0ed;
-    display: flex;
-    align-items: center;
+    display: flex; align-items: center;
     position: sticky; top: 0; z-index: 1000;
 }
 
@@ -25,61 +23,46 @@ header {
 }
 
 .header-left { display: flex; align-items: center; gap: 20px; }
-.folha-img { height: 40px !important; width: auto !important; } /* Travando o tamanho */
+.folha-img { height: 40px !important; width: auto !important; }
 
 .nav-menu ul { display: flex; list-style: none; gap: 20px; }
 .nav-menu ul li a {
-    text-decoration: none;
-    font-size: 13px;
-    text-transform: uppercase;
-    color: var(--marrom-logo);
-    font-weight: 700;
+    text-decoration: none; font-size: 13px; text-transform: uppercase;
+    color: var(--marrom-logo); font-weight: 700;
 }
 .nav-menu ul li a.active { color: var(--dourado-folha); }
 
-/* --- ÁREA DA LOGO E REDES --- */
-.header-right { display: flex; align-items: center; }
-.social-wrapper { display: flex; align-items: center; gap: 15px; }
-.social-links { display: flex; gap: 8px; }
-.social-links a {
-    text-decoration: none;
-    color: var(--marrom-logo);
-    font-size: 11px;
-    font-weight: 700;
-    border: 1px solid var(--marrom-logo);
-    padding: 2px 5px;
-    border-radius: 4px;
-}
+/* REDES SOCIAIS E LOGO */
+.social-wrapper { display: flex; align-items: center; gap: 20px; }
+.social-links { display: flex; gap: 15px; }
+.social-links a { width: 22px; height: 22px; transition: 0.3s; }
+.social-links svg { fill: var(--marrom-logo); width: 100%; height: 100%; }
+.social-links a:hover svg { fill: var(--dourado-folha); }
 
 .assinatura-img { height: 60px !important; width: auto !important; }
 
-/* --- HERO E MESA --- */
+/* HERO SECTION */
 .hero {
-    height: calc(100vh - 100px);
+    height: calc(100vh - 90px);
     display: flex; align-items: center; justify-content: center;
     position: relative; perspective: 1500px;
 }
 
 .hero-content { position: relative; z-index: 20; text-align: center; max-width: 650px; margin-bottom: 120px; }
-
 .hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.2rem; line-height: 1.1; margin-bottom: 15px; }
 .titulo-dourado { color: var(--dourado-folha); }
 .titulo-marrom { color: var(--marrom-logo); font-weight: 700; }
 
 .cta-group { display: flex; gap: 15px; justify-content: center; }
 .btn-cta {
-    padding: 14px 25px;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 11px;
-    color: white;
+    padding: 15px 30px; text-decoration: none; border-radius: 50px;
+    font-weight: 600; text-transform: uppercase; font-size: 12px; color: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 .cta-gold { background: var(--dourado-folha); }
 .cta-brown { background: var(--marrom-logo); }
 
-/* --- PRODUTOS --- */
+/* PRODUTOS */
 .product { position: absolute; z-index: 30; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15)); }
 .left-cake { height: 480px; left: 4%; bottom: 60px; }
 .right-jars { height: 420px; right: 4%; bottom: 60px; }
@@ -92,21 +75,40 @@ header {
     transform: rotateX(75deg); z-index: 10; border-top: 10px solid #a67c52;
 }
 
-/* --- MOBILE E TABLET (FIX) --- */
-.menu-toggle { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; }
-.menu-toggle span { width: 22px; height: 2px; background: var(--marrom-logo); }
+/* RESPONSIVIDADE TOTAL (CELULARES E TABLETS) */
+.menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
+.menu-toggle span { width: 25px; height: 3px; background: var(--marrom-logo); }
 
-@media (max-width: 1100px) {
+@media (max-width: 1024px) {
     .menu-toggle { display: flex; }
     .nav-menu {
-        display: none; position: absolute; top: 100px; left: 0; width: 100%;
-        background: white; padding: 20px; border-bottom: 1px solid #eee;
+        display: none; position: absolute; top: 90px; left: 0; width: 100%;
+        background: white; padding: 30px; border-bottom: 1px solid #eee;
     }
     .nav-menu.active { display: block; }
-    .nav-menu ul { flex-direction: column; align-items: center; }
+    .nav-menu ul { flex-direction: column; align-items: center; gap: 20px; }
     
+    .social-wrapper { gap: 10px; }
+    .assinatura-img { height: 45px !important; }
+    .social-links { gap: 10px; }
+    .social-links a { width: 18px; height: 18px; }
+
+    /* Ajuste de escala para tablets e celulares */
+    .hero-content { margin-bottom: 350px; padding: 0 15px; } /* Aumentei o respiro embaixo do texto */
     .hero-content h1 { font-size: 2.5rem; }
-    .cta-group { flex-direction: column; align-items: center; }
-    .product { height: 250px; bottom: 30px; }
-    .hero-content { margin-bottom: 300px; }
+    .cta-group { flex-direction: column; gap: 10px; align-items: center; }
+    .btn-cta { width: 100%; max-width: 280px; font-size: 11px; padding: 12px; }
+
+    .product { height: 260px; bottom: 40px; } /* Alinhamento superior preservado */
+    .left-cake { left: 2%; }
+    .right-jars { right: 2%; }
+    
+    .wood-table { height: 250px; bottom: -50px; }
+}
+
+/* Telas muito pequenas (iPhone SE, etc) */
+@media (max-width: 360px) {
+    .hero-content h1 { font-size: 1.8rem; }
+    .product { height: 180px; }
+    .hero-content { margin-bottom: 280px; }
 }
