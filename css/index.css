@@ -13,12 +13,13 @@
 body { 
     background-color: var(--branco); 
     font-family: 'Poppins', sans-serif; 
-    overflow-x: hidden;
+    overflow-x: hidden; /* Trava o site horizontalmente */
     color: #666;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* =========================================
-   2. HEADER (PADRÃO LUXO)
+   2. HEADER (BLINDADO)
    ========================================= */
 header {
     background: var(--branco);
@@ -34,7 +35,7 @@ header {
 }
 
 .header-left { display: flex; align-items: center; gap: 20px; }
-.folha-img { height: 35px !important; width: auto; }
+.folha-img { height: 40px !important; width: auto; }
 
 .nav-menu ul { display: flex; list-style: none; gap: 20px; }
 .nav-menu ul li a {
@@ -46,59 +47,53 @@ header {
 .social-wrapper { display: flex; align-items: center; gap: 15px; }
 .social-links { display: flex; gap: 12px; }
 .social-links svg { fill: var(--marrom-logo); width: 18px; height: 18px; }
-.assinatura-img { height: 50px !important; width: auto; }
+.assinatura-img { height: 55px !important; width: auto; }
 
 /* =========================================
-   3. HERO SECTION (CONTROLE DE FLUXO)
+   3. HERO DESKTOP (BLINDADO - INTOCÁVEL)
    ========================================= */
 .hero {
-    min-height: calc(100vh - 90px);
+    height: calc(100vh - 90px);
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
     position: relative; perspective: 1500px;
-    /* Faixa branca fina no fundo (Desktop) */
-    padding-bottom: 40px; 
+    overflow: hidden; /* Evita que a mesa grande crie barra de rolagem */
 }
 
 .hero-content {
     position: relative; z-index: 50; text-align: center;
-    width: 90%; max-width: 600px;
-    margin-top: -80px; /* Sobe o texto no desktop conforme pedido */
+    width: 90%; max-width: 650px;
+    margin-top: -60px; 
 }
 
-.hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.2rem; line-height: 1.1; margin-bottom: 15px; color: var(--marrom-logo); }
+.hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; line-height: 1.1; margin-bottom: 15px; color: var(--marrom-logo); }
 .titulo-dourado { color: var(--dourado-folha); }
 .titulo-marrom { color: var(--marrom-logo); font-weight: 700; }
 .nome-marca { display: inline-block; text-align: center; }
-.sub-patisserie { font-size: 3rem; }
+.sub-patisserie { font-size: 3.2rem; }
 
 .cta-group { display: flex; gap: 15px; justify-content: center; margin-top: 25px; }
 .btn-cta {
-    padding: 14px 30px; text-decoration: none; border-radius: 50px;
-    font-weight: 600; text-transform: uppercase; font-size: 11px; color: white;
+    padding: 15px 35px; text-decoration: none; border-radius: 50px;
+    font-weight: 600; text-transform: uppercase; font-size: 12px; color: white;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 .cta-gold { background: var(--dourado-folha); }
 .cta-brown { background: var(--marrom-logo); }
 
-/* =========================================
-   4. PRODUTOS E MESA (ESTRUTURA 3D)
-   ========================================= */
+/* PRODUTOS E MESA DESKTOP */
 .product { 
-    position: absolute; z-index: 60; 
+    position: absolute; z-index: 100; /* Sempre na frente da mesa */
     filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15)); 
-    pointer-events: none; 
-    height: 480px; 
-    bottom: 55px; /* Alinhado ao topo da mesa */
+    height: 480px; bottom: 85px; 
+    pointer-events: none;
 }
 .left-cake { left: 4%; }
 .right-jars { right: 4%; }
 
-/* MESA AJUSTADA PARA FAIXA BRANCA */
 .wood-table {
-    position: absolute; 
-    bottom: -120px; /* Recuo para mostrar a faixa branca no fundo */
-    width: 200%; height: 480px;
+    position: absolute; bottom: -60px; 
+    width: 200%; height: 420px;
     background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.1) 100%),
                 repeating-conic-gradient(from 180deg at 50% -100px, transparent 0%, transparent 1%, rgba(74, 55, 40, 0.1) 1.1%, transparent 1.2%),
                 var(--madeira-mel);
@@ -106,67 +101,58 @@ header {
 }
 
 /* =========================================
-   5. RESPONSIVIDADE (TABLETS E SMARTPHONES)
+   4. RESPONSIVIDADE (MOBILE FÍSICO CORRIGIDO)
    ========================================= */
 .menu-toggle { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; }
 .menu-toggle span { width: 22px; height: 3px; background: var(--marrom-logo); }
 
 @media (max-width: 1024px) {
-    .menu-toggle { display: flex; margin-right: 10px; }
+    .menu-toggle { display: flex; }
     
     .nav-menu {
         display: none; position: absolute; top: 90px; left: 0; 
-        width: 100%; background: white; padding: 30px; 
+        width: 100%; background: white; padding: 40px 20px; 
         border-bottom: 1px solid #eee; text-align: center;
+        z-index: 2000;
     }
     .nav-menu.active { display: block; }
-    .nav-menu ul { flex-direction: column; align-items: center; gap: 20px; }
+    .nav-menu ul { flex-direction: column; align-items: center; gap: 25px; }
 
+    /* Estabilização do GPS do site (Contêiner travado) */
     .hero { 
         height: auto; 
-        min-height: 100vh;
+        min-height: calc(100vh - 90px); 
         justify-content: flex-start;
-        padding-top: 30px;
-        /* Aumentei para acomodar produtos maiores e garantir a faixa branca */
-        padding-bottom: 450px; 
+        padding-top: 40px;
+        padding-bottom: 450px; /* Garante espaço para mesa no celular físico */
     }
 
-    .hero-content { 
-        margin-top: 0; 
-        margin-bottom: 40px; 
-        z-index: 100;
-    }
-    .hero-content h1 { font-size: 2.2rem; }
-    .sub-patisserie { font-size: 2rem; }
+    .hero-content { margin-top: 0; margin-bottom: 40px; z-index: 50; }
+    .hero-content h1 { font-size: 2.5rem; }
+    .sub-patisserie { font-size: 2.2rem; }
     .cta-group { flex-direction: column; align-items: center; }
 
-    /* PRODUTOS AUMENTADOS (FIM DO EFEITO FORMIGUINHA) */
+    /* CORREÇÃO DAS IMAGENS CORTADAS (IMAGEM 2 E 3) */
     .product { 
-        height: 340px; /* Tamanho muito maior para Tablets/iPads */
-        bottom: 140px; /* Ajuste da base para aparecer sobre a mesa */
+        height: 280px; /* Aumentado para não ser formiga */
+        bottom: 140px; /* Eleva os produtos para ficarem BEM ACIMA da borda da mesa */
+        z-index: 150; /* Força ficar à frente da mesa amadeirada */
     }
     .left-cake { left: 2%; }
     .right-jars { right: 2%; }
 
-    /* MESA AJUSTADA PARA FAIXA DE 1,5 DEDOS */
+    /* AJUSTE DA MESA PARA MOBILE FÍSICO */
     .wood-table { 
-        height: 520px; 
-        bottom: -110px; /* Valor calculado para deixar a faixa branca fina no fundo */
+        height: 550px; 
+        bottom: -100px; /* Alinha para deixar a faixa branca fina no final */
+        z-index: 10;
+        width: 250%; /* Garante que cubra as bordas em qualquer giro */
     }
 }
 
-/* AJUSTE PARA SMARTPHONES (CELULARES) */
-@media (max-width: 480px) {
-    .hero { padding-bottom: 350px; }
-    .product { 
-        height: 240px; /* Proporcional para celulares */
-        bottom: 120px; 
-    }
-    .wood-table { bottom: -100px; }
-}
-
-/* IPHONE SE / TELAS MINÚSCULAS */
+/* Ajuste Especial para iPhone SE / Celulares pequenos */
 @media (max-width: 360px) {
-    .hero-content h1 { font-size: 1.8rem; }
-    .product { height: 180px; bottom: 100px; }
+    .hero-content h1 { font-size: 1.9rem; }
+    .product { height: 200px; bottom: 120px; }
+    .hero { padding-bottom: 350px; }
 }
