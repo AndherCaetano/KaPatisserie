@@ -17,7 +17,7 @@ body {
 }
 
 /* =========================================
-   2. HEADER (INTOCÁVEL - PERFEITO)
+   2. HEADER (BLINDADO)
    ========================================= */
 header {
     background: var(--branco);
@@ -48,7 +48,7 @@ header {
 .assinatura-img { height: 55px !important; width: auto; }
 
 /* =========================================
-   3. HERO DESKTOP (BLINDADO - NÃO MEXER)
+   3. HERO DESKTOP (BLINDADO - ABSOLUTO)
    ========================================= */
 .hero {
     height: calc(100vh - 90px);
@@ -66,18 +66,14 @@ header {
 .hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; line-height: 1.1; margin-bottom: 15px; color: var(--marrom-logo); }
 .titulo-dourado { color: var(--dourado-folha); }
 .titulo-marrom { color: var(--marrom-logo); font-weight: 700; }
-.nome-marca { display: inline-block; text-align: center; }
-.sub-patisserie { font-size: 3.2rem; }
 
 .cta-group { display: flex; gap: 15px; justify-content: center; margin-top: 25px; }
 .btn-cta {
     padding: 15px 35px; text-decoration: none; border-radius: 50px;
     font-weight: 600; text-transform: uppercase; font-size: 12px; color: white;
 }
-.cta-gold { background: var(--dourado-folha); }
-.cta-brown { background: var(--marrom-logo); }
 
-/* PRODUTOS E MESA DESKTOP (INTOCÁVEL) */
+/* PRODUTOS DESKTOP (POSIÇÃO FIXA APROVADA) */
 .product { 
     position: absolute; z-index: 30; 
     filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15)); 
@@ -96,7 +92,7 @@ header {
 }
 
 /* =========================================
-   4. RESPONSIVIDADE EXCLUSIVA (TABLETS E SMARTPHONES)
+   4. RESPONSIVIDADE (TABLETS E SMARTPHONES)
    ========================================= */
 .menu-toggle { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; }
 .menu-toggle span { width: 22px; height: 3px; background: var(--marrom-logo); }
@@ -112,42 +108,52 @@ header {
     .nav-menu.active { display: block; }
     .nav-menu ul { flex-direction: column; align-items: center; gap: 25px; }
 
-    /* REDUZINDO O GAP (HIATO): Trazendo os produtos para mais perto do botão */
+    /* MUDANÇA PARA FLOW: Evita sobreposição (Imagens 1 e 2) */
     .hero { 
         height: auto; 
         min-height: calc(100vh - 90px); 
-        justify-content: flex-start; /* Alinha o conteúdo ao topo */
+        justify-content: flex-start;
         padding-top: 40px;
-        padding-bottom: 380px; /* Reduzi o vácuo final para aproximar os elementos */
+        padding-bottom: 40px; /* Faixa branca de 1,5 dedos no fundo */
     }
 
-    .hero-content { margin-top: 0; margin-bottom: 20px; }
-    .hero-content h1 { font-size: 2.8rem; } /* Aumentado para tablets */
-    .sub-patisserie { font-size: 2.5rem; }
-    .cta-group { flex-direction: column; align-items: center; }
+    .hero-content { 
+        margin-top: 0; 
+        margin-bottom: 60px; /* ESPAÇO DE "DOIS DEDOS" ENTRE BOTÃO E PRODUTOS */
+    }
 
-    /* PROPORÇÕES DOS PRODUTOS EM TABLETS/MOBILE (RESOLVE ASPECTO ABANDONADO) */
+    /* Container para manter produtos lado a lado e na mesa no mobile */
+    .mobile-products-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-end;
+        width: 100%;
+        position: relative;
+        padding-bottom: 60px; /* Profundidade da mesa no fluxo */
+        z-index: 30;
+    }
+
+    /* Ajuste de Tamanho (Resolve "Formigas" na Imagem 3) */
     .product { 
-        height: 320px; /* Aumentado para não parecer minúsculo em tablets */
-        bottom: 130px; /* Posição elevada para alinhar com a mesa */
+        position: relative; /* Muda de absolute para relative para respeitar o espaço */
+        height: 380px; /* Aumentado significativamente para Tablets */
+        bottom: 0; 
+        left: auto; 
+        right: auto;
     }
-    .left-cake { left: 3%; }
-    .right-jars { right: 3%; }
 
-    /* MESA E FAIXA BRANCA (RECONSTITUÍDO PARA PROFUNDIDADE) */
     .wood-table { 
-        height: 520px; 
-        bottom: -110px; /* Ajuste milimétrico para a faixa branca de 1,5 dedos */
+        height: 550px; 
+        bottom: -40px; /* Ajuste para a faixa branca final */
     }
 }
 
-/* Ajuste Fino para Smartphones Pequenos (iPhone SE/5) */
+/* Ajuste Fino para Smartphones (iPhone/Galaxy) */
 @media (max-width: 480px) {
-    .hero-content h1 { font-size: 2rem; }
+    .hero-content h1 { font-size: 2.2rem; }
+    .hero-content { margin-bottom: 50px; }
+    
     .product { 
-        height: 250px; /* Tamanho robusto para o celular */
-        bottom: 110px; 
+        height: 260px; /* Tamanho ideal para smartphone */
     }
-    .hero { padding-bottom: 300px; } /* Aproximação extra no mobile */
-    .wood-table { bottom: -100px; }
 }
