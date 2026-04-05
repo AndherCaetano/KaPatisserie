@@ -1,95 +1,47 @@
 /* =========================================
-   PALETA DE CORES E FONTES (KARLA TAVARES)
+   PALETA DE CORES E FONTES
    ========================================= */
 :root {
-    --marrom-cafe: #4a3728; /* Marrom Texto */
-    --dourado-premium: #b08d57; /* Dourado Botão */
-    --bege-fundo: #fdfaf7; /* Fundo do site */
+    --marrom-cafe: #4a3728;
+    --dourado-premium: #b08d57;
     --branco: #ffffff;
-    /* COR MEL SATURADA (IDÊNTICA AO ORIGINAL) */
-    --madeira-mel: #e3b074; 
+    --madeira-mel: #d4a373; /* Tom mel saturado */
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background-color: var(--branco); font-family: 'Poppins', sans-serif; overflow-x: hidden; }
 
-h1, h2 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-}
-
 /* =========================================
-   HEADER (MENU CENTRAL | LOGO DIREITA)
+   HEADER (LOGO DIREITA | MENU ESQUERDA)
    ========================================= */
 header {
     background: var(--branco);
-    padding: 15px 8%;
+    padding: 10px 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #f0efed;
-    position: sticky; top: 0; z-index: 1000;
+    height: 110px;
 }
 
-/* Área da Esquerda (SVG e Início) */
-.header-left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+.header-left { display: flex; align-items: center; gap: 40px; }
+.folha-img { height: 45px; width: auto; }
 
-.icon-leaf {
-    width: 24px;
-    height: 24px;
-    stroke: var(--dourado-premium);
-}
-
-.inicio-link {
-    text-decoration: none;
-    color: var(--dourado-premium);
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-}
-
-/* Menu Central (Sobre, Portfólio, Contato) */
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 25px;
-    align-items: center;
-}
-
-nav a {
+nav ul { display: flex; list-style: none; gap: 30px; }
+nav ul li a {
     text-decoration: none;
     color: var(--marrom-cafe);
-    font-size: 0.8rem;
-    font-weight: 400;
+    font-size: 14px;
+    font-weight: 500;
     text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: 0.3s;
 }
+nav ul li a.active { color: var(--dourado-premium); font-weight: 700; }
 
-nav a:hover {
-    color: var(--dourado-premium);
-}
-
-/* LOGO ÁREA (DIREITA) */
-.logo-area {
-    text-align: right;
-    line-height: 1;
-}
-
-.logo-area h2 {
-    font-size: 1.5rem;
-    color: var(--marrom-cafe);
-}
-
-.logo-area span {
-    display: block;
-    font-size: 0.6rem;
-    color: var(--marrom-cafe);
-    font-weight: 300;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+.header-right .assinatura-img {
+    height: 75px;
+    width: auto;
 }
 
 /* =========================================
@@ -103,63 +55,50 @@ nav a:hover {
     justify-content: center;
     position: relative;
     overflow: hidden;
-    background: #fff;
-    /* Profundidade para criar a mesa */
-    perspective: 1500px; 
+    perspective: 1500px;
 }
 
-/* MESA DE MADEIRA COM VEIOS VERTICAIS E TOM MEL (3D) */
-.wood-floor-3d {
+/* MESA DE MADEIRA 3D - VEIOS VERTICAIS */
+.wood-table {
     position: absolute;
-    bottom: -150px; /* Alinhado ao horizonte da mesa */
-    width: 250%; /* Mais largo para cobrir a perspectiva lateral */
-    height: 600px;
-    
-    /* 1. Degradê de perspectiva para veios verticais idênticos ao original */
+    bottom: -80px;
+    width: 200%;
+    height: 450px;
     background: 
-        repeating-conic-gradient(
-            from 180deg at 50% -100px, 
-            transparent 0%, 
-            transparent 1%, 
-            rgba(74, 55, 40, 0.1) 1.1%, 
-            transparent 1.2%
-        ),
-        /* 2. Textura de madeira sutil */
+        linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.1) 100%),
+        repeating-conic-gradient(from 180deg at 50% -100px, transparent 0%, transparent 1%, rgba(74,55,40,0.08) 1.1%, transparent 1.2%),
         url('https://www.transparenttextures.com/patterns/wood-pattern.png'),
-        /* 3. Cor base saturada tom Mel */
         var(--madeira-mel);
-    
-    /* Inclinação agressiva para parecer plano */
-    transform: rotateX(85deg) translateY(0);
+    transform: rotateX(75deg);
     z-index: 1;
-    box-shadow: inset 0 30px 60px rgba(0,0,0,0.2);
-    border-top: 5px solid #c59d6d;
+    border-top: 8px solid #a67c52; /* Borda da mesa */
+    box-shadow: 0 50px 100px rgba(0,0,0,0.3);
 }
 
-/* CONTEÚDO CENTRAL (TÍTULO E CTN) */
+/* CONTEÚDO CENTRAL */
 .hero-content {
     position: relative;
     z-index: 20;
     text-align: center;
     max-width: 850px;
-    margin-bottom: 200px; /* Sobe o texto para limpar o espaço da mesa */
+    margin-bottom: 120px;
 }
 
 .hero-content h1 {
-    font-size: 4.2rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
     color: var(--marrom-cafe);
-    line-height: 1.05;
-    margin-bottom: 25px;
+    line-height: 1.1;
+    margin-bottom: 20px;
 }
 
 .hero-content p {
     font-size: 1.2rem;
     color: #666;
-    margin-bottom: 35px;
+    margin-bottom: 40px;
     font-weight: 300;
 }
 
-/* BOTÃO CTN DOURADO */
 .btn-cta {
     background: var(--dourado-premium);
     color: white;
@@ -168,30 +107,26 @@ nav a:hover {
     border-radius: 50px;
     font-weight: 600;
     text-transform: uppercase;
-    font-size: 0.95rem;
-    display: inline-block;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 15px rgba(176, 141, 87, 0.3);
+    font-size: 14px;
+    box-shadow: 0 8px 20px rgba(176, 141, 87, 0.4);
 }
 
-/* PRODUTOS FLUTUANTES (BOLO E POTES) SENTADOS NO PISO */
+/* PRODUTOS SENTADOS NA MESA */
 .product {
     position: absolute;
     z-index: 15;
-    /* Sombra projetada na mesa para realismo */
-    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.25));
-    pointer-events: none;
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.2));
 }
 
 .left-cake {
-    left: 8%; /* Ajuste fino do posicionamento lateral */
-    bottom: 50px; /* "Sentado" no piso de madeira */
+    left: 8%;
+    bottom: 80px; /* Alinhado ao tampo da mesa */
     height: 520px;
 }
 
 .right-jars {
-    right: 8%; /* Ajuste fino do posicionamento lateral */
-    bottom: 50px; /* "Sentado" no piso de madeira */
+    right: 8%;
+    bottom: 80px; /* Alinhado ao tampo da mesa */
     height: 440px;
 }
 
