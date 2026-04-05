@@ -1,5 +1,5 @@
 /* =========================================
-   1. CONFIGURAÇÕES BASE
+   1. CONFIGURAÇÕES BASE (INTOCÁVEIS)
    ========================================= */
 :root {
     --marrom-logo: #63412c;
@@ -14,11 +14,10 @@ body {
     background-color: var(--branco); 
     font-family: 'Poppins', sans-serif; 
     overflow-x: hidden;
-    color: #666;
 }
 
 /* =========================================
-   2. HEADER (PADRÃO LUXO)
+   2. HEADER (INTOCÁVEL - PERFEITO)
    ========================================= */
 header {
     background: var(--branco);
@@ -34,7 +33,7 @@ header {
 }
 
 .header-left { display: flex; align-items: center; gap: 20px; }
-.folha-img { height: 35px !important; width: auto; }
+.folha-img { height: 40px !important; width: auto; }
 
 .nav-menu ul { display: flex; list-style: none; gap: 20px; }
 .nav-menu ul li a {
@@ -46,59 +45,50 @@ header {
 .social-wrapper { display: flex; align-items: center; gap: 15px; }
 .social-links { display: flex; gap: 12px; }
 .social-links svg { fill: var(--marrom-logo); width: 18px; height: 18px; }
-.assinatura-img { height: 50px !important; width: auto; }
+.assinatura-img { height: 55px !important; width: auto; }
 
 /* =========================================
-   3. HERO SECTION (CONTROLE DE FLUXO)
+   3. HERO DESKTOP (BLINDADO - NÃO MEXER)
    ========================================= */
 .hero {
-    min-height: calc(100vh - 90px);
+    height: calc(100vh - 90px);
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
     position: relative; perspective: 1500px;
-    /* Ajuste para criar a faixa branca fina de 1 dedo no fundo */
-    padding-bottom: 40px; 
 }
 
 .hero-content {
-    position: relative; z-index: 50; text-align: center;
-    width: 90%; max-width: 600px;
-    margin-top: -80px; /* Sobe o texto no desktop conforme pedido */
+    position: relative; z-index: 20; text-align: center;
+    width: 90%; max-width: 650px;
+    margin-top: -60px; 
 }
 
-.hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.2rem; line-height: 1.1; margin-bottom: 15px; color: var(--marrom-logo); }
+.hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; line-height: 1.1; margin-bottom: 15px; color: var(--marrom-logo); }
 .titulo-dourado { color: var(--dourado-folha); }
 .titulo-marrom { color: var(--marrom-logo); font-weight: 700; }
 .nome-marca { display: inline-block; text-align: center; }
-.sub-patisserie { font-size: 3rem; }
+.sub-patisserie { font-size: 3.2rem; }
 
 .cta-group { display: flex; gap: 15px; justify-content: center; margin-top: 25px; }
 .btn-cta {
-    padding: 14px 30px; text-decoration: none; border-radius: 50px;
-    font-weight: 600; text-transform: uppercase; font-size: 11px; color: white;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 15px 35px; text-decoration: none; border-radius: 50px;
+    font-weight: 600; text-transform: uppercase; font-size: 12px; color: white;
 }
 .cta-gold { background: var(--dourado-folha); }
 .cta-brown { background: var(--marrom-logo); }
 
-/* =========================================
-   4. PRODUTOS E MESA (ESTRUTURA 3D)
-   ========================================= */
+/* PRODUTOS E MESA DESKTOP (INTOCÁVEL) */
 .product { 
-    position: absolute; z-index: 60; 
+    position: absolute; z-index: 30; 
     filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15)); 
-    pointer-events: none; 
-    height: 480px; 
-    bottom: 55px; /* Alinhado ao topo da mesa */
+    height: 480px; bottom: 85px; 
 }
 .left-cake { left: 4%; }
 .right-jars { right: 4%; }
 
-/* MESA AJUSTADA PARA FAIXA BRANCA (RESOLVE IMAGEM 3) */
 .wood-table {
-    position: absolute; 
-    bottom: -120px; /* Recuo para mostrar a faixa branca no fundo */
-    width: 200%; height: 480px;
+    position: absolute; bottom: -60px; 
+    width: 200%; height: 420px;
     background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.1) 100%),
                 repeating-conic-gradient(from 180deg at 50% -100px, transparent 0%, transparent 1%, rgba(74, 55, 40, 0.1) 1.1%, transparent 1.2%),
                 var(--madeira-mel);
@@ -106,56 +96,58 @@ header {
 }
 
 /* =========================================
-   5. RESPONSIVIDADE (RESOLVE IMAGEM 1 E 2)
+   4. RESPONSIVIDADE EXCLUSIVA (TABLETS E SMARTPHONES)
    ========================================= */
 .menu-toggle { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; }
 .menu-toggle span { width: 22px; height: 3px; background: var(--marrom-logo); }
 
 @media (max-width: 1024px) {
-    .menu-toggle { display: flex; margin-right: 10px; }
+    .menu-toggle { display: flex; }
     
     .nav-menu {
         display: none; position: absolute; top: 90px; left: 0; 
-        width: 100%; background: white; padding: 30px; 
+        width: 100%; background: white; padding: 40px 20px; 
         border-bottom: 1px solid #eee; text-align: center;
     }
     .nav-menu.active { display: block; }
-    .nav-menu ul { flex-direction: column; align-items: center; gap: 20px; }
+    .nav-menu ul { flex-direction: column; align-items: center; gap: 25px; }
 
-    /* MOBILE: REGRAS DE EMPILHAMENTO (RESOLVE SOBREPOSIÇÃO) */
+    /* REDUZINDO O GAP (HIATO): Trazendo os produtos para mais perto do botão */
     .hero { 
         height: auto; 
-        min-height: 100vh;
-        justify-content: flex-start; /* Texto no topo */
-        padding-top: 30px;
-        padding-bottom: 400px; /* Espaço para a mesa lá embaixo */
+        min-height: calc(100vh - 90px); 
+        justify-content: flex-start; /* Alinha o conteúdo ao topo */
+        padding-top: 40px;
+        padding-bottom: 380px; /* Reduzi o vácuo final para aproximar os elementos */
     }
 
-    .hero-content { 
-        margin-top: 0; /* Remove a subida do desktop para caber tudo */
-        margin-bottom: 40px; 
-        z-index: 100;
-    }
-    .hero-content h1 { font-size: 2.2rem; }
-    .sub-patisserie { font-size: 2rem; }
+    .hero-content { margin-top: 0; margin-bottom: 20px; }
+    .hero-content h1 { font-size: 2.8rem; } /* Aumentado para tablets */
+    .sub-patisserie { font-size: 2.5rem; }
     .cta-group { flex-direction: column; align-items: center; }
 
-    /* DOCES ELEVADOS E MESA AJUSTADA (RESOLVE IMAGEM 2) */
+    /* PROPORÇÕES DOS PRODUTOS EM TABLETS/MOBILE (RESOLVE ASPECTO ABANDONADO) */
     .product { 
-        height: 220px; 
-        bottom: 110px; /* Eleva os doces para não cortar a base no celular físico */
+        height: 320px; /* Aumentado para não parecer minúsculo em tablets */
+        bottom: 130px; /* Posição elevada para alinhar com a mesa */
     }
-    .left-cake { left: 2%; }
-    .right-jars { right: 2%; }
+    .left-cake { left: 3%; }
+    .right-jars { right: 3%; }
 
+    /* MESA E FAIXA BRANCA (RECONSTITUÍDO PARA PROFUNDIDADE) */
     .wood-table { 
-        height: 400px; 
-        bottom: -100px; /* Garante a faixa branca fina também no mobile */
+        height: 520px; 
+        bottom: -110px; /* Ajuste milimétrico para a faixa branca de 1,5 dedos */
     }
 }
 
-/* AJUSTE CRÍTICO PARA TELAS BAIXAS (IPHONE SE/5) */
-@media (max-width: 360px) {
-    .hero-content h1 { font-size: 1.8rem; }
-    .product { height: 170px; bottom: 100px; }
+/* Ajuste Fino para Smartphones Pequenos (iPhone SE/5) */
+@media (max-width: 480px) {
+    .hero-content h1 { font-size: 2rem; }
+    .product { 
+        height: 250px; /* Tamanho robusto para o celular */
+        bottom: 110px; 
+    }
+    .hero { padding-bottom: 300px; } /* Aproximação extra no mobile */
+    .wood-table { bottom: -100px; }
 }
