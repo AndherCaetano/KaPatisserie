@@ -56,7 +56,7 @@ header {
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
     position: relative; perspective: 1500px;
-    /* Ajuste para criar a faixa branca fina de 1 dedo no fundo */
+    /* Faixa branca fina no fundo (Desktop) */
     padding-bottom: 40px; 
 }
 
@@ -94,7 +94,7 @@ header {
 .left-cake { left: 4%; }
 .right-jars { right: 4%; }
 
-/* MESA AJUSTADA PARA FAIXA BRANCA (RESOLVE IMAGEM 3) */
+/* MESA AJUSTADA PARA FAIXA BRANCA */
 .wood-table {
     position: absolute; 
     bottom: -120px; /* Recuo para mostrar a faixa branca no fundo */
@@ -106,7 +106,7 @@ header {
 }
 
 /* =========================================
-   5. RESPONSIVIDADE (RESOLVE IMAGEM 1 E 2)
+   5. RESPONSIVIDADE (TABLETS E SMARTPHONES)
    ========================================= */
 .menu-toggle { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; }
 .menu-toggle span { width: 22px; height: 3px; background: var(--marrom-logo); }
@@ -122,17 +122,17 @@ header {
     .nav-menu.active { display: block; }
     .nav-menu ul { flex-direction: column; align-items: center; gap: 20px; }
 
-    /* MOBILE: REGRAS DE EMPILHAMENTO (RESOLVE SOBREPOSIÇÃO) */
     .hero { 
         height: auto; 
         min-height: 100vh;
-        justify-content: flex-start; /* Texto no topo */
+        justify-content: flex-start;
         padding-top: 30px;
-        padding-bottom: 400px; /* Espaço para a mesa lá embaixo */
+        /* Aumentei para acomodar produtos maiores e garantir a faixa branca */
+        padding-bottom: 450px; 
     }
 
     .hero-content { 
-        margin-top: 0; /* Remove a subida do desktop para caber tudo */
+        margin-top: 0; 
         margin-bottom: 40px; 
         z-index: 100;
     }
@@ -140,22 +140,33 @@ header {
     .sub-patisserie { font-size: 2rem; }
     .cta-group { flex-direction: column; align-items: center; }
 
-    /* DOCES ELEVADOS E MESA AJUSTADA (RESOLVE IMAGEM 2) */
+    /* PRODUTOS AUMENTADOS (FIM DO EFEITO FORMIGUINHA) */
     .product { 
-        height: 220px; 
-        bottom: 110px; /* Eleva os doces para não cortar a base no celular físico */
+        height: 340px; /* Tamanho muito maior para Tablets/iPads */
+        bottom: 140px; /* Ajuste da base para aparecer sobre a mesa */
     }
     .left-cake { left: 2%; }
     .right-jars { right: 2%; }
 
+    /* MESA AJUSTADA PARA FAIXA DE 1,5 DEDOS */
     .wood-table { 
-        height: 400px; 
-        bottom: -100px; /* Garante a faixa branca fina também no mobile */
+        height: 520px; 
+        bottom: -110px; /* Valor calculado para deixar a faixa branca fina no fundo */
     }
 }
 
-/* AJUSTE CRÍTICO PARA TELAS BAIXAS (IPHONE SE/5) */
+/* AJUSTE PARA SMARTPHONES (CELULARES) */
+@media (max-width: 480px) {
+    .hero { padding-bottom: 350px; }
+    .product { 
+        height: 240px; /* Proporcional para celulares */
+        bottom: 120px; 
+    }
+    .wood-table { bottom: -100px; }
+}
+
+/* IPHONE SE / TELAS MINÚSCULAS */
 @media (max-width: 360px) {
     .hero-content h1 { font-size: 1.8rem; }
-    .product { height: 170px; bottom: 100px; }
+    .product { height: 180px; bottom: 100px; }
 }
