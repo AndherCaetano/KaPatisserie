@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Karla Tavares Pâtisserie</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
@@ -13,13 +13,6 @@
         <div class="header-container">
             <div class="header-left">
                 <img src="imagens/Folha logo.png" alt="Folha" class="folha-img">
-                
-                <button class="menu-toggle" aria-label="Abrir Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-
                 <nav class="nav-menu">
                     <ul>
                         <li><a href="index.html" class="active">Início</a></li>
@@ -29,7 +22,6 @@
                     </ul>
                 </nav>
             </div>
-            
             <div class="header-right">
                 <img src="imagens/assinatura logo.png" alt="Karla Tavares" class="assinatura-img">
             </div>
@@ -37,25 +29,21 @@
     </header>
 
     <section class="hero">
-        <img src="imagens/bolo capa.png" class="product left-cake" alt="Bolo de Casamento">
+        <img src="imagens/bolo capa.png" class="product left-cake" alt="Bolo">
 
         <div class="hero-content">
-            <h1>Arte em cada doce. <br>Karla Tavares Pâtisserie.</h1>
+            <h1>
+                <span class="titulo-dourado">Arte em cada doce.</span> <br>
+                <span class="titulo-preto">Karla Tavares Pâtisserie.</span>
+            </h1>
             <p>Confeitaria artesanal sofisticada no Rio de Janeiro. <br>De bolos monumentais a doces individuais perfeitos.</p>
             <a href="portfolio.html" class="btn-cta">CONHEÇA NOSSO TRABALHO</a>
         </div>
 
-        <img src="imagens/potes.png" class="product right-jars" alt="Potes Gourmet">
+        <img src="imagens/potes.png" class="product right-jars" alt="Potes">
 
         <div class="wood-table"></div>
     </section>
 
-    <script>
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-    </script>
 </body>
 </html>
