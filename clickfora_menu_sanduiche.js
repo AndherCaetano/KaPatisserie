@@ -1,31 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navMenu = document.querySelector('.nav-menu');
+    const btn = document.getElementById('mobile-menu');
+    const nav = document.getElementById('nav-list');
 
-    // Verifica se os elementos existem na página atual antes de prosseguir
-    if (menuToggle && navMenu) {
+    // Garantimos que o código só rode se o menu existir na página
+    if (btn && nav) {
         
-        // 1. Abrir/Fechar ao clicar no botão
-        menuToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            navMenu.classList.toggle('active');
+        // FUNÇÃO 1: Abre e Fecha ao clicar no botão (Substitui o seu btn.onclick)
+        btn.addEventListener('click', (e) => {
+            // e.stopPropagation impede que o clique no botão 
+            // seja interpretado como um "clique fora" imediatamente
+            e.stopPropagation(); 
+            nav.classList.toggle('active');
         });
 
-        // 2. Fechar ao clicar fora (Click Outside)
+        // FUNÇÃO 2: Fecha ao clicar em qualquer lugar fora
         document.addEventListener('click', (e) => {
-            // Se o menu estiver aberto E o clique NÃO for dentro do menu E NÃO for no botão
-            if (navMenu.classList.contains('active') && 
-                !navMenu.contains(e.target) && 
-                !menuToggle.contains(e.target)) {
-                navMenu.classList.remove('active');
+            const clicouDentroDoMenu = nav.contains(e.target);
+            const clicouNoBotao = btn.contains(e.target);
+            const menuEstaAberto = nav.classList.contains('active');
+
+            if (!clicouDentroDoMenu && !clicouNoBotao && menuEstaAberto) {
+                nav.classList.remove('active');
             }
         });
 
-        // 3. Fechar ao clicar em um link (útil para links de âncora na mesma página)
-        const links = navMenu.querySelectorAll('a');
+        // FUNÇÃO 3: Fecha ao clicar em um link do menu (Opcional, mas recomendado)
+        const links = nav.querySelectorAll('a');
         links.forEach(link => {
             link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
+                nav.classList.remove('active');
             });
         });
     }
