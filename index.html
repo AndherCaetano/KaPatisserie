@@ -10,36 +10,52 @@
 <body>
 
     <header>
-        <div class="header-left">
-            <img src="imagens/Folha logo.png" alt="Folha" class="folha-img">
-            <nav>
-                <ul>
-                    <li><a href="index.html" class="active">Início</a></li>
-                    <li><a href="sobre.html">Sobre</a></li>
-                    <li><a href="portfolio.html">Portfólio</a></li>
-                    <li><a href="contato.html">Contato</a></li>
-                </ul>
-            </nav>
-        </div>
-        
-        <div class="header-right">
-            <img src="imagens/assinatura logo.png" alt="Karla Tavares Pâtisserie" class="assinatura-img">
+        <div class="header-container">
+            <div class="header-left">
+                <img src="imagens/Folha logo.png" alt="Folha" class="folha-img">
+                
+                <button class="menu-toggle" aria-label="Abrir Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <nav class="nav-menu">
+                    <ul>
+                        <li><a href="index.html" class="active">Início</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                        <li><a href="portfolio.html">Portfólio</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <div class="header-right">
+                <img src="imagens/assinatura logo.png" alt="Karla Tavares" class="assinatura-img">
+            </div>
         </div>
     </header>
 
     <section class="hero">
-        <div class="wood-floor-3d"></div>
-
         <img src="imagens/bolo capa.png" class="product left-cake" alt="Bolo de Casamento">
 
         <div class="hero-content">
             <h1>Arte em cada doce. <br>Karla Tavares Pâtisserie.</h1>
             <p>Confeitaria artesanal sofisticada no Rio de Janeiro. <br>De bolos monumentais a doces individuais perfeitos.</p>
-            <a href="kits.html" class="btn-cta">Conheça nosso trabalho</a>
+            <a href="portfolio.html" class="btn-cta">CONHEÇA NOSSO TRABALHO</a>
         </div>
 
-        <img src="imagens/potes.png" class="product right-jars" alt="Potes de Doces">
+        <img src="imagens/potes.png" class="product right-jars" alt="Potes Gourmet">
+
+        <div class="wood-table"></div>
     </section>
 
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
