@@ -1,6 +1,9 @@
+/* =========================================
+   PALETA DE CORES REFINADA (TOM DA FOLHA)
+   ========================================= */
 :root {
     --marrom-cafe: #4a3728;
-    --dourado: #b08d57;
+    --dourado-folha: #b4a06d; /* Cor extraída da folha logo */
     --branco: #ffffff;
     --madeira-mel: #d4a373;
 }
@@ -8,11 +11,11 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background-color: var(--branco); font-family: 'Poppins', sans-serif; overflow-x: hidden; }
 
-/* HEADER E MENU HORIZONTAL */
+/* HEADER */
 header {
     background: var(--branco);
     width: 100%;
-    height: 100px;
+    height: 90px;
     border-bottom: 1px solid #f2f0ed;
     display: flex;
     align-items: center;
@@ -30,7 +33,7 @@ header {
     align-items: center;
 }
 
-.header-left { display: flex; align-items: center; gap: 40px; }
+.header-left { display: flex; align-items: center; gap: 30px; }
 .folha-img { height: 40px; width: auto; }
 
 .nav-menu ul { display: flex; list-style: none; gap: 25px; }
@@ -42,17 +45,22 @@ header {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
-.nav-links a.active { color: var(--dourado); font-weight: 700; }
 
-.assinatura-img { height: 60px; width: auto; }
+/* LINK INÍCIO NA COR DA FOLHA */
+.nav-menu ul li a.active { 
+    color: var(--dourado-folha); 
+    font-weight: 700; 
+}
 
-/* MENU SANDUÍCHE (ESCONDIDO POR PADRÃO) */
+.assinatura-img { height: 55px; width: auto; }
+
+/* MENU MÓVEL */
 .menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
-.menu-toggle span { width: 25px; height: 3px; background: var(--marrom-cafe); border-radius: 2px; }
+.menu-toggle span { width: 25px; height: 3px; background: var(--marrom-cafe); }
 
-/* HERO SECTION - AMBIENTE 3D */
+/* HERO SECTION */
 .hero {
-    height: calc(100vh - 100px);
+    height: calc(100vh - 90px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -64,22 +72,23 @@ header {
     position: relative;
     z-index: 20;
     text-align: center;
-    max-width: 700px;
-    margin-bottom: 120px; /* Sobe o texto para abrir espaço para a mesa */
+    max-width: 750px;
+    margin-bottom: 150px;
 }
 
+/* TÍTULO NA COR DA FOLHA */
 .hero-content h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
-    color: var(--marrom-cafe);
+    font-size: 3.8rem;
+    color: var(--dourado-folha);
     line-height: 1.1;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .hero-content p { font-size: 1.1rem; color: #666; margin-bottom: 30px; font-weight: 300; }
 
 .btn-cta {
-    background: var(--dourado);
+    background: var(--dourado-folha);
     color: white;
     padding: 15px 40px;
     text-decoration: none;
@@ -90,29 +99,30 @@ header {
     transition: 0.3s;
 }
 
-/* AJUSTE DE PROPORÇÃO E POSIÇÃO DAS IMAGENS (IDÊNTICO AO PORTFÓLIO) */
+/* ALINHAMENTO MILIMÉTRICO DOS PRODUTOS */
 .product {
     position: absolute;
     z-index: 15;
-    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15));
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.1));
     pointer-events: none;
 }
 
+/* Ajustei o 'bottom' individualmente para compensar as bases das fotos */
 .left-cake {
-    left: 5%;
-    bottom: 50px;
-    max-height: 500px; /* Reduzi para não bater no texto */
+    left: 6%;
+    bottom: 45px; /* Nivelamento visual com o pote */
+    max-height: 520px;
     width: auto;
 }
 
 .right-jars {
-    right: 5%;
-    bottom: 50px;
-    max-height: 420px; /* Reduzi para manter a simetria */
+    right: 6%;
+    bottom: 55px; /* Subi levemente para alinhar as bases visuais */
+    max-height: 460px;
     width: auto;
 }
 
-/* MESA DE MADEIRA 3D */
+/* MESA 3D */
 .wood-table {
     position: absolute;
     bottom: -100px;
@@ -120,39 +130,60 @@ header {
     height: 400px;
     background: 
         linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.1) 100%),
-        repeating-conic-gradient(from 180deg at 50% -100px, transparent 0%, transparent 1%, rgba(74, 55, 40, 0.12) 1.1%, transparent 1.2%),
+        repeating-conic-gradient(from 180deg at 50% -100px, transparent 0%, transparent 1%, rgba(74, 55, 40, 0.1) 1.1%, transparent 1.2%),
         var(--madeira-mel);
     transform: rotateX(75deg);
     z-index: 1;
     border-top: 10px solid #a67c52;
 }
 
-/* RESPONSIVIDADE (TABLETS E CELULARES) */
-@media (max-width: 1024px) {
-    .left-cake { max-height: 350px; left: 2%; }
-    .right-jars { max-height: 300px; right: 2%; }
-    .hero-content h1 { font-size: 2.8rem; }
-}
-
+/* AJUSTES PARA CELULAR (IMAGEM 2) */
 @media (max-width: 768px) {
     .menu-toggle { display: flex; }
     .nav-menu {
         display: none;
         position: absolute;
-        top: 100px;
+        top: 90px;
         left: 0;
         width: 100%;
-        background: var(--branco);
+        background: white;
         padding: 20px;
-        border-bottom: 1px solid #f2f0ed;
         box-shadow: 0 10px 20px rgba(0,0,0,0.05);
     }
     .nav-menu.active { display: block; }
     .nav-menu ul { flex-direction: column; align-items: center; }
 
-    /* Imagens continuam aparecendo, mas menores */
-    .left-cake { max-height: 250px; bottom: 30px; }
-    .right-jars { max-height: 200px; bottom: 30px; }
-    .hero-content h1 { font-size: 2.2rem; }
-    .hero-content { margin-bottom: 80px; padding: 0 20px; }
+    /* Compactando o layout mobile */
+    .hero-content {
+        margin-bottom: 240px; /* Abre espaço para as imagens não sobreporem o texto */
+        padding: 0 15px;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+    }
+
+    .hero-content p {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+    }
+
+    /* Imagens lado a lado no mobile com escala reduzida */
+    .left-cake {
+        max-height: 240px;
+        left: 2%;
+        bottom: 25px;
+    }
+
+    .right-jars {
+        max-height: 210px;
+        right: 2%;
+        bottom: 32px; /* Mantendo nivelamento mobile */
+    }
+
+    .wood-table {
+        height: 250px;
+        bottom: -50px;
+    }
 }
