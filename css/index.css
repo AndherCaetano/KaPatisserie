@@ -15,10 +15,11 @@ body {
     font-family: 'Poppins', sans-serif; 
     overflow-x: hidden;
     color: #666;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* =========================================
-   2. HEADER (AJUSTE DE ESPAÇAMENTO NO MOBILE)
+   2. HEADER (ESTILO E ESPAÇAMENTO)
    ========================================= */
 header {
     background: var(--branco);
@@ -49,21 +50,20 @@ header {
 .assinatura-img { height: 50px !important; width: auto; }
 
 /* =========================================
-   3. HERO SECTION (TEXTO ELEVADO 2,5 DEDOS)
+   3. HERO DESKTOP (BLINDADO - TEXTO ELEVADO)
    ========================================= */
 .hero {
     min-height: calc(100vh - 90px);
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
     position: relative; perspective: 1500px;
-    padding-bottom: 20px; /* Redução do filete branco no fundo */
+    padding-bottom: 20px; /* Filete branco fino no desktop */
 }
 
 .hero-content {
     position: relative; z-index: 50; text-align: center;
     width: 90%; max-width: 600px;
-    /* AJUSTE DESKTOP: Subiu mais 2,5 dedos (total -130px) */
-    margin-top: -130px; 
+    margin-top: -130px; /* Texto e botões elevados 2,5 dedos */
 }
 
 .hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.2rem; line-height: 1.1; margin-bottom: 15px; color: var(--marrom-logo); }
@@ -81,22 +81,20 @@ header {
 .cta-gold { background: var(--dourado-folha); }
 .cta-brown { background: var(--marrom-logo); }
 
-/* =========================================
-   4. PRODUTOS E MESA (FILETE SLIM NO DESKTOP)
-   ========================================= */
+/* PRODUTOS E MESA DESKTOP */
 .product { 
     position: absolute; z-index: 60; 
     filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15)); 
     pointer-events: none; 
     height: 480px; 
-    bottom: 45px; /* Alinhado para filete fino */
+    bottom: 45px; 
 }
 .left-cake { left: 4%; }
 .right-jars { right: 4%; }
 
 .wood-table {
     position: absolute; 
-    bottom: -150px; /* Enterrado mais fundo para reduzir a faixa branca */
+    bottom: -150px; 
     width: 200%; height: 500px;
     background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.1) 100%),
                 repeating-conic-gradient(from 180deg at 50% -100px, transparent 0%, transparent 1%, rgba(74, 55, 40, 0.1) 1.1%, transparent 1.2%),
@@ -105,16 +103,14 @@ header {
 }
 
 /* =========================================
-   5. RESPONSIVIDADE (IMAGENS 1 E 2 - AFASТAR ÍCONES)
+   4. RESPONSIVIDADE (TABLETS E MOBILE)
    ========================================= */
 .menu-toggle { 
     display: none; 
     flex-direction: column; 
     gap: 4px; 
-    background: none; 
-    border: none; 
-    cursor: pointer;
-    margin-right: 20px; /* AFASТA DO INSTAGRAM NAS IMAGENS 1 E 2 */
+    background: none; border: none; cursor: pointer;
+    margin-right: 20px; 
 }
 .menu-toggle span { width: 22px; height: 3px; background: var(--marrom-logo); }
 
@@ -134,7 +130,7 @@ header {
         min-height: 100vh;
         justify-content: flex-start;
         padding-top: 30px;
-        padding-bottom: 350px; 
+        padding-bottom: 450px; /* Espaço para mesa e produtos maiores */
     }
 
     .hero-content { 
@@ -142,29 +138,46 @@ header {
         margin-bottom: 40px; 
         z-index: 100;
     }
-    .hero-content h1 { font-size: 2.2rem; }
-    .sub-patisserie { font-size: 2rem; }
+    .hero-content h1 { font-size: 2.8rem; }
+    .sub-patisserie { font-size: 2.5rem; }
     .cta-group { flex-direction: column; align-items: center; }
 
-    /* AJUSTE CELULARES FÍSICOS */
+    /* CORREÇÃO TABLET/IPAD: FIM DO EFEITO FORMIGUINHA */
     .product { 
-        height: 220px; 
-        bottom: 110px; 
+        height: 380px; /* Proporção robusta para tablets */
+        bottom: 130px; 
     }
-    .left-cake { left: 2%; }
-    .right-jars { right: 2%; }
+    .left-cake { left: 4%; }
+    .right-jars { right: 4%; }
 
     .wood-table { 
-        height: 400px; 
-        bottom: -110px; 
+        height: 550px; 
+        bottom: -130px; /* Faixa branca de 1,5 dedos no fundo */
     }
 }
 
-/* AJUSTE PARA IPHONE SE/5 */
+/* REAJUSTE ESPECÍFICO PARA SMARTPHONES */
+@media (max-width: 480px) {
+    .hero { padding-bottom: 350px; }
+    .hero-content h1 { font-size: 2.2rem; }
+    .sub-patisserie { font-size: 2rem; }
+    
+    .product { 
+        height: 240px; /* Tamanho proporcional para celular */
+        bottom: 115px; 
+    }
+    
+    .wood-table { 
+        height: 400px;
+        bottom: -110px; /* Filete branco fino no smartphone */
+    }
+}
+
+/* TELAS MINÚSCULAS (IPHONE SE/5) */
 @media (max-width: 360px) {
     .header-left { gap: 10px; }
     .social-links { gap: 8px; }
     .menu-toggle { margin-right: 12px; }
     .hero-content h1 { font-size: 1.8rem; }
-    .product { height: 170px; bottom: 100px; }
+    .product { height: 180px; bottom: 100px; }
 }
