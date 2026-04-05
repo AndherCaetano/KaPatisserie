@@ -8,7 +8,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background-color: var(--branco); font-family: 'Poppins', sans-serif; overflow-x: hidden; }
 
-/* HEADER E REDES SOCIAIS */
+/* --- HEADER REPARADO --- */
 header {
     background: var(--branco);
     width: 100%;
@@ -24,68 +24,89 @@ header {
     display: flex; justify-content: space-between; align-items: center;
 }
 
-.header-right { display: flex; align-items: center; gap: 20px; }
+.header-left { display: flex; align-items: center; gap: 20px; }
+.folha-img { height: 40px !important; width: auto !important; } /* Travando o tamanho */
 
-.social-icons { display: flex; gap: 15px; }
-.social-icons a { color: var(--marrom-logo); font-size: 1.2rem; transition: 0.3s; }
-.social-icons a:hover { color: var(--dourado-folha); }
+.nav-menu ul { display: flex; list-style: none; gap: 20px; }
+.nav-menu ul li a {
+    text-decoration: none;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: var(--marrom-logo);
+    font-weight: 700;
+}
+.nav-menu ul li a.active { color: var(--dourado-folha); }
 
-/* HERO E BOTÕES */
+/* --- ÁREA DA LOGO E REDES --- */
+.header-right { display: flex; align-items: center; }
+.social-wrapper { display: flex; align-items: center; gap: 15px; }
+.social-links { display: flex; gap: 8px; }
+.social-links a {
+    text-decoration: none;
+    color: var(--marrom-logo);
+    font-size: 11px;
+    font-weight: 700;
+    border: 1px solid var(--marrom-logo);
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+
+.assinatura-img { height: 60px !important; width: auto !important; }
+
+/* --- HERO E MESA --- */
 .hero {
     height: calc(100vh - 100px);
     display: flex; align-items: center; justify-content: center;
     position: relative; perspective: 1500px;
 }
 
-.hero-content { position: relative; z-index: 20; text-align: center; max-width: 800px; margin-bottom: 120px; }
+.hero-content { position: relative; z-index: 20; text-align: center; max-width: 650px; margin-bottom: 120px; }
 
-/* Correção da trepidação dos botões */
-.cta-group {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    flex-wrap: wrap; /* Garante que quebrem linha se não couberem */
-}
+.hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.2rem; line-height: 1.1; margin-bottom: 15px; }
+.titulo-dourado { color: var(--dourado-folha); }
+.titulo-marrom { color: var(--marrom-logo); font-weight: 700; }
 
+.cta-group { display: flex; gap: 15px; justify-content: center; }
 .btn-cta {
-    background: var(--dourado-folha);
-    color: white;
-    padding: 15px 30px;
+    padding: 14px 25px;
     text-decoration: none;
     border-radius: 50px;
     font-weight: 600;
     text-transform: uppercase;
-    font-size: 12px;
-    transition: 0.3s;
-    display: inline-block;
+    font-size: 11px;
+    color: white;
 }
+.cta-gold { background: var(--dourado-folha); }
+.cta-brown { background: var(--marrom-logo); }
 
-.btn-whatsapp { background: var(--marrom-logo); } /* Diferenciação sutil */
-
-/* IMAGENS E MESA */
-.product { position: absolute; z-index: 30; height: 480px; bottom: 60px; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15)); }
-.left-cake { left: 4%; }
-.right-jars { right: 4%; }
+/* --- PRODUTOS --- */
+.product { position: absolute; z-index: 30; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15)); }
+.left-cake { height: 480px; left: 4%; bottom: 60px; }
+.right-jars { height: 420px; right: 4%; bottom: 60px; }
 
 .wood-table {
     position: absolute; bottom: -100px; width: 200%; height: 400px;
     background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.1) 100%),
                 repeating-conic-gradient(from 180deg at 50% -100px, transparent 0%, transparent 1%, rgba(74, 55, 40, 0.1) 1.1%, transparent 1.2%),
                 var(--madeira-mel);
-    transform: rotateX(75deg); z-index: 10; border-top: 12px solid #a67c52;
+    transform: rotateX(75deg); z-index: 10; border-top: 10px solid #a67c52;
 }
 
-/* RESPONSIVIDADE MOBILE */
-@media (max-width: 768px) {
-    .header-right { flex-direction: column-reverse; gap: 5px; align-items: flex-end; }
-    .social-icons { gap: 10px; }
-    .social-icons a { font-size: 1rem; }
-    
-    .hero-content { margin-bottom: 320px; padding: 0 15px; }
-    .cta-group { flex-direction: column; gap: 10px; align-items: center; }
-    .btn-cta { width: 100%; max-width: 280px; }
+/* --- MOBILE E TABLET (FIX) --- */
+.menu-toggle { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; }
+.menu-toggle span { width: 22px; height: 2px; background: var(--marrom-logo); }
 
-    .product { height: 200px; bottom: 25px; }
-    .left-cake { left: 2%; }
-    .right-jars { right: 2%; }
+@media (max-width: 1100px) {
+    .menu-toggle { display: flex; }
+    .nav-menu {
+        display: none; position: absolute; top: 100px; left: 0; width: 100%;
+        background: white; padding: 20px; border-bottom: 1px solid #eee;
+    }
+    .nav-menu.active { display: block; }
+    .nav-menu ul { flex-direction: column; align-items: center; }
+    
+    .hero-content h1 { font-size: 2.5rem; }
+    .cta-group { flex-direction: column; align-items: center; }
+    .product { height: 250px; bottom: 30px; }
+    .hero-content { margin-bottom: 300px; }
 }
