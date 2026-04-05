@@ -1,11 +1,12 @@
 /* =========================================
-   PALETA DE CORES E FONTES
+   PALETA DE CORES E FONTES (KARLA TAVARES)
    ========================================= */
 :root {
     --marrom-cafe: #4a3728;
     --dourado-premium: #b08d57;
+    --bege-fundo: #fdfaf7;
     --branco: #ffffff;
-    --madeira-mel: #e3b074; /* Tom mel saturado exato do portfólio */
+    --madeira-mel: #e3b074; 
 }
 
 * { 
@@ -20,32 +21,57 @@ body {
     overflow-x: hidden; 
 }
 
+/* GARANTIR TRANSPARÊNCIA TOTAL NAS IMAGENS */
+img {
+    background-color: transparent !important;
+    border: none;
+}
+
 /* =========================================
-   HEADER (LOGO DIREITA | MENU ESQUERDA)
+   HEADER (MENU ESQUERDA | LOGO DIREITA)
    ========================================= */
 header {
     background: var(--branco);
-    padding: 20px 8%;
+    padding: 15px 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #f0efed;
-    height: 110px;
+    position: sticky; 
+    top: 0; 
+    z-index: 1000;
 }
 
-.header-left { display: flex; align-items: center; gap: 30px; }
-.folha-img { height: 45px; width: auto; }
-
-nav ul { display: flex; list-style: none; gap: 25px; }
-nav ul li a {
-    text-decoration: none;
-    color: var(--marrom-cafe);
-    font-size: 14px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+.header-left { 
+    display: flex; 
+    align-items: center; 
+    gap: 30px; 
 }
-nav ul li a.active { color: var(--dourado-premium); font-weight: 700; }
+
+.folha-img { 
+    height: 45px; 
+    width: auto; 
+}
+
+.nav-links { 
+    display: flex; 
+    list-style: none; 
+    gap: 25px; 
+}
+
+.nav-links a { 
+    text-decoration: none; 
+    color: var(--marrom-cafe); 
+    font-size: 0.85rem; 
+    font-weight: 500; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+}
+
+.nav-links a.active { 
+    color: var(--dourado-premium); 
+    font-weight: 600; 
+}
 
 .header-right .assinatura-img {
     height: 75px;
@@ -56,51 +82,39 @@ nav ul li a.active { color: var(--dourado-premium); font-weight: 700; }
    HERO SECTION (BANNER 3D)
    ========================================= */
 .hero {
-    height: 80vh;
+    height: 85vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
-    perspective: 1500px; /* Profundidade do cenário */
+    perspective: 1500px; 
 }
 
-/* MESA DE MADEIRA REFORMULADA (3D COM VEIOS VERTICAIS) */
+/* PISO DE MADEIRA 3D (Efeito de Mesa Plana) */
 .wood-floor-3d {
     position: absolute;
-    bottom: -150px; /* Alinhado ao horizonte da mesa */
-    width: 250%; /* Mais largo para cobrir a perspectiva lateral */
-    height: 600px;
-    
-    /* 1. Degradê de perspectiva para veios verticais idênticos ao original */
+    bottom: -110px; 
+    width: 200%; 
+    height: 400px;
     background: 
-        repeating-conic-gradient(
-            from 180deg at 50% -100px, 
-            transparent 0%, 
-            transparent 1%, 
-            rgba(74, 55, 40, 0.1) 1.1%, 
-            transparent 1.2%
-        ),
-        /* 2. Textura de madeira sutil */
-        url('https://www.transparenttextures.com/patterns/wood-pattern.png'),
-        /* 3. Cor base saturada tom Mel */
+        linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.1) 100%),
+        repeating-conic-gradient(from 180deg at 50% -100px, transparent 0%, transparent 1%, rgba(74, 55, 40, 0.12) 1.1%, transparent 1.2%),
         var(--madeira-mel);
-    
-    /* Inclinação agressiva para parecer plano horizontal */
-    transform: rotateX(85deg) translateY(0);
+    transform: rotateX(72deg); 
     z-index: 1;
     box-shadow: inset 0 30px 60px rgba(0,0,0,0.2);
-    border-top: 5px solid #c59d6d;
+    border-top: 10px solid #a67c52; /* Espessura frontal da mesa */
 }
 
-/* CONTEÚDO CENTRAL (TÍTULO E CTN) */
+/* CONTEÚDO CENTRAL */
 .hero-content {
     position: relative;
     z-index: 20;
     text-align: center;
     max-width: 850px;
-    margin-bottom: 200px; /* Sobe o texto para limpar o espaço da mesa */
+    margin-bottom: 160px; 
 }
 
 .hero-content h1 {
@@ -114,48 +128,48 @@ nav ul li a.active { color: var(--dourado-premium); font-weight: 700; }
 .hero-content p {
     font-size: 1.2rem;
     color: #666;
-    margin-bottom: 35px;
+    margin-bottom: 40px;
     font-weight: 300;
 }
 
-/* BOTÃO CTN DOURADO */
 .btn-cta {
     background: var(--dourado-premium);
     color: white;
-    padding: 18px 50px;
+    padding: 16px 50px;
     text-decoration: none;
     border-radius: 50px;
     font-weight: 600;
     text-transform: uppercase;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     display: inline-block;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 15px rgba(176, 141, 87, 0.3);
+    transition: 0.3s ease;
+    box-shadow: 0 8px 20px rgba(176, 141, 87, 0.4);
 }
 
-/* IMAGENS DO GITHUB (BOLO E POTES) SENTADOS NO PISO */
+/* PRODUTOS (BOLO E POTES) - PROPORÇÕES CORRIGIDAS */
 .product {
     position: absolute;
     z-index: 15;
-    /* Sombra projetada na mesa para realismo */
     filter: drop-shadow(0 20px 30px rgba(0,0,0,0.25));
     pointer-events: none;
+    width: auto;
+    height: auto;
 }
 
 .left-cake {
-    left: 8%; /* Ajuste fino lateral */
-    bottom: 50px; /* "Sentado" no piso de madeira */
-    height: 520px;
+    left: 8%;
+    bottom: 50px;
+    max-height: 520px; /* Proporção solicitada */
 }
 
 .right-jars {
-    right: 8%; /* Ajuste fino lateral */
-    bottom: 50px; /* "Sentado" no piso de madeira */
-    height: 440px;
+    right: 8%;
+    bottom: 50px;
+    max-height: 440px; /* Proporção solicitada */
 }
 
-/* RESPONSIVIDADE (Ajuste para mobile) */
+/* RESPONSIVIDADE */
 @media (max-width: 1024px) {
-    .product { display: none; }
-    .hero-content h1 { font-size: 2.5rem; }
+    .left-cake, .right-jars { max-height: 300px; }
+    .hero-content h1 { font-size: 2.8rem; }
 }
