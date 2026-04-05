@@ -2,30 +2,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const btn = document.getElementById('mobile-menu');
     const nav = document.getElementById('nav-list');
 
-    // Garantimos que o código só rode se os elementos existirem na página atual
     if (btn && nav) {
-        
-        // FUNÇÃO 1: Abre e Fecha ao clicar no botão (Substitui o antigo btn.onclick)
+        // Abre e fecha o menu ao clicar no botão hambúrguer
         btn.addEventListener('click', (e) => {
-            // e.stopPropagation impede que o clique no botão 
-            // seja interpretado como um "clique fora" pelo document imediatamente
-            e.stopPropagation(); 
+            e.preventDefault();
+            e.stopPropagation(); // ESSENCIAL: impede que o 'document' receba o clique agora
             nav.classList.toggle('active');
         });
 
-        // FUNÇÃO 2: Fecha ao clicar em qualquer lugar fora (Click Outside)
+        // Fecha o menu ao clicar em qualquer lugar fora dele
         document.addEventListener('click', (e) => {
-            const clicouDentroDoMenu = nav.contains(e.target);
+            const clicouNoMenu = nav.contains(e.target);
             const clicouNoBotao = btn.contains(e.target);
-            const menuEstaAberto = nav.classList.contains('active');
+            const menuAberto = nav.classList.contains('active');
 
-            // Se o menu estiver aberto e o clique não foi nele nem no botão, ele fecha
-            if (!clicouDentroDoMenu && !clicouNoBotao && menuEstaAberto) {
+            // Se o menu está aberto e o clique não foi no menu nem no botão: FECHA
+            if (!clicouNoMenu && !clicouNoBotao && menuAberto) {
                 nav.classList.remove('active');
             }
         });
 
-        // FUNÇÃO 3: Fecha ao clicar em qualquer link dentro do menu
+        // Impede que cliques dentro da lista do menu fechem o menu (opcional)
+        nav.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Fecha o menu se o usuário clicar em um link (navegação)
         const links = nav.querySelectorAll('a');
         links.forEach(link => {
             link.addEventListener('click', () => {
