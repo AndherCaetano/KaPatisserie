@@ -1,3 +1,6 @@
+/* =========================================
+   1. PALETA DE CORES E CONFIGURAÇÕES GERAIS
+   ========================================= */
 :root {
     --marrom-logo: #63412c;
     --dourado-folha: #b4a06d;
@@ -12,10 +15,12 @@ body {
     overflow-x: hidden; 
 }
 
-/* HEADER - ESTÁVEL EM TODAS AS TELAS */
+/* =========================================
+   2. HEADER (ESTÁVEL EM TODAS AS TELAS)
+   ========================================= */
 header {
     background: var(--branco);
-    width: 100%; height: 80px;
+    width: 100%; height: 90px;
     border-bottom: 1px solid #f2f0ed;
     display: flex; align-items: center;
     position: sticky; top: 0; z-index: 1000;
@@ -26,28 +31,29 @@ header {
     display: flex; justify-content: space-between; align-items: center;
 }
 
-.header-left { display: flex; align-items: center; gap: 15px; }
-.folha-img { height: 35px !important; width: auto; }
+.header-left { display: flex; align-items: center; gap: 20px; }
+.folha-img { height: 40px !important; width: auto; }
 
 .nav-menu ul { display: flex; list-style: none; gap: 20px; }
 .nav-menu ul li a {
     text-decoration: none; font-size: 13px; text-transform: uppercase;
     color: var(--marrom-logo); font-weight: 700;
 }
+.nav-menu ul li a.active { color: var(--dourado-folha); }
 
 .social-wrapper { display: flex; align-items: center; gap: 15px; }
 .social-links { display: flex; gap: 12px; }
 .social-links svg { fill: var(--marrom-logo); width: 18px; height: 18px; }
-.assinatura-img { height: 45px !important; width: auto; }
+.assinatura-img { height: 55px !important; width: auto; }
 
-/* HERO - MUDANÇA PARA FLEX BOX (ADEUS SOBREPOSIÇÃO) */
+/* =========================================
+   3. HERO SECTION (DESKTOP RESTAURADO)
+   ========================================= */
 .hero {
-    min-height: calc(100vh - 80px); /* Ocupa a tela, mas cresce se precisar */
+    height: calc(100vh - 90px);
     display: flex; 
-    flex-direction: column; 
     align-items: center; 
-    justify-content: flex-start; /* Começa do topo */
-    padding-top: 40px; /* Respiro do topo */
+    justify-content: center;
     position: relative;
     perspective: 1500px;
 }
@@ -57,43 +63,42 @@ header {
     z-index: 20;
     text-align: center;
     width: 90%;
-    max-width: 600px;
-    margin-bottom: 40px; /* Distância segura para os produtos */
+    max-width: 650px;
+    margin-bottom: 100px; /* Mantém o texto centralizado verticalmente */
 }
 
 .hero-content h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 3rem;
+    font-size: 3.5rem;
     line-height: 1.1;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 .titulo-dourado { color: var(--dourado-folha); }
 .titulo-marrom { color: var(--marrom-logo); font-weight: 700; }
 
-.hero-content p { font-size: 1rem; color: #666; margin-bottom: 25px; line-height: 1.4; }
+.hero-content p { font-size: 1.1rem; color: #666; margin-bottom: 30px; font-weight: 300; }
 
-.cta-group { display: flex; gap: 12px; justify-content: center; }
+.cta-group { display: flex; gap: 15px; justify-content: center; }
 .btn-cta {
-    padding: 14px 25px; text-decoration: none; border-radius: 50px;
-    font-weight: 600; text-transform: uppercase; font-size: 11px; color: white;
+    padding: 15px 35px; text-decoration: none; border-radius: 50px;
+    font-weight: 600; text-transform: uppercase; font-size: 12px; color: white;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 .cta-gold { background: var(--dourado-folha); }
 .cta-brown { background: var(--marrom-logo); }
 
-/* PRODUTOS E MESA - POSICIONAMENTO DINÂMICO */
+/* PRODUTOS (POSICIONAMENTO ABSOLUTO VOLTOU) */
 .product {
-    position: relative; /* Mudado para relative no fluxo mobile se necessário */
+    position: absolute;
     z-index: 30;
     filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15));
+    pointer-events: none;
+    height: 480px; 
+    width: auto;
 }
 
-/* No desktop eles voltam a ser absolute */
-@media (min-width: 1025px) {
-    .product { position: absolute; }
-    .left-cake { height: 480px; left: 4%; bottom: 60px; }
-    .right-jars { height: 420px; right: 4%; bottom: 60px; }
-}
+.left-cake { left: 4%; bottom: 60px; }
+.right-jars { right: 4%; bottom: 60px; }
 
 /* MESA */
 .wood-table {
@@ -109,42 +114,40 @@ header {
     border-top: 10px solid #a67c52;
 }
 
-/* RESPONSIVIDADE TOTAL - MOBILE FIRST */
+/* =========================================
+   4. RESPONSIVIDADE (MOBILE SEM SEPARAR DOCES)
+   ========================================= */
 .menu-toggle { display: none; flex-direction: column; gap: 4px; background: none; border: none; }
 .menu-toggle span { width: 22px; height: 3px; background: var(--marrom-logo); }
 
 @media (max-width: 1024px) {
     .menu-toggle { display: flex; }
     .nav-menu {
-        display: none; position: absolute; top: 80px; left: 0; width: 100%;
+        display: none; position: absolute; top: 90px; left: 0; width: 100%;
         background: white; padding: 20px; border-bottom: 1px solid #eee;
     }
     .nav-menu.active { display: block; }
     .nav-menu ul { flex-direction: column; align-items: center; gap: 15px; }
 
-    /* Ajuste de Fluxo para não encavalar */
-    .hero { justify-content: flex-start; padding-top: 20px; }
-    .hero-content { margin-bottom: 20px; }
+    /* MOBILE: TUDO NO MESMO PLANO */
+    .hero-content { margin-bottom: 300px; }
     .hero-content h1 { font-size: 2.2rem; }
-    .cta-group { flex-direction: column; align-items: center; width: 100%; }
-    .btn-cta { width: 100%; max-width: 280px; text-align: center; }
+    .cta-group { flex-direction: column; align-items: center; }
+    .btn-cta { width: 100%; max-width: 260px; text-align: center; }
 
-    /* Container para os produtos ficarem lado a lado e não sumirem */
-    .product { 
-        position: relative; /* Sai do absolute para não atropelar o texto */
-        display: inline-block;
-        height: 200px !important; 
-        margin: 10px 5px; 
-        bottom: auto; left: auto; right: auto;
-    }
+    /* AJUSTE PARA CABER OS DOIS LADO A LADO NO MOBILE */
+    .product { height: 210px; bottom: 35px; }
+    .left-cake { left: 2%; }
+    .right-jars { right: 2%; }
     
-    .wood-table { height: 200px; bottom: -50px; }
+    .wood-table { height: 250px; bottom: -50px; }
 }
 
-/* Telas Curtas (iPhone SE / 5) */
-@media (max-height: 600px) {
-    .hero { padding-top: 10px; }
+/* AJUSTE PARA IPHONES CURTOS (320px) */
+@media (max-width: 360px) {
     .hero-content h1 { font-size: 1.8rem; }
-    .hero-content p { display: none; } /* Esconde o texto longo para priorizar botões e fotos */
-    .product { height: 160px !important; }
+    .hero-content p { font-size: 0.85rem; margin-bottom: 15px; }
+    .hero-content { margin-bottom: 250px; }
+    
+    .product { height: 160px; bottom: 25px; }
 }
