@@ -1,3 +1,6 @@
+/* =========================================
+   1. PALETA E REGRAS ORIGINAIS (RECONSTITUÍDAS)
+   ========================================= */
 :root {
     --marrom-logo: #63412c;
     --dourado-folha: #b4a06d;
@@ -11,12 +14,15 @@ body {
     background-color: var(--branco); 
     font-family: 'Poppins', sans-serif; 
     overflow-x: hidden;
+    color: #666; /* Cor do corpo restaurada */
 }
 
-/* --- HEADER --- */
+/* =========================================
+   2. HEADER (DESKTOP E MOBILE)
+   ========================================= */
 header {
     background: var(--branco);
-    width: 100%; height: 80px;
+    width: 100%; height: 90px;
     border-bottom: 1px solid #f2f0ed;
     display: flex; align-items: center;
     position: sticky; top: 0; z-index: 1000;
@@ -27,24 +33,28 @@ header {
     display: flex; justify-content: space-between; align-items: center;
 }
 
-.header-left { display: flex; align-items: center; gap: 15px; }
-.folha-img { height: 35px !important; width: auto; }
+.header-left { display: flex; align-items: center; gap: 20px; }
+.folha-img { height: 40px !important; width: auto; }
 
-/* MENU DESKTOP */
+/* Menu Desktop - Cores Restauradas */
 .nav-menu ul { display: flex; list-style: none; gap: 20px; }
 .nav-menu ul li a {
     text-decoration: none; font-size: 13px; text-transform: uppercase;
     color: var(--marrom-logo); font-weight: 700;
 }
+.nav-menu ul li a.active { color: var(--dourado-folha); }
 
-.social-wrapper { display: flex; align-items: center; gap: 12px; }
-.social-links { display: flex; gap: 10px; }
+/* Redes e Assinatura */
+.social-wrapper { display: flex; align-items: center; gap: 15px; }
+.social-links { display: flex; gap: 12px; }
 .social-links svg { fill: var(--marrom-logo); width: 18px; height: 18px; }
-.assinatura-img { height: 48px !important; width: auto; }
+.assinatura-img { height: 55px !important; width: auto; }
 
-/* --- HERO --- */
+/* =========================================
+   3. HERO (CONTEÚDO E POSICIONAMENTO)
+   ========================================= */
 .hero {
-    height: calc(100vh - 80px);
+    height: calc(100vh - 90px);
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
     position: relative; perspective: 1500px;
@@ -52,15 +62,24 @@ header {
 
 .hero-content {
     position: relative; z-index: 20; text-align: center;
-    width: 90%; max-width: 580px;
-    margin-top: -80px; /* Sobe o texto no desktop */
+    width: 90%; max-width: 650px;
+    /* Sobe o texto em 2 dedos (aprox -60px) */
+    margin-top: -60px; 
 }
 
-.hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; line-height: 1.1; margin-bottom: 15px; }
+.hero-content h1 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 3.5rem; line-height: 1.1; 
+    margin-bottom: 15px;
+    color: var(--marrom-logo); /* Garante a cor correta */
+}
 .titulo-dourado { color: var(--dourado-folha); }
 .titulo-marrom { color: var(--marrom-logo); font-weight: 700; }
 
-.cta-group { display: flex; gap: 15px; justify-content: center; }
+.nome-marca { display: inline-block; text-align: center; }
+.sub-patisserie { font-size: 3.2rem; }
+
+.cta-group { display: flex; gap: 15px; justify-content: center; margin-top: 25px; }
 .btn-cta {
     padding: 15px 35px; text-decoration: none; border-radius: 50px;
     font-weight: 600; text-transform: uppercase; font-size: 12px; color: white;
@@ -68,19 +87,21 @@ header {
 .cta-gold { background: var(--dourado-folha); }
 .cta-brown { background: var(--marrom-logo); }
 
-/* --- PRODUTOS E MESA --- */
+/* =========================================
+   4. PRODUTOS E MESA (ALINHAMENTO OK)
+   ========================================= */
 .product { 
     position: absolute; z-index: 30; 
     filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15)); 
-    height: 480px; bottom: 80px; 
+    height: 480px; bottom: 85px; 
 }
 .left-cake { left: 4%; }
 .right-jars { right: 4%; }
 
 .wood-table {
     position: absolute; 
-    bottom: -60px; /* Reduzi o recuo para a mesa descer mais */
-    width: 200%; height: 450px; /* Mesa mais profunda */
+    bottom: -60px; /* Ajuste para deixar a faixa branca de 1,5 dedos */
+    width: 200%; height: 420px;
     background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.1) 100%),
                 repeating-conic-gradient(from 180deg at 50% -100px, transparent 0%, transparent 1%, rgba(74, 55, 40, 0.1) 1.1%, transparent 1.2%),
                 var(--madeira-mel);
@@ -88,7 +109,7 @@ header {
 }
 
 /* =========================================
-   RESPONSIVIDADE (MOBILE AJUSTADO)
+   5. RESPONSIVIDADE E MENU SANDUÍCHE
    ========================================= */
 .menu-toggle { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; }
 .menu-toggle span { width: 22px; height: 3px; background: var(--marrom-logo); }
@@ -96,36 +117,44 @@ header {
 @media (max-width: 1024px) {
     .menu-toggle { display: flex; }
     
-    /* CORREÇÃO DO MENU VERTICAL (IMAGEM 1) */
+    /* MENU SANDUICHE CENTRALIZADO (RESOLVE IMAGEM 1) */
     .nav-menu {
-        display: none; position: absolute; top: 80px; left: 0; 
-        width: 100%; background: white; padding: 20px; 
-        border-bottom: 1px solid #eee; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        display: none; position: absolute; top: 90px; left: 0; 
+        width: 100%; background: white; padding: 40px 20px; 
+        border-bottom: 1px solid #eee; text-align: center;
     }
     .nav-menu.active { display: block; }
     .nav-menu ul { 
-        flex-direction: column !important; /* Força vertical */
-        align-items: flex-start; gap: 15px; 
+        flex-direction: column; 
+        align-items: center; /* Centraliza o texto */
+        gap: 25px; 
     }
 
-    .hero { height: auto; min-height: calc(100vh - 80px); padding-bottom: 400px; }
-
-    /* ELEVAÇÃO DOS PRODUTOS (RESOLVE CORTE DA BASE) */
-    .product { 
-        height: 230px; 
-        bottom: 120px; /* Subi consideravelmente para garantir que a base apareça */
+    /* MOBILE: CABER TUDO (RESOLVE IMAGEM 3) */
+    .hero { 
+        height: auto; 
+        min-height: calc(100vh - 90px); 
+        padding-top: 20px; 
+        padding-bottom: 380px; /* Garante espaço para a mesa */
+        justify-content: flex-start;
+        overflow-y: auto;
     }
+
+    .hero-content { margin-top: 0; margin-bottom: 40px; }
+    .hero-content h1 { font-size: 2.2rem; }
+    .sub-patisserie { font-size: 2rem; }
+    .cta-group { flex-direction: column; align-items: center; }
+
+    /* DOCES NA MESA NO MOBILE */
+    .product { height: 230px; bottom: 125px; }
     .left-cake { left: 2%; }
     .right-jars { right: 2%; }
 
-    /* EXPANSÃO DA MESA (RESOLVE FAIXA BRANCA) */
-    .wood-table { 
-        height: 500px; /* Mesa muito mais alta para cobrir o fundo */
-        bottom: -150px; /* Enterra a mesa mais fundo para não sobrar branco */
-    }
+    .wood-table { height: 480px; bottom: -120px; }
 }
 
-/* AJUSTE PARA TELAS PEQUENAS (IPHONE SE) */
+/* Telas Pequenas (iPhone SE) */
 @media (max-width: 360px) {
-    .product { height: 190px; bottom: 100px; }
+    .hero-content h1 { font-size: 1.8rem; }
+    .product { height: 180px; bottom: 110px; }
 }
