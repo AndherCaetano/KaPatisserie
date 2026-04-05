@@ -1,175 +1,158 @@
-/* =========================================
-   PALETA DE CORES E FONTES (KARLA TAVARES)
-   ========================================= */
 :root {
     --marrom-cafe: #4a3728;
-    --dourado-premium: #b08d57;
-    --bege-fundo: #fdfaf7;
+    --dourado: #b08d57;
     --branco: #ffffff;
-    --madeira-mel: #e3b074; 
+    --madeira-mel: #d4a373;
 }
 
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background-color: var(--branco); font-family: 'Poppins', sans-serif; overflow-x: hidden; }
 
-body { 
-    background-color: var(--branco); 
-    font-family: 'Poppins', sans-serif; 
-    overflow-x: hidden; 
-}
-
-/* GARANTIR TRANSPARÊNCIA TOTAL NAS IMAGENS */
-img {
-    background-color: transparent !important;
-    border: none;
-}
-
-/* =========================================
-   HEADER (MENU ESQUERDA | LOGO DIREITA)
-   ========================================= */
+/* HEADER E MENU HORIZONTAL */
 header {
     background: var(--branco);
-    padding: 15px 8%;
+    width: 100%;
+    height: 100px;
+    border-bottom: 1px solid #f2f0ed;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #f0efed;
-    position: sticky; 
-    top: 0; 
+    position: sticky;
+    top: 0;
     z-index: 1000;
 }
 
-.header-left { 
-    display: flex; 
-    align-items: center; 
-    gap: 30px; 
-}
-
-.folha-img { 
-    height: 45px; 
-    width: auto; 
-}
-
-.nav-links { 
-    display: flex; 
-    list-style: none; 
-    gap: 25px; 
-}
-
-.nav-links a { 
-    text-decoration: none; 
-    color: var(--marrom-cafe); 
-    font-size: 0.85rem; 
-    font-weight: 500; 
-    text-transform: uppercase; 
-    letter-spacing: 1px; 
-}
-
-.nav-links a.active { 
-    color: var(--dourado-premium); 
-    font-weight: 600; 
-}
-
-.header-right .assinatura-img {
-    height: 75px;
-    width: auto;
-}
-
-/* =========================================
-   HERO SECTION (BANNER 3D)
-   ========================================= */
-.hero {
-    height: 85vh;
+.header-container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left { display: flex; align-items: center; gap: 40px; }
+.folha-img { height: 40px; width: auto; }
+
+.nav-menu ul { display: flex; list-style: none; gap: 25px; }
+.nav-menu ul li a {
+    text-decoration: none;
+    color: var(--marrom-cafe);
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.nav-links a.active { color: var(--dourado); font-weight: 700; }
+
+.assinatura-img { height: 60px; width: auto; }
+
+/* MENU SANDUÍCHE (ESCONDIDO POR PADRÃO) */
+.menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
+.menu-toggle span { width: 25px; height: 3px; background: var(--marrom-cafe); border-radius: 2px; }
+
+/* HERO SECTION - AMBIENTE 3D */
+.hero {
+    height: calc(100vh - 100px);
+    display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    overflow: hidden;
-    perspective: 1500px; 
+    perspective: 1500px;
 }
 
-/* PISO DE MADEIRA 3D (Efeito de Mesa Plana) */
-.wood-floor-3d {
+.hero-content {
+    position: relative;
+    z-index: 20;
+    text-align: center;
+    max-width: 700px;
+    margin-bottom: 120px; /* Sobe o texto para abrir espaço para a mesa */
+}
+
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    color: var(--marrom-cafe);
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-content p { font-size: 1.1rem; color: #666; margin-bottom: 30px; font-weight: 300; }
+
+.btn-cta {
+    background: var(--dourado);
+    color: white;
+    padding: 15px 40px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+/* AJUSTE DE PROPORÇÃO E POSIÇÃO DAS IMAGENS (IDÊNTICO AO PORTFÓLIO) */
+.product {
     position: absolute;
-    bottom: -110px; 
-    width: 200%; 
+    z-index: 15;
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15));
+    pointer-events: none;
+}
+
+.left-cake {
+    left: 5%;
+    bottom: 50px;
+    max-height: 500px; /* Reduzi para não bater no texto */
+    width: auto;
+}
+
+.right-jars {
+    right: 5%;
+    bottom: 50px;
+    max-height: 420px; /* Reduzi para manter a simetria */
+    width: auto;
+}
+
+/* MESA DE MADEIRA 3D */
+.wood-table {
+    position: absolute;
+    bottom: -100px;
+    width: 200%;
     height: 400px;
     background: 
         linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.1) 100%),
         repeating-conic-gradient(from 180deg at 50% -100px, transparent 0%, transparent 1%, rgba(74, 55, 40, 0.12) 1.1%, transparent 1.2%),
         var(--madeira-mel);
-    transform: rotateX(72deg); 
+    transform: rotateX(75deg);
     z-index: 1;
-    box-shadow: inset 0 30px 60px rgba(0,0,0,0.2);
-    border-top: 10px solid #a67c52; /* Espessura frontal da mesa */
+    border-top: 10px solid #a67c52;
 }
 
-/* CONTEÚDO CENTRAL */
-.hero-content {
-    position: relative;
-    z-index: 20;
-    text-align: center;
-    max-width: 850px;
-    margin-bottom: 160px; 
-}
-
-.hero-content h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 4.2rem;
-    color: var(--marrom-cafe);
-    line-height: 1.05;
-    margin-bottom: 20px;
-}
-
-.hero-content p {
-    font-size: 1.2rem;
-    color: #666;
-    margin-bottom: 40px;
-    font-weight: 300;
-}
-
-.btn-cta {
-    background: var(--dourado-premium);
-    color: white;
-    padding: 16px 50px;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    display: inline-block;
-    transition: 0.3s ease;
-    box-shadow: 0 8px 20px rgba(176, 141, 87, 0.4);
-}
-
-/* PRODUTOS (BOLO E POTES) - PROPORÇÕES CORRIGIDAS */
-.product {
-    position: absolute;
-    z-index: 15;
-    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.25));
-    pointer-events: none;
-    width: auto;
-    height: auto;
-}
-
-.left-cake {
-    left: 8%;
-    bottom: 50px;
-    max-height: 520px; /* Proporção solicitada */
-}
-
-.right-jars {
-    right: 8%;
-    bottom: 50px;
-    max-height: 440px; /* Proporção solicitada */
-}
-
-/* RESPONSIVIDADE */
+/* RESPONSIVIDADE (TABLETS E CELULARES) */
 @media (max-width: 1024px) {
-    .left-cake, .right-jars { max-height: 300px; }
+    .left-cake { max-height: 350px; left: 2%; }
+    .right-jars { max-height: 300px; right: 2%; }
     .hero-content h1 { font-size: 2.8rem; }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle { display: flex; }
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100px;
+        left: 0;
+        width: 100%;
+        background: var(--branco);
+        padding: 20px;
+        border-bottom: 1px solid #f2f0ed;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+    .nav-menu.active { display: block; }
+    .nav-menu ul { flex-direction: column; align-items: center; }
+
+    /* Imagens continuam aparecendo, mas menores */
+    .left-cake { max-height: 250px; bottom: 30px; }
+    .right-jars { max-height: 200px; bottom: 30px; }
+    .hero-content h1 { font-size: 2.2rem; }
+    .hero-content { margin-bottom: 80px; padding: 0 20px; }
 }
