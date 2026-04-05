@@ -1,15 +1,26 @@
 /* =========================================
-   PALETA DE CORES E FONTES
+   PALETA DE CORES E FONTES (KARLA TAVARES)
    ========================================= */
 :root {
     --marrom-cafe: #4a3728;
     --dourado-premium: #b08d57;
     --branco: #ffffff;
-    --madeira-mel: #d4a373; /* Tom mel saturado */
+    --madeira-mel: #d4a373; /* Tom mel saturado do portfólio */
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background-color: var(--branco); font-family: 'Poppins', sans-serif; overflow-x: hidden; }
+
+body { 
+    background-color: var(--branco); 
+    font-family: 'Poppins', sans-serif; 
+    overflow-x: hidden; 
+}
+
+/* FORÇAR TRANSPARÊNCIA NAS IMAGENS */
+img {
+    background-color: transparent !important; /* Garante que não haja fundo branco */
+    border: none;
+}
 
 /* =========================================
    HEADER (LOGO DIREITA | MENU ESQUERDA)
@@ -35,7 +46,6 @@ nav ul li a {
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    transition: 0.3s;
 }
 nav ul li a.active { color: var(--dourado-premium); font-weight: 700; }
 
@@ -58,20 +68,21 @@ nav ul li a.active { color: var(--dourado-premium); font-weight: 700; }
     perspective: 1500px;
 }
 
-/* MESA DE MADEIRA 3D - VEIOS VERTICAIS */
+/* MESA DE MADEIRA 3D - VEIOS VERTICAIS E ÂNGULO REAL */
 .wood-table {
     position: absolute;
-    bottom: -80px;
+    bottom: -100px;
     width: 200%;
     height: 450px;
     background: 
         linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.1) 100%),
+        /* Criando os veios verticais com conic gradient */
         repeating-conic-gradient(from 180deg at 50% -100px, transparent 0%, transparent 1%, rgba(74,55,40,0.08) 1.1%, transparent 1.2%),
         url('https://www.transparenttextures.com/patterns/wood-pattern.png'),
         var(--madeira-mel);
     transform: rotateX(75deg);
     z-index: 1;
-    border-top: 8px solid #a67c52; /* Borda da mesa */
+    border-top: 8px solid #a67c52; /* Espessura frontal da mesa */
     box-shadow: 0 50px 100px rgba(0,0,0,0.3);
 }
 
@@ -81,7 +92,7 @@ nav ul li a.active { color: var(--dourado-premium); font-weight: 700; }
     z-index: 20;
     text-align: center;
     max-width: 850px;
-    margin-bottom: 120px;
+    margin-bottom: 150px;
 }
 
 .hero-content h1 {
@@ -111,27 +122,22 @@ nav ul li a.active { color: var(--dourado-premium); font-weight: 700; }
     box-shadow: 0 8px 20px rgba(176, 141, 87, 0.4);
 }
 
-/* PRODUTOS SENTADOS NA MESA */
+/* POSICIONAMENTO DOS PRODUTOS */
 .product {
     position: absolute;
     z-index: 15;
+    /* Sombra projetada para dar peso ao objeto sobre a mesa */
     filter: drop-shadow(0 20px 30px rgba(0,0,0,0.2));
 }
 
 .left-cake {
     left: 8%;
-    bottom: 80px; /* Alinhado ao tampo da mesa */
+    bottom: 80px; /* "Toca" a madeira */
     height: 520px;
 }
 
 .right-jars {
     right: 8%;
-    bottom: 80px; /* Alinhado ao tampo da mesa */
+    bottom: 80px; /* "Toca" a madeira */
     height: 440px;
-}
-
-/* RESPONSIVIDADE */
-@media (max-width: 1024px) {
-    .left-cake, .right-jars { display: none; }
-    .hero-content h1 { font-size: 2.5rem; }
 }
