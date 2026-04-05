@@ -1,9 +1,10 @@
 /* =========================================
-   PALETA DE CORES REFINADA (TOM DA FOLHA)
+   PALETA DE CORES ATUALIZADA
    ========================================= */
 :root {
-    --marrom-cafe: #4a3728;
-    --dourado-folha: #b4a06d; /* Cor extraída da folha logo */
+    --preto-negrito: #000000;
+    --dourado-folha: #b4a06d; /* Cor da folha logo */
+    --marrom-corpo: #4a3728;
     --branco: #ffffff;
     --madeira-mel: #d4a373;
 }
@@ -39,11 +40,16 @@ header {
 .nav-menu ul { display: flex; list-style: none; gap: 25px; }
 .nav-menu ul li a {
     text-decoration: none;
-    color: var(--marrom-cafe);
     font-size: 13px;
-    font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+/* LINKS EM PRETO NEGRITO */
+.nav-menu ul li a {
+    color: var(--preto-negrito);
+    font-weight: 700;
 }
 
 /* LINK INÍCIO NA COR DA FOLHA */
@@ -53,10 +59,6 @@ header {
 }
 
 .assinatura-img { height: 55px; width: auto; }
-
-/* MENU MÓVEL */
-.menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
-.menu-toggle span { width: 25px; height: 3px; background: var(--marrom-cafe); }
 
 /* HERO SECTION */
 .hero {
@@ -72,18 +74,20 @@ header {
     position: relative;
     z-index: 20;
     text-align: center;
-    max-width: 750px;
+    max-width: 800px;
     margin-bottom: 150px;
 }
 
-/* TÍTULO NA COR DA FOLHA */
+/* TÍTULO COM CORES MISTAS */
 .hero-content h1 {
     font-family: 'Playfair Display', serif;
     font-size: 3.8rem;
-    color: var(--dourado-folha);
     line-height: 1.1;
     margin-bottom: 15px;
 }
+
+.titulo-dourado { color: var(--dourado-folha); }
+.titulo-preto { color: var(--preto-negrito); font-weight: 700; }
 
 .hero-content p { font-size: 1.1rem; color: #666; margin-bottom: 30px; font-weight: 300; }
 
@@ -96,10 +100,9 @@ header {
     font-weight: 600;
     text-transform: uppercase;
     font-size: 13px;
-    transition: 0.3s;
 }
 
-/* ALINHAMENTO MILIMÉTRICO DOS PRODUTOS */
+/* PRODUTOS NIVELADOS */
 .product {
     position: absolute;
     z-index: 15;
@@ -107,17 +110,16 @@ header {
     pointer-events: none;
 }
 
-/* Ajustei o 'bottom' individualmente para compensar as bases das fotos */
 .left-cake {
     left: 6%;
-    bottom: 45px; /* Nivelamento visual com o pote */
+    bottom: 45px;
     max-height: 520px;
     width: auto;
 }
 
 .right-jars {
     right: 6%;
-    bottom: 55px; /* Subi levemente para alinhar as bases visuais */
+    bottom: 55px;
     max-height: 460px;
     width: auto;
 }
@@ -137,53 +139,11 @@ header {
     border-top: 10px solid #a67c52;
 }
 
-/* AJUSTES PARA CELULAR (IMAGEM 2) */
+/* MOBILE */
 @media (max-width: 768px) {
-    .menu-toggle { display: flex; }
-    .nav-menu {
-        display: none;
-        position: absolute;
-        top: 90px;
-        left: 0;
-        width: 100%;
-        background: white;
-        padding: 20px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    }
-    .nav-menu.active { display: block; }
-    .nav-menu ul { flex-direction: column; align-items: center; }
-
-    /* Compactando o layout mobile */
-    .hero-content {
-        margin-bottom: 240px; /* Abre espaço para as imagens não sobreporem o texto */
-        padding: 0 15px;
-    }
-    
-    .hero-content h1 {
-        font-size: 2.2rem;
-        margin-bottom: 10px;
-    }
-
-    .hero-content p {
-        font-size: 0.95rem;
-        margin-bottom: 20px;
-    }
-
-    /* Imagens lado a lado no mobile com escala reduzida */
-    .left-cake {
-        max-height: 240px;
-        left: 2%;
-        bottom: 25px;
-    }
-
-    .right-jars {
-        max-height: 210px;
-        right: 2%;
-        bottom: 32px; /* Mantendo nivelamento mobile */
-    }
-
-    .wood-table {
-        height: 250px;
-        bottom: -50px;
-    }
+    .nav-menu ul { gap: 15px; }
+    .hero-content h1 { font-size: 2.2rem; }
+    .hero-content { margin-bottom: 240px; }
+    .left-cake { max-height: 240px; bottom: 25px; }
+    .right-jars { max-height: 210px; bottom: 32px; }
 }
