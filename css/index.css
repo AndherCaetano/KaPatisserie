@@ -1,5 +1,5 @@
 /* =========================================
-   1. CONFIGURAÇÕES BASE
+   1. CONFIGURAÇÕES BASE (MANTIDAS)
    ========================================= */
 :root {
     --marrom-logo: #63412c;
@@ -13,13 +13,13 @@
 body { 
     background-color: var(--branco); 
     font-family: 'Poppins', sans-serif; 
-    overflow-x: hidden; /* Trava o site horizontalmente */
+    overflow-x: hidden;
     color: #666;
     -webkit-font-smoothing: antialiased;
 }
 
 /* =========================================
-   2. HEADER (BLINDADO)
+   2. HEADER (BLINDADO - PERFEITO)
    ========================================= */
 header {
     background: var(--branco);
@@ -57,7 +57,7 @@ header {
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
     position: relative; perspective: 1500px;
-    overflow: hidden; /* Evita que a mesa grande crie barra de rolagem */
+    overflow: hidden;
 }
 
 .hero-content {
@@ -78,12 +78,9 @@ header {
     font-weight: 600; text-transform: uppercase; font-size: 12px; color: white;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
-.cta-gold { background: var(--dourado-folha); }
-.cta-brown { background: var(--marrom-logo); }
 
-/* PRODUTOS E MESA DESKTOP */
 .product { 
-    position: absolute; z-index: 100; /* Sempre na frente da mesa */
+    position: absolute; z-index: 100;
     filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15)); 
     height: 480px; bottom: 85px; 
     pointer-events: none;
@@ -101,14 +98,13 @@ header {
 }
 
 /* =========================================
-   4. RESPONSIVIDADE (MOBILE FÍSICO CORRIGIDO)
+   4. RESPONSIVIDADE (AJUSTES FINAIS MOBILE/TABLET)
    ========================================= */
 .menu-toggle { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; }
 .menu-toggle span { width: 22px; height: 3px; background: var(--marrom-logo); }
 
 @media (max-width: 1024px) {
     .menu-toggle { display: flex; }
-    
     .nav-menu {
         display: none; position: absolute; top: 90px; left: 0; 
         width: 100%; background: white; padding: 40px 20px; 
@@ -118,41 +114,52 @@ header {
     .nav-menu.active { display: block; }
     .nav-menu ul { flex-direction: column; align-items: center; gap: 25px; }
 
-    /* Estabilização do GPS do site (Contêiner travado) */
     .hero { 
         height: auto; 
         min-height: calc(100vh - 90px); 
         justify-content: flex-start;
         padding-top: 40px;
-        padding-bottom: 450px; /* Garante espaço para mesa no celular físico */
+        /* Redução da faixa branca no fundo para aprox 1 dedo */
+        padding-bottom: 30px; 
     }
 
-    .hero-content { margin-top: 0; margin-bottom: 40px; z-index: 50; }
-    .hero-content h1 { font-size: 2.5rem; }
-    .sub-patisserie { font-size: 2.2rem; }
-    .cta-group { flex-direction: column; align-items: center; }
-
-    /* CORREÇÃO DAS IMAGENS CORTADAS (IMAGEM 2 E 3) */
+    /* AJUSTE PARA TABLETS (IPADS): FIM DOS PRODUTOS FORMIGUINHA */
     .product { 
-        height: 280px; /* Aumentado para não ser formiga */
-        bottom: 140px; /* Eleva os produtos para ficarem BEM ACIMA da borda da mesa */
-        z-index: 150; /* Força ficar à frente da mesa amadeirada */
+        height: 360px; /* Aumentado consideravelmente */
+        bottom: 160px; /* Elevação para aparecer a base completa */
+        z-index: 150;
     }
-    .left-cake { left: 2%; }
-    .right-jars { right: 2%; }
 
-    /* AJUSTE DA MESA PARA MOBILE FÍSICO */
     .wood-table { 
-        height: 550px; 
-        bottom: -100px; /* Alinha para deixar a faixa branca fina no final */
-        z-index: 10;
-        width: 250%; /* Garante que cubra as bordas em qualquer giro */
+        height: 600px; 
+        bottom: -110px; /* Alinha o horizonte da mesa com a base elevada */
+        width: 250%;
     }
 }
 
-/* Ajuste Especial para iPhone SE / Celulares pequenos */
+/* AJUSTE ESPECÍFICO PARA CELULARES FÍSICOS (SMARTPHONES) */
+@media (max-width: 480px) {
+    .hero-content h1 { font-size: 2.2rem; }
+    .sub-patisserie { font-size: 2rem; }
+    
+    .hero {
+        padding-bottom: 20px; /* Filete branco fino de 1 dedo */
+    }
+
+    /* Produtos maiores e sem cortes na base */
+    .product { 
+        height: 260px; 
+        bottom: 145px; /* Elevação extra para celulares físicos */
+    }
+
+    .wood-table { 
+        height: 520px; 
+        bottom: -105px; 
+    }
+}
+
+/* IPHONE SE / CELULARES PEQUENOS */
 @media (max-width: 360px) {
-    .hero-content h1 { font-size: 1.9rem; }
-    .product { height: 200px; bottom: 120px; }
-    .hero { padding-bottom: 350px; }
+    .hero-content h1 { font-size: 1.8rem; }
+    .product { height: 210px; bottom: 130px; }
 }
