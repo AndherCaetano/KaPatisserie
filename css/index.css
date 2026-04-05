@@ -14,7 +14,7 @@ body {
     background-color: var(--branco); 
     font-family: 'Poppins', sans-serif; 
     overflow-x: hidden;
-    overflow-y: auto; /* Força a rolagem vertical */
+    overflow-y: auto;
     color: #666;
     -webkit-font-smoothing: antialiased;
 }
@@ -51,7 +51,7 @@ header {
 .assinatura-img { height: 55px !important; width: auto; }
 
 /* =========================================
-   3. HERO DESKTOP (BLINDADO)
+   3. HERO DESKTOP (BLINDADO E RESTAURADO)
    ========================================= */
 .hero {
     height: calc(100vh - 90px);
@@ -61,7 +61,8 @@ header {
 }
 
 .hero-content {
-    position: relative; z-index: 50; text-align: center;
+    position: relative; z-index: 500; /* Garante que botões fiquem na frente */
+    text-align: center;
     width: 90%; max-width: 650px;
     margin-top: -60px; 
 }
@@ -74,10 +75,15 @@ header {
 
 .cta-group { display: flex; gap: 15px; justify-content: center; margin-top: 25px; }
 .btn-cta {
+    display: inline-block; /* Garante visibilidade */
     padding: 15px 35px; text-decoration: none; border-radius: 50px;
     font-weight: 600; text-transform: uppercase; font-size: 12px; color: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
+.cta-gold { background: var(--dourado-folha); }
+.cta-brown { background: var(--marrom-logo); }
 
+/* DOCES E MESA DESKTOP */
 .product { 
     position: absolute; z-index: 100;
     filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15)); 
@@ -97,14 +103,13 @@ header {
 }
 
 /* =========================================
-   4. RESPONSIVIDADE (CORREÇÃO CELULAR FÍSICO)
+   4. RESPONSIVIDADE (TABLETS E MOBILE)
    ========================================= */
 .menu-toggle { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; }
 .menu-toggle span { width: 22px; height: 3px; background: var(--marrom-logo); }
 
 @media (max-width: 1024px) {
     .menu-toggle { display: flex; }
-    
     .nav-menu {
         display: none; position: absolute; top: 90px; left: 0; 
         width: 100%; background: white; padding: 40px 20px; 
@@ -114,41 +119,52 @@ header {
     .nav-menu.active { display: block; }
     .nav-menu ul { flex-direction: column; align-items: center; gap: 25px; }
 
-    /* MOBILE: ATIVA ROLAGEM E DESCE A MESA */
     .hero { 
         height: auto; 
         min-height: calc(100vh - 90px); 
-        justify-content: flex-start; /* Texto no topo sempre */
-        padding-top: 30px; 
-        padding-bottom: 480px; /* DISTÂNCIA DE 1,6 DEDOS SOB O BOTÃO */
+        justify-content: flex-start;
+        padding-top: 40px; 
+        padding-bottom: 550px; /* Aumentado para dar espaço aos produtos grandes */
     }
 
-    .hero-content { margin-top: 0; margin-bottom: 50px; z-index: 50; }
-    .hero-content h1 { font-size: 2.5rem; }
-    .sub-patisserie { font-size: 2.2rem; }
-    .cta-group { flex-direction: column; align-items: center; }
+    .hero-content { margin-top: 0; margin-bottom: 50px; z-index: 500; }
+    .hero-content h1 { font-size: 2.8rem; }
+    .sub-patisserie { font-size: 2.5rem; }
+    .cta-group { display: flex; flex-direction: column; align-items: center; gap: 15px; }
 
-    /* PRODUTOS NA MESA (FIM DA SOBREPOSIÇÃO) */
+    /* TABLETS: FIM DOS PRODUTOS FORMIGUINHA (IMAGEM 2) */
     .product { 
-        height: 280px; 
-        bottom: 140px; /* Alinhado sobre a madeira */
-        z-index: 150;
+        height: 380px; /* Proporção robusta para Tablet */
+        bottom: 160px; 
+        z-index: 100;
     }
-    .left-cake { left: 2%; }
-    .right-jars { right: 2%; }
 
-    /* MESA E FILETE BRANCO SLIM */
+    /* MESA E FAIXA BRANCA DE 2 DEDOS */
     .wood-table { 
-        height: 550px; 
-        bottom: -150px; /* REDUZ O FILETE BRANCO PELA METADE */
+        height: 600px; 
+        bottom: -180px; /* Ajuste para criar o filete branco de 2 dedos */
         width: 250%;
-        z-index: 10;
     }
 }
 
-/* IPHONE SE / CELULARES PEQUENOS */
+/* Ajuste Especial para Smartphones Físicos */
+@media (max-width: 480px) {
+    .hero-content h1 { font-size: 2.2rem; }
+    .hero { padding-bottom: 420px; }
+    
+    .product { 
+        height: 280px; /* Tamanho robusto para celular */
+        bottom: 140px; 
+    }
+    
+    .wood-table { 
+        height: 550px; 
+        bottom: -160px; /* Mantém os 2 dedos de faixa branca no celular */
+    }
+}
+
+/* IPHONE SE / TELAS CURTAS */
 @media (max-width: 360px) {
-    .hero-content h1 { font-size: 1.9rem; }
-    .product { height: 210px; bottom: 120px; }
-    .hero { padding-bottom: 380px; }
+    .product { height: 220px; bottom: 120px; }
+    .hero { padding-bottom: 350px; }
 }
