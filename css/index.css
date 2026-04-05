@@ -1,5 +1,5 @@
 /* =========================================
-   1. CONFIGURAÇÕES BASE (MANTIDAS)
+   1. CONFIGURAÇÕES BASE
    ========================================= */
 :root {
     --marrom-logo: #63412c;
@@ -14,12 +14,13 @@ body {
     background-color: var(--branco); 
     font-family: 'Poppins', sans-serif; 
     overflow-x: hidden;
+    overflow-y: auto; /* Força a rolagem vertical */
     color: #666;
     -webkit-font-smoothing: antialiased;
 }
 
 /* =========================================
-   2. HEADER (BLINDADO - PERFEITO)
+   2. HEADER (INTOCÁVEL)
    ========================================= */
 header {
     background: var(--branco);
@@ -50,14 +51,13 @@ header {
 .assinatura-img { height: 55px !important; width: auto; }
 
 /* =========================================
-   3. HERO DESKTOP (BLINDADO - INTOCÁVEL)
+   3. HERO DESKTOP (BLINDADO)
    ========================================= */
 .hero {
     height: calc(100vh - 90px);
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
     position: relative; perspective: 1500px;
-    overflow: hidden;
 }
 
 .hero-content {
@@ -76,7 +76,6 @@ header {
 .btn-cta {
     padding: 15px 35px; text-decoration: none; border-radius: 50px;
     font-weight: 600; text-transform: uppercase; font-size: 12px; color: white;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .product { 
@@ -98,13 +97,14 @@ header {
 }
 
 /* =========================================
-   4. RESPONSIVIDADE (AJUSTES FINAIS MOBILE/TABLET)
+   4. RESPONSIVIDADE (CORREÇÃO CELULAR FÍSICO)
    ========================================= */
 .menu-toggle { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; }
 .menu-toggle span { width: 22px; height: 3px; background: var(--marrom-logo); }
 
 @media (max-width: 1024px) {
     .menu-toggle { display: flex; }
+    
     .nav-menu {
         display: none; position: absolute; top: 90px; left: 0; 
         width: 100%; background: white; padding: 40px 20px; 
@@ -114,52 +114,41 @@ header {
     .nav-menu.active { display: block; }
     .nav-menu ul { flex-direction: column; align-items: center; gap: 25px; }
 
+    /* MOBILE: ATIVA ROLAGEM E DESCE A MESA */
     .hero { 
         height: auto; 
         min-height: calc(100vh - 90px); 
-        justify-content: flex-start;
-        padding-top: 40px;
-        /* Redução da faixa branca no fundo para aprox 1 dedo */
-        padding-bottom: 30px; 
+        justify-content: flex-start; /* Texto no topo sempre */
+        padding-top: 30px; 
+        padding-bottom: 480px; /* DISTÂNCIA DE 1,6 DEDOS SOB O BOTÃO */
     }
 
-    /* AJUSTE PARA TABLETS (IPADS): FIM DOS PRODUTOS FORMIGUINHA */
+    .hero-content { margin-top: 0; margin-bottom: 50px; z-index: 50; }
+    .hero-content h1 { font-size: 2.5rem; }
+    .sub-patisserie { font-size: 2.2rem; }
+    .cta-group { flex-direction: column; align-items: center; }
+
+    /* PRODUTOS NA MESA (FIM DA SOBREPOSIÇÃO) */
     .product { 
-        height: 360px; /* Aumentado consideravelmente */
-        bottom: 160px; /* Elevação para aparecer a base completa */
+        height: 280px; 
+        bottom: 140px; /* Alinhado sobre a madeira */
         z-index: 150;
     }
+    .left-cake { left: 2%; }
+    .right-jars { right: 2%; }
 
+    /* MESA E FILETE BRANCO SLIM */
     .wood-table { 
-        height: 600px; 
-        bottom: -110px; /* Alinha o horizonte da mesa com a base elevada */
+        height: 550px; 
+        bottom: -150px; /* REDUZ O FILETE BRANCO PELA METADE */
         width: 250%;
-    }
-}
-
-/* AJUSTE ESPECÍFICO PARA CELULARES FÍSICOS (SMARTPHONES) */
-@media (max-width: 480px) {
-    .hero-content h1 { font-size: 2.2rem; }
-    .sub-patisserie { font-size: 2rem; }
-    
-    .hero {
-        padding-bottom: 20px; /* Filete branco fino de 1 dedo */
-    }
-
-    /* Produtos maiores e sem cortes na base */
-    .product { 
-        height: 260px; 
-        bottom: 145px; /* Elevação extra para celulares físicos */
-    }
-
-    .wood-table { 
-        height: 520px; 
-        bottom: -105px; 
+        z-index: 10;
     }
 }
 
 /* IPHONE SE / CELULARES PEQUENOS */
 @media (max-width: 360px) {
-    .hero-content h1 { font-size: 1.8rem; }
-    .product { height: 210px; bottom: 130px; }
+    .hero-content h1 { font-size: 1.9rem; }
+    .product { height: 210px; bottom: 120px; }
+    .hero { padding-bottom: 380px; }
 }
