@@ -1,5 +1,5 @@
 /* =========================================
-   1. PALETA E REGRAS ORIGINAIS (RECONSTITUÍDAS)
+   1. CONFIGURAÇÕES BASE
    ========================================= */
 :root {
     --marrom-logo: #63412c;
@@ -14,11 +14,11 @@ body {
     background-color: var(--branco); 
     font-family: 'Poppins', sans-serif; 
     overflow-x: hidden;
-    color: #666; /* Cor do corpo restaurada */
+    color: #666;
 }
 
 /* =========================================
-   2. HEADER (DESKTOP E MOBILE)
+   2. HEADER
    ========================================= */
 header {
     background: var(--branco);
@@ -36,7 +36,6 @@ header {
 .header-left { display: flex; align-items: center; gap: 20px; }
 .folha-img { height: 40px !important; width: auto; }
 
-/* Menu Desktop - Cores Restauradas */
 .nav-menu ul { display: flex; list-style: none; gap: 20px; }
 .nav-menu ul li a {
     text-decoration: none; font-size: 13px; text-transform: uppercase;
@@ -44,14 +43,13 @@ header {
 }
 .nav-menu ul li a.active { color: var(--dourado-folha); }
 
-/* Redes e Assinatura */
 .social-wrapper { display: flex; align-items: center; gap: 15px; }
 .social-links { display: flex; gap: 12px; }
 .social-links svg { fill: var(--marrom-logo); width: 18px; height: 18px; }
 .assinatura-img { height: 55px !important; width: auto; }
 
 /* =========================================
-   3. HERO (CONTEÚDO E POSICIONAMENTO)
+   3. HERO (POSICIONAMENTO DOS TEXTOS)
    ========================================= */
 .hero {
     height: calc(100vh - 90px);
@@ -63,16 +61,10 @@ header {
 .hero-content {
     position: relative; z-index: 20; text-align: center;
     width: 90%; max-width: 650px;
-    /* Sobe o texto em 2 dedos (aprox -60px) */
-    margin-top: -60px; 
+    margin-top: -60px; /* Sobe o texto os dois dedos solicitados */
 }
 
-.hero-content h1 { 
-    font-family: 'Playfair Display', serif; 
-    font-size: 3.5rem; line-height: 1.1; 
-    margin-bottom: 15px;
-    color: var(--marrom-logo); /* Garante a cor correta */
-}
+.hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; line-height: 1.1; margin-bottom: 15px; color: var(--marrom-logo); }
 .titulo-dourado { color: var(--dourado-folha); }
 .titulo-marrom { color: var(--marrom-logo); font-weight: 700; }
 
@@ -88,28 +80,34 @@ header {
 .cta-brown { background: var(--marrom-logo); }
 
 /* =========================================
-   4. PRODUTOS E MESA (ALINHAMENTO OK)
+   4. PRODUTOS E MESA (FAIXA BRANCA FINA)
    ========================================= */
 .product { 
     position: absolute; z-index: 30; 
     filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15)); 
-    height: 480px; bottom: 85px; 
+    height: 480px; 
+    /* Ajuste para alinhar base com o fim da mesa */
+    bottom: 25px; 
 }
 .left-cake { left: 4%; }
 .right-jars { right: 4%; }
 
 .wood-table {
     position: absolute; 
-    bottom: -60px; /* Ajuste para deixar a faixa branca de 1,5 dedos */
-    width: 200%; height: 420px;
+    /* Desce a mesa para deixar a faixa branca fina de 1,5 dedos */
+    bottom: -150px; 
+    width: 200%; 
+    height: 500px; /* Aumentei a mesa para garantir profundidade */
     background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.1) 100%),
                 repeating-conic-gradient(from 180deg at 50% -100px, transparent 0%, transparent 1%, rgba(74, 55, 40, 0.1) 1.1%, transparent 1.2%),
                 var(--madeira-mel);
-    transform: rotateX(75deg); z-index: 10; border-top: 10px solid #a67c52;
+    transform: rotateX(75deg); 
+    z-index: 10; 
+    border-top: 10px solid #a67c52;
 }
 
 /* =========================================
-   5. RESPONSIVIDADE E MENU SANDUÍCHE
+   5. RESPONSIVIDADE (MOBILE AJUSTADO)
    ========================================= */
 .menu-toggle { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; }
 .menu-toggle span { width: 22px; height: 3px; background: var(--marrom-logo); }
@@ -117,27 +115,20 @@ header {
 @media (max-width: 1024px) {
     .menu-toggle { display: flex; }
     
-    /* MENU SANDUICHE CENTRALIZADO (RESOLVE IMAGEM 1) */
     .nav-menu {
         display: none; position: absolute; top: 90px; left: 0; 
         width: 100%; background: white; padding: 40px 20px; 
         border-bottom: 1px solid #eee; text-align: center;
     }
     .nav-menu.active { display: block; }
-    .nav-menu ul { 
-        flex-direction: column; 
-        align-items: center; /* Centraliza o texto */
-        gap: 25px; 
-    }
+    .nav-menu ul { flex-direction: column; align-items: center; gap: 25px; }
 
-    /* MOBILE: CABER TUDO (RESOLVE IMAGEM 3) */
     .hero { 
         height: auto; 
         min-height: calc(100vh - 90px); 
         padding-top: 20px; 
-        padding-bottom: 380px; /* Garante espaço para a mesa */
+        padding-bottom: 120px; /* Reduzi o vácuo mobile */
         justify-content: flex-start;
-        overflow-y: auto;
     }
 
     .hero-content { margin-top: 0; margin-bottom: 40px; }
@@ -145,16 +136,22 @@ header {
     .sub-patisserie { font-size: 2rem; }
     .cta-group { flex-direction: column; align-items: center; }
 
-    /* DOCES NA MESA NO MOBILE */
-    .product { height: 230px; bottom: 125px; }
+    /* DOCES NA MESA NO MOBILE COM FAIXA FINA */
+    .product { 
+        height: 230px; 
+        bottom: 20px; /* Alinha com a nova base fina */
+    }
     .left-cake { left: 2%; }
     .right-jars { right: 2%; }
 
-    .wood-table { height: 480px; bottom: -120px; }
+    .wood-table { 
+        height: 400px; 
+        bottom: -150px; 
+    }
 }
 
 /* Telas Pequenas (iPhone SE) */
 @media (max-width: 360px) {
     .hero-content h1 { font-size: 1.8rem; }
-    .product { height: 180px; bottom: 110px; }
+    .product { height: 180px; bottom: 15px; }
 }
