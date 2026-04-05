@@ -8,10 +8,10 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background-color: var(--branco); font-family: 'Poppins', sans-serif; overflow-x: hidden; }
 
-/* HEADER */
+/* HEADER E ESTRUTURA */
 header {
     background: var(--branco);
-    width: 100%; height: 90px;
+    width: 100%; height: 80px;
     border-bottom: 1px solid #f2f0ed;
     display: flex; align-items: center;
     position: sticky; top: 0; z-index: 1000;
@@ -22,8 +22,8 @@ header {
     display: flex; justify-content: space-between; align-items: center;
 }
 
-.header-left { display: flex; align-items: center; gap: 20px; }
-.folha-img { height: 40px !important; width: auto !important; }
+.header-left { display: flex; align-items: center; gap: 15px; }
+.folha-img { height: 35px !important; width: auto !important; }
 
 .nav-menu ul { display: flex; list-style: none; gap: 20px; }
 .nav-menu ul li a {
@@ -33,82 +33,90 @@ header {
 .nav-menu ul li a.active { color: var(--dourado-folha); }
 
 /* REDES SOCIAIS E LOGO */
-.social-wrapper { display: flex; align-items: center; gap: 20px; }
-.social-links { display: flex; gap: 15px; }
-.social-links a { width: 22px; height: 22px; transition: 0.3s; }
-.social-links svg { fill: var(--marrom-logo); width: 100%; height: 100%; }
+.social-wrapper { display: flex; align-items: center; gap: 15px; }
+.social-links { display: flex; gap: 12px; }
+.social-links svg { fill: var(--marrom-logo); width: 18px; height: 18px; transition: 0.3s; }
 .social-links a:hover svg { fill: var(--dourado-folha); }
+.assinatura-img { height: 50px !important; width: auto !important; }
 
-.assinatura-img { height: 60px !important; width: auto !important; }
-
-/* HERO SECTION */
+/* HERO E CONTEÚDO */
 .hero {
-    height: calc(100vh - 90px);
-    display: flex; align-items: center; justify-content: center;
+    height: calc(100vh - 80px);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
     position: relative; perspective: 1500px;
 }
 
-.hero-content { position: relative; z-index: 20; text-align: center; max-width: 650px; margin-bottom: 120px; }
-.hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.2rem; line-height: 1.1; margin-bottom: 15px; }
+.hero-content { 
+    position: relative; z-index: 20; text-align: center; 
+    width: 90%; max-width: 650px; 
+    margin-bottom: 100px; /* Espaço para a mesa */
+}
+
+.hero-content h1 { 
+    font-family: 'Playfair Display', serif; font-size: 3.2rem; 
+    line-height: 1.1; margin-bottom: 10px; 
+}
 .titulo-dourado { color: var(--dourado-folha); }
 .titulo-marrom { color: var(--marrom-logo); font-weight: 700; }
 
-.cta-group { display: flex; gap: 15px; justify-content: center; }
+.hero-content p { font-size: 1rem; color: #666; margin-bottom: 25px; font-weight: 300; line-height: 1.4; }
+
+.cta-group { display: flex; gap: 12px; justify-content: center; }
 .btn-cta {
-    padding: 15px 30px; text-decoration: none; border-radius: 50px;
-    font-weight: 600; text-transform: uppercase; font-size: 12px; color: white;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 12px 25px; text-decoration: none; border-radius: 50px;
+    font-weight: 600; text-transform: uppercase; font-size: 11px; color: white;
 }
 .cta-gold { background: var(--dourado-folha); }
 .cta-brown { background: var(--marrom-logo); }
 
-/* PRODUTOS */
-.product { position: absolute; z-index: 30; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15)); }
-.left-cake { height: 480px; left: 4%; bottom: 60px; }
-.right-jars { height: 420px; right: 4%; bottom: 60px; }
+/* PRODUTOS E MESA */
+.product { position: absolute; z-index: 30; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15)); }
+.left-cake { height: 450px; left: 5%; bottom: 50px; }
+.right-jars { height: 400px; right: 5%; bottom: 50px; }
 
 .wood-table {
-    position: absolute; bottom: -100px; width: 200%; height: 400px;
+    position: absolute; bottom: -80px; width: 200%; height: 350px;
     background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.1) 100%),
                 repeating-conic-gradient(from 180deg at 50% -100px, transparent 0%, transparent 1%, rgba(74, 55, 40, 0.1) 1.1%, transparent 1.2%),
                 var(--madeira-mel);
     transform: rotateX(75deg); z-index: 10; border-top: 10px solid #a67c52;
 }
 
-/* RESPONSIVIDADE TOTAL (CELULARES E TABLETS) */
-.menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
-.menu-toggle span { width: 25px; height: 3px; background: var(--marrom-logo); }
+/* --- RESPONSIVIDADE UNIVERSAL (Mobile & Tablet) --- */
+.menu-toggle { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; }
+.menu-toggle span { width: 22px; height: 3px; background: var(--marrom-logo); }
 
 @media (max-width: 1024px) {
     .menu-toggle { display: flex; }
     .nav-menu {
-        display: none; position: absolute; top: 90px; left: 0; width: 100%;
-        background: white; padding: 30px; border-bottom: 1px solid #eee;
+        display: none; position: absolute; top: 80px; left: 0; width: 100%;
+        background: white; padding: 20px; border-bottom: 1px solid #eee;
     }
     .nav-menu.active { display: block; }
-    .nav-menu ul { flex-direction: column; align-items: center; gap: 20px; }
-    
-    .social-wrapper { gap: 10px; }
-    .assinatura-img { height: 45px !important; }
-    .social-links { gap: 10px; }
-    .social-links a { width: 18px; height: 18px; }
+    .nav-menu ul { flex-direction: column; align-items: center; gap: 15px; }
 
-    /* Ajuste de escala para tablets e celulares */
-    .hero-content { margin-bottom: 350px; padding: 0 15px; } /* Aumentei o respiro embaixo do texto */
-    .hero-content h1 { font-size: 2.5rem; }
-    .cta-group { flex-direction: column; gap: 10px; align-items: center; }
-    .btn-cta { width: 100%; max-width: 280px; font-size: 11px; padding: 12px; }
+    .hero-content { margin-bottom: 320px; } /* Abre espaço para os produtos no mobile */
+    .hero-content h1 { font-size: 2.2rem; }
+    .cta-group { flex-direction: column; align-items: center; }
+    .btn-cta { width: 100%; max-width: 260px; text-align: center; }
 
-    .product { height: 260px; bottom: 40px; } /* Alinhamento superior preservado */
-    .left-cake { left: 2%; }
-    .right-jars { right: 2%; }
-    
-    .wood-table { height: 250px; bottom: -50px; }
+    /* Ajuste de Produtos para Telas Médias (iPhone 11/12) */
+    .product { height: 240px; bottom: 35px; }
 }
 
-/* Telas muito pequenas (iPhone SE, etc) */
-@media (max-width: 360px) {
-    .hero-content h1 { font-size: 1.8rem; }
-    .product { height: 180px; }
+/* Telas Pequenas (iPhone 5, SE, Mi 11i - 320px a 360px) */
+@media (max-width: 375px) {
     .hero-content { margin-bottom: 280px; }
+    .hero-content h1 { font-size: 1.8rem; }
+    .hero-content p { font-size: 0.85rem; margin-bottom: 15px; }
+    
+    .social-links { gap: 8px; }
+    .social-links svg { width: 16px; height: 16px; }
+    .assinatura-img { height: 40px !important; }
+
+    .product { height: 190px; bottom: 20px; }
+    .left-cake { left: 1%; }
+    .right-jars { right: 1%; }
+    
+    .wood-table { height: 220px; bottom: -40px; }
 }
