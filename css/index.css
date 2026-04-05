@@ -8,160 +8,84 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background-color: var(--branco); font-family: 'Poppins', sans-serif; overflow-x: hidden; }
 
-/* HEADER */
+/* HEADER E REDES SOCIAIS */
 header {
     background: var(--branco);
     width: 100%;
-    height: 90px;
+    height: 100px;
     border-bottom: 1px solid #f2f0ed;
     display: flex;
     align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    position: sticky; top: 0; z-index: 1000;
 }
 
 .header-container {
-    width: 94%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    width: 94%; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
 }
 
-.header-left { display: flex; align-items: center; gap: 20px; }
-.folha-img { height: 40px; width: auto; }
+.header-right { display: flex; align-items: center; gap: 20px; }
 
-/* NAV DESKTOP */
-.nav-menu ul { display: flex; list-style: none; gap: 25px; }
-.nav-menu ul li a {
-    text-decoration: none;
-    font-size: 14px;
-    text-transform: uppercase;
-    color: var(--marrom-logo);
-    font-weight: 700;
-}
-.nav-menu ul li a.active { color: var(--dourado-folha); }
+.social-icons { display: flex; gap: 15px; }
+.social-icons a { color: var(--marrom-logo); font-size: 1.2rem; transition: 0.3s; }
+.social-icons a:hover { color: var(--dourado-folha); }
 
-.assinatura-img { height: 60px; width: auto; }
-
-/* MENU SANDUÍCHE */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    z-index: 1100;
-}
-.menu-toggle span { width: 28px; height: 3px; background: var(--marrom-logo); }
-
-/* HERO SECTION */
+/* HERO E BOTÕES */
 .hero {
-    height: calc(100vh - 90px);
+    height: calc(100vh - 100px);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; perspective: 1500px;
+}
+
+.hero-content { position: relative; z-index: 20; text-align: center; max-width: 800px; margin-bottom: 120px; }
+
+/* Correção da trepidação dos botões */
+.cta-group {
     display: flex;
-    align-items: center;
+    gap: 15px;
     justify-content: center;
-    position: relative;
-    perspective: 1500px;
+    flex-wrap: wrap; /* Garante que quebrem linha se não couberem */
 }
-
-.hero-content {
-    position: relative;
-    z-index: 20;
-    text-align: center;
-    max-width: 600px; /* Estreitado para não bater nas fotos */
-    margin-bottom: 100px;
-}
-
-.hero-content h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
-    line-height: 1.1;
-}
-.titulo-dourado { color: var(--dourado-folha); }
-.titulo-marrom { color: var(--marrom-logo); font-weight: 700; }
-
-.hero-content p { font-size: 1.1rem; color: #666; margin-top: 15px; margin-bottom: 30px; font-weight: 300; }
 
 .btn-cta {
     background: var(--dourado-folha);
     color: white;
-    padding: 15px 40px;
+    padding: 15px 30px;
     text-decoration: none;
     border-radius: 50px;
     font-weight: 600;
     text-transform: uppercase;
-    font-size: 13px;
-    box-shadow: 0 10px 20px rgba(180, 160, 109, 0.3);
+    font-size: 12px;
+    transition: 0.3s;
+    display: inline-block;
 }
 
-/* PRODUTOS - ALINHAMENTO MILIMÉTRICO */
-.product {
-    position: absolute;
-    z-index: 30;
-    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));
-    pointer-events: none;
-    /* Alinhamento superior e inferior controlado pela altura fixa */
-    height: 480px; 
-    width: auto;
-}
+.btn-whatsapp { background: var(--marrom-logo); } /* Diferenciação sutil */
 
-.left-cake { left: 3%; bottom: 60px; }
-.right-jars { right: 3%; bottom: 60px; }
+/* IMAGENS E MESA */
+.product { position: absolute; z-index: 30; height: 480px; bottom: 60px; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15)); }
+.left-cake { left: 4%; }
+.right-jars { right: 4%; }
 
-/* MESA 3D */
 .wood-table {
-    position: absolute;
-    bottom: -100px;
-    width: 200%;
-    height: 400px;
-    background: 
-        linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.1) 100%),
-        repeating-conic-gradient(from 180deg at 50% -100px, transparent 0%, transparent 1%, rgba(74, 55, 40, 0.1) 1.1%, transparent 1.2%),
-        var(--madeira-mel);
-    transform: rotateX(75deg);
-    z-index: 10;
-    border-top: 12px solid #a67c52;
+    position: absolute; bottom: -100px; width: 200%; height: 400px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.1) 100%),
+                repeating-conic-gradient(from 180deg at 50% -100px, transparent 0%, transparent 1%, rgba(74, 55, 40, 0.1) 1.1%, transparent 1.2%),
+                var(--madeira-mel);
+    transform: rotateX(75deg); z-index: 10; border-top: 12px solid #a67c52;
 }
 
-/* =========================================
-   RESPONSIVIDADE (TABLETS E CELULARES)
-   ========================================= */
-
-/* Breakpoint para Tablets (iPad, etc) */
-@media (max-width: 1100px) {
-    .menu-toggle { display: flex; }
-    .nav-menu {
-        display: none;
-        position: absolute;
-        top: 90px; left: 0; width: 100%;
-        background: white; padding: 30px;
-        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-    }
-    .nav-menu.active { display: block; }
-    .nav-menu ul { flex-direction: column; align-items: center; gap: 25px; }
-    .nav-menu ul li a { font-size: 18px; } /* Texto maior no tablet */
-
-    .hero-content { max-width: 80%; margin-bottom: 220px; }
-    .hero-content h1 { font-size: 3rem; }
-
-    /* Produtos mantêm destaque no tablet */
-    .product { height: 320px; } 
-    .left-cake { left: 2%; bottom: 40px; }
-    .right-jars { right: 2%; bottom: 40px; }
-}
-
-/* Celulares */
-@media (max-width: 600px) {
-    .folha-img { height: 30px; }
-    .assinatura-img { height: 45px; }
-    .hero-content h1 { font-size: 2.2rem; }
-    .hero-content p { font-size: 0.9rem; }
+/* RESPONSIVIDADE MOBILE */
+@media (max-width: 768px) {
+    .header-right { flex-direction: column-reverse; gap: 5px; align-items: flex-end; }
+    .social-icons { gap: 10px; }
+    .social-icons a { font-size: 1rem; }
     
-    .product { height: 210px; } /* Tamanho elegante para celular */
-    .hero-content { margin-bottom: 280px; }
-    .left-cake { left: 1%; bottom: 20px; }
-    .right-jars { right: 1%; bottom: 20px; }
+    .hero-content { margin-bottom: 320px; padding: 0 15px; }
+    .cta-group { flex-direction: column; gap: 10px; align-items: center; }
+    .btn-cta { width: 100%; max-width: 280px; }
+
+    .product { height: 200px; bottom: 25px; }
+    .left-cake { left: 2%; }
+    .right-jars { right: 2%; }
 }
