@@ -1,3 +1,6 @@
+/* =========================================
+   1. CONFIGURAÇÕES BASE (UNIFICADO)
+   ========================================= */
 :root {
     --marrom-logo: #63412c;
     --dourado-folha: #b4a06d;
@@ -6,12 +9,21 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background-color: var(--branco); font-family: 'Poppins', sans-serif; overflow-x: hidden; }
 
-/* HEADER */
+/* Permitir rolagem natural */
+body { 
+    background-color: var(--branco); 
+    font-family: 'Poppins', sans-serif; 
+    overflow-x: hidden; 
+    overflow-y: auto; 
+}
+
+/* =========================================
+   2. HEADER (FIXO NO TOPO)
+   ========================================= */
 header {
     background: var(--branco);
-    width: 100%; height: 90px;
+    width: 100%; height: 80px;
     border-bottom: 1px solid #f2f0ed;
     display: flex; align-items: center;
     position: sticky; top: 0; z-index: 1000;
@@ -22,8 +34,8 @@ header {
     display: flex; justify-content: space-between; align-items: center;
 }
 
-.header-left { display: flex; align-items: center; gap: 20px; }
-.folha-img { height: 40px !important; width: auto !important; }
+.header-left { display: flex; align-items: center; gap: 15px; }
+.folha-img { height: 35px !important; width: auto; }
 
 .nav-menu ul { display: flex; list-style: none; gap: 20px; }
 .nav-menu ul li a {
@@ -33,20 +45,23 @@ header {
 .nav-menu ul li a.active { color: var(--dourado-folha); }
 
 .social-wrapper { display: flex; align-items: center; gap: 15px; }
-.social-links { display: flex; gap: 12px; }
+.social-links { display: flex; gap: 10px; }
 .social-links svg { fill: var(--marrom-logo); width: 18px; height: 18px; }
-.assinatura-img { height: 55px !important; width: auto !important; }
+.assinatura-img { height: 50px !important; width: auto; }
 
-/* HERO SECTION - DESKTOP */
+/* =========================================
+   3. HERO SECTION (LAYOUT DESKTOP)
+   ========================================= */
 .hero {
-    height: calc(100vh - 90px);
+    min-height: calc(100vh - 80px);
     display: flex; align-items: center; justify-content: center;
     position: relative; perspective: 1500px;
+    padding: 40px 0; /* Espaçamento interno para rolagem */
 }
 
 .hero-content {
     position: relative; z-index: 20; text-align: center;
-    width: 90%; max-width: 600px; /* Reduzi para o bolo aparecer */
+    width: 90%; max-width: 600px;
     margin-bottom: 100px;
 }
 
@@ -54,15 +69,14 @@ header {
 .titulo-dourado { color: var(--dourado-folha); }
 .titulo-marrom { color: var(--marrom-logo); font-weight: 700; }
 
-/* Centralização do Pâtisserie sob Karla Tavares */
 .nome-marca { display: inline-block; text-align: center; }
 .sub-patisserie { font-size: 3.2rem; }
 
-.hero-content p { font-size: 1.1rem; color: #666; margin-bottom: 30px; font-weight: 300; }
+.hero-desc { font-size: 1.1rem; color: #666; margin-bottom: 30px; font-weight: 300; }
 
 .cta-group { display: flex; gap: 15px; justify-content: center; }
 .btn-cta {
-    padding: 15px 35px; text-decoration: none; border-radius: 50px;
+    padding: 15px 30px; text-decoration: none; border-radius: 50px;
     font-weight: 600; text-transform: uppercase; font-size: 12px; color: white;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
@@ -74,6 +88,7 @@ header {
 .left-cake { height: 480px; left: 3%; bottom: 60px; }
 .right-jars { height: 420px; right: 3%; bottom: 60px; }
 
+/* MESA DE MADEIRA */
 .wood-table {
     position: absolute; bottom: -100px; width: 200%; height: 400px;
     background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.1) 100%),
@@ -82,45 +97,62 @@ header {
     transform: rotateX(75deg); z-index: 10; border-top: 10px solid #a67c52;
 }
 
-/* RESPONSIVIDADE MOBILE (GERAL) */
-.menu-toggle { display: none; flex-direction: column; gap: 4px; background: none; border: none; }
+/* =========================================
+   4. RESPONSIVIDADE (MOBILE SCROLLING)
+   ========================================= */
+.menu-toggle { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; }
 .menu-toggle span { width: 22px; height: 3px; background: var(--marrom-logo); }
 
 @media (max-width: 1024px) {
     .menu-toggle { display: flex; }
     .nav-menu {
-        display: none; position: absolute; top: 90px; left: 0; width: 100%;
+        display: none; position: absolute; top: 80px; left: 0; width: 100%;
         background: white; padding: 20px; border-bottom: 1px solid #eee;
     }
     .nav-menu.active { display: block; }
     .nav-menu ul { flex-direction: column; align-items: center; gap: 15px; }
 
-    .hero-content { margin-bottom: 300px; }
+    /* Ativando a rolagem: removemos a altura fixa do hero */
+    .hero {
+        height: auto; /* Deixa o conteúdo crescer verticalmente */
+        min-height: 100vh;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 50px;
+    }
+
+    .hero-content {
+        margin-bottom: 60px; /* Espaço para as imagens aparecerem logo abaixo */
+    }
+
     .hero-content h1 { font-size: 2.2rem; }
     .sub-patisserie { font-size: 2rem; }
+
     .cta-group { flex-direction: column; align-items: center; }
     .btn-cta { width: 100%; max-width: 260px; text-align: center; }
 
-    .product { height: 210px; bottom: 35px; }
-    .left-cake { left: 1%; }
-    .right-jars { right: 1%; }
-    .wood-table { height: 250px; bottom: -50px; }
+    /* Imagens agora seguem o fluxo do texto no mobile */
+    .product {
+        position: relative; /* Saem do absolute para não flutuarem sobre o texto */
+        display: inline-block;
+        height: 240px;
+        bottom: auto;
+        margin: 10px 5px;
+    }
+    
+    .left-cake { left: auto; }
+    .right-jars { right: auto; }
+
+    .wood-table { 
+        position: absolute;
+        bottom: 0; /* Mesa fica no final da página após o scroll */
+        height: 250px; 
+    }
 }
 
-/* --- SOLUÇÃO PARA MOBILE MINIS (320px x 568px) --- */
+/* AJUSTE PARA TELAS MÍNIMAS (IPHONE SE/5) */
 @media (max-width: 360px) {
-    header { height: 70px; }
-    .assinatura-img { height: 40px !important; }
-    .social-links { gap: 8px; }
-    .social-links svg { width: 15px; height: 15px; }
-
-    .hero-content { margin-bottom: 240px; }
-    .hero-content h1 { font-size: 1.6rem; }
-    .sub-patisserie { font-size: 1.5rem; }
-    .hero-desc { font-size: 0.85rem; line-height: 1.2; margin-bottom: 15px; }
-    
-    .cta-group { gap: 8px; }
-    .btn-cta { padding: 10px; font-size: 10px; }
-
-    .product { height: 160px; bottom: 20px; }
+    .hero-content h1 { font-size: 1.8rem; }
+    .hero-desc { font-size: 0.9rem; }
+    .product { height: 180px; }
 }
