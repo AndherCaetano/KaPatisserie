@@ -14,10 +14,12 @@ body {
     background-color: var(--branco); 
     font-family: 'Poppins', sans-serif; 
     overflow-x: hidden;
+    /* Permite rolagem natural se o conteúdo exceder a tela */
+    overflow-y: auto; 
 }
 
 /* =========================================
-   2. HEADER (FIXO E ESTÁVEL)
+   2. HEADER (AJUSTE DE ESPAÇAMENTO MOBILE)
    ========================================= */
 header {
     background: var(--branco);
@@ -32,30 +34,33 @@ header {
     display: flex; justify-content: space-between; align-items: center;
 }
 
-.header-left { display: flex; align-items: center; gap: 15px; }
+.header-left { display: flex; align-items: center; gap: 20px; }
 .folha-img { height: 40px !important; width: auto; }
 
+/* Menu Desktop */
 .nav-menu ul { display: flex; list-style: none; gap: 20px; }
 .nav-menu ul li a {
     text-decoration: none; font-size: 13px; text-transform: uppercase;
     color: var(--marrom-logo); font-weight: 700;
 }
-.nav-menu ul li a.active { color: var(--dourado-folha); }
 
+/* Redes Sociais e Assinatura */
 .social-wrapper { display: flex; align-items: center; gap: 15px; }
 .social-links { display: flex; gap: 12px; }
-.social-links svg { fill: var(--marrom-logo); width: 18px; height: 18px; }
+.social-links svg { fill: var(--marrom-logo); width: 18px; height: 18px; transition: 0.3s; }
+.social-links a:hover svg { fill: var(--dourado-folha); }
 .assinatura-img { height: 55px !important; width: auto; }
 
 /* =========================================
-   3. HERO SECTION (CONTEÚDO CENTRAL)
+   3. HERO SECTION (AJUSTE DESKTOP: SUBIR TEXTO)
    ========================================= */
 .hero {
+    /* No desktop, mantemos a altura da tela fixa */
     height: calc(100vh - 90px);
     display: flex; 
     flex-direction: column;
     align-items: center; 
-    justify-content: center; /* Mantém o texto centralizado verticalmente */
+    justify-content: center;
     position: relative; 
     perspective: 1500px;
 }
@@ -65,8 +70,10 @@ header {
     z-index: 20; 
     text-align: center;
     width: 90%; 
-    max-width: 650px;
-    margin-bottom: 60px; /* Espaço para não encostar na mesa */
+    max-width: 600px;
+    /* AJUSTE DESKTOP: Subindo o texto em "dois dedos" (aprox. 50px) */
+    margin-top: -50px; 
+    margin-bottom: 80px;
 }
 
 .hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; line-height: 1.1; margin-bottom: 15px; }
@@ -87,18 +94,15 @@ header {
 .cta-gold { background: var(--dourado-folha); }
 .cta-brown { background: var(--marrom-logo); }
 
-/* =========================================
-   4. POSIÇÃO ORIGINAL: DOCES SOBRE A MESA
-   ========================================= */
+/* PRODUTOS - TRAVADOS NA MESA */
 .product { 
     position: absolute; 
     z-index: 30; 
     filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15)); 
     pointer-events: none; 
     height: 480px; 
-    bottom: 60px; /* TRAVADO NO TOPO DA MESA */
+    bottom: 60px; 
 }
-
 .left-cake { left: 4%; }
 .right-jars { right: 4%; }
 
@@ -117,43 +121,45 @@ header {
 }
 
 /* =========================================
-   5. RESPONSIVIDADE (RESTORE E AJUSTES)
+   4. RESPONSIVIDADE (MOBILE AJUSTADO)
    ========================================= */
 .menu-toggle { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; }
 .menu-toggle span { width: 22px; height: 3px; background: var(--marrom-logo); }
 
 @media (max-width: 1024px) {
-    .menu-toggle { display: flex; }
+    .menu-toggle { display: flex; margin-right: 15px; } /* Afasta os ícones do sanduíche */
+    
     .nav-menu {
         display: none; position: absolute; top: 90px; left: 0; width: 100%;
         background: white; padding: 20px; border-bottom: 1px solid #eee;
     }
     .nav-menu.active { display: block; }
-    .nav-menu ul { flex-direction: column; align-items: center; gap: 15px; }
 
-    /* Redução proporcional mantendo os produtos sobre a mesa */
-    .hero-content { margin-bottom: 250px; } /* Abre espaço para o absoluto */
+    /* MOBILE: ATIVAR ROLAGEM */
+    .hero { 
+        height: auto; 
+        min-height: calc(100vh - 90px); 
+        padding-top: 40px;
+        padding-bottom: 250px; /* Garante que a mesa e doces apareçam no scroll */
+    }
+
+    .hero-content { margin-top: 0; margin-bottom: 50px; }
     .hero-content h1 { font-size: 2.2rem; }
     .sub-patisserie { font-size: 2rem; }
-    
     .cta-group { flex-direction: column; align-items: center; }
     .btn-cta { width: 100%; max-width: 260px; text-align: center; }
 
-    /* DOCES SOBRE A MESA NO MOBILE */
+    /* Doces continuam sobre a mesa mas menores */
     .product { height: 210px; bottom: 35px; }
     .left-cake { left: 2%; }
     .right-jars { right: 2%; }
-    
     .wood-table { height: 250px; bottom: -50px; }
 }
 
-/* Telas muito pequenas (iPhone SE/5 - Ativa rolagem apenas aqui) */
-@media (max-height: 600px) {
-    .hero { height: auto; min-height: 100vh; padding-top: 20px; padding-bottom: 200px; }
-    .hero-content { margin-bottom: 40px; }
+/* AJUSTE PARA IPHONE SE/5 (320px) */
+@media (max-width: 360px) {
+    .header-left { gap: 10px; }
+    .social-wrapper { gap: 8px; }
     .hero-content h1 { font-size: 1.8rem; }
-    .hero-desc { font-size: 0.85rem; }
-    
-    /* Doces continuam absolutos mas menores */
     .product { height: 160px; bottom: 30px; }
 }
