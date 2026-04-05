@@ -13,17 +13,15 @@
 body { 
     background-color: var(--branco); 
     font-family: 'Poppins', sans-serif; 
-    overflow-x: hidden; 
-    /* Ativa a rolagem natural */
-    overflow-y: auto; 
+    overflow-x: hidden;
 }
 
 /* =========================================
-   2. HEADER (FIXO)
+   2. HEADER (ESTÁVEL)
    ========================================= */
 header {
     background: var(--branco);
-    width: 100%; height: 90px;
+    width: 100%; height: 80px;
     border-bottom: 1px solid #f2f0ed;
     display: flex; align-items: center;
     position: sticky; top: 0; z-index: 1000;
@@ -35,7 +33,7 @@ header {
 }
 
 .header-left { display: flex; align-items: center; gap: 15px; }
-.folha-img { height: 40px !important; width: auto; }
+.folha-img { height: 35px !important; width: auto; }
 
 .nav-menu ul { display: flex; list-style: none; gap: 20px; }
 .nav-menu ul li a {
@@ -47,21 +45,20 @@ header {
 .social-wrapper { display: flex; align-items: center; gap: 15px; }
 .social-links { display: flex; gap: 12px; }
 .social-links svg { fill: var(--marrom-logo); width: 18px; height: 18px; }
-.assinatura-img { height: 55px !important; width: auto; }
+.assinatura-img { height: 50px !important; width: auto; }
 
 /* =========================================
-   3. HERO SECTION (PROPOSTA DA MESA)
+   3. HERO SECTION (DISTRIBUIÇÃO INTELIGENTE)
    ========================================= */
 .hero {
-    /* No desktop mantém a altura da tela, no mobile cresce conforme o scroll */
-    min-height: calc(100vh - 90px);
+    min-height: calc(100vh - 80px); /* Ocupa o restante da tela */
     display: flex; 
     flex-direction: column;
     align-items: center; 
-    justify-content: center;
+    justify-content: space-between; /* DISTRIBUI O ESPAÇO AUTOMATICAMENTE */
     position: relative; 
     perspective: 1500px;
-    padding-bottom: 150px; /* Garante espaço para a mesa no final */
+    padding: 20px 0 0 0; /* Respiro no topo */
 }
 
 .hero-content {
@@ -70,47 +67,46 @@ header {
     text-align: center;
     width: 90%; 
     max-width: 600px;
-    margin-top: 40px;
-    margin-bottom: 60px;
+    /* Removemos margens fixas para o space-between agir */
 }
 
-.hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; line-height: 1.1; margin-bottom: 15px; }
+.hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.2rem; line-height: 1.1; margin-bottom: 15px; }
 .titulo-dourado { color: var(--dourado-folha); }
 .titulo-marrom { color: var(--marrom-logo); font-weight: 700; }
 
 .nome-marca { display: inline-block; text-align: center; }
-.sub-patisserie { font-size: 3.2rem; }
+.sub-patisserie { font-size: 3rem; }
 
-.hero-desc { font-size: 1.1rem; color: #666; margin-bottom: 30px; font-weight: 300; }
+.hero-desc { font-size: 1rem; color: #666; margin-bottom: 25px; font-weight: 300; line-height: 1.4; }
 
-.cta-group { display: flex; gap: 15px; justify-content: center; }
+.cta-group { display: flex; gap: 12px; justify-content: center; }
 .btn-cta {
-    padding: 15px 35px; text-decoration: none; border-radius: 50px;
-    font-weight: 600; text-transform: uppercase; font-size: 12px; color: white;
+    padding: 14px 28px; text-decoration: none; border-radius: 50px;
+    font-weight: 600; text-transform: uppercase; font-size: 11px; color: white;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 .cta-gold { background: var(--dourado-folha); }
 .cta-brown { background: var(--marrom-logo); }
 
-/* PRODUTOS - SEMPRE SOBRE A MESA */
+/* PRODUTOS - SEMPRE NA BASE DA MESA */
 .product { 
     position: absolute; 
     z-index: 30; 
-    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15)); 
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15)); 
     pointer-events: none; 
-    height: 480px; 
-    bottom: 60px; /* "Travado" no nível da mesa */
+    height: 450px; 
+    bottom: 50px; 
 }
 
-.left-cake { left: 3%; }
-.right-jars { right: 3%; }
+.left-cake { left: 4%; }
+.right-jars { right: 4%; }
 
-/* MESA DE MADEIRA */
+/* MESA */
 .wood-table {
-    position: absolute; 
-    bottom: -100px; 
+    position: relative; /* Mudado para relative para "segurar" o espaço no fluxo flex */
     width: 200%; 
-    height: 400px;
+    height: 350px;
+    margin-top: 40px; /* Garante que nunca encoste nos botões */
     background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.1) 100%),
                 repeating-conic-gradient(from 180deg at 50% -100px, transparent 0%, transparent 1%, rgba(74, 55, 40, 0.1) 1.1%, transparent 1.2%),
                 var(--madeira-mel);
@@ -120,7 +116,7 @@ header {
 }
 
 /* =========================================
-   4. RESPONSIVIDADE (SCROLL + PRODUTOS NA MESA)
+   4. RESPONSIVIDADE (COERÊNCIA DE ESPAÇO)
    ========================================= */
 .menu-toggle { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; }
 .menu-toggle span { width: 22px; height: 3px; background: var(--marrom-logo); }
@@ -128,36 +124,31 @@ header {
 @media (max-width: 1024px) {
     .menu-toggle { display: flex; }
     .nav-menu {
-        display: none; position: absolute; top: 90px; left: 0; width: 100%;
+        display: none; position: absolute; top: 80px; left: 0; width: 100%;
         background: white; padding: 20px; border-bottom: 1px solid #eee;
     }
     .nav-menu.active { display: block; }
     .nav-menu ul { flex-direction: column; align-items: center; gap: 15px; }
 
-    /* Ativa o crescimento da tela para scroll */
-    .hero { 
-        height: auto; 
-        padding-top: 20px; 
-        padding-bottom: 300px; /* Espaço maior para a mesa aparecer no scroll */
-    }
-
     .hero-content h1 { font-size: 2.2rem; }
     .sub-patisserie { font-size: 2rem; }
     .cta-group { flex-direction: column; align-items: center; }
-    .btn-cta { width: 100%; max-width: 280px; text-align: center; }
+    .btn-cta { width: 100%; max-width: 260px; text-align: center; }
 
-    /* Doces continuam sobre a mesa, mas menores para caber lado a lado */
-    .product { height: 210px; bottom: 40px; }
+    /* Ajuste de escala para caber sem rolar em telas médias */
+    .product { height: 220px; bottom: 30px; }
     .left-cake { left: 2%; }
     .right-jars { right: 2%; }
     
-    .wood-table { height: 250px; bottom: -50px; }
+    .wood-table { height: 220px; margin-top: 20px; }
 }
 
-/* Telas muito pequenas (iPhone SE/5) */
-@media (max-width: 360px) {
+/* Telas Curtas (iPhone SE/5 - 320x568) - ATIVA ROLAGEM AQUI */
+@media (max-height: 650px) {
+    .hero { justify-content: flex-start; } /* Remove o space-between para não esticar */
+    .hero-content { margin-bottom: 30px; }
     .hero-content h1 { font-size: 1.8rem; }
-    .hero-desc { font-size: 0.9rem; }
-    /* Doces encolhem ainda mais para manter o alinhamento sobre a mesa */
-    .product { height: 160px; bottom: 30px; }
+    .hero-desc { font-size: 0.85rem; margin-bottom: 15px; }
+    .product { height: 170px; bottom: 20px; }
+    .wood-table { height: 180px; }
 }
