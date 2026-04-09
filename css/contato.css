@@ -1,3 +1,4 @@
+/* CONFIGURAÇÕES GERAIS */
 .contato-hero {
     padding: 60px 20px;
     background: #fdfbf9;
@@ -5,7 +6,7 @@
 }
 
 .container {
-    max-width: 800px;
+    max-width: 900px; /* Aumentei um pouco para caber melhor o grid da localização */
     margin: 0 auto;
 }
 
@@ -91,6 +92,87 @@
 .btn-enviar:hover {
     background: var(--dourado-folha);
     transform: translateY(-3px);
+}
+
+/* --- NOVA SEÇÃO: LOCALIZAÇÃO --- */
+.localizacao {
+    padding: 80px 20px;
+    background: #fff;
+}
+
+.localizacao-grid {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.info-endereco {
+    flex: 1;
+}
+
+.titulo-elegante {
+    font-family: 'Playfair Display', serif;
+    color: var(--marrom-logo);
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.detalhe-linha {
+    width: 60px;
+    height: 2px;
+    background: var(--dourado-folha);
+    margin-bottom: 25px;
+}
+
+.endereco-texto {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.horario-texto {
+    font-size: 14px;
+    color: var(--dourado-folha);
+    margin-bottom: 30px;
+}
+
+.btn-rota {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid var(--marrom-logo);
+    color: var(--marrom-logo);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+
+.btn-rota:hover {
+    background: var(--marrom-logo);
+    color: white;
+}
+
+.mapa-container {
+    flex: 1;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.08);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 850px) {
+    .localizacao-grid {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+    
+    .detalhe-linha {
+        margin: 0 auto 25px;
+    }
 }
 
 @media (max-width: 600px) {
