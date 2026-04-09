@@ -1,1 +1,371 @@
+/* =========================================
+   1. CONFIGURAÇÕES BASE (COM TRAVA DE GPS)
+   ========================================= */
+:root {
+    --marrom-logo: #63412c;
+    --dourado-folha: #b4a06d;
+    --branco: #ffffff;
+    --madeira-mel: #d4a373;
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+html, body { 
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden; 
+    background-color: var(--branco); 
+    font-family: 'Poppins', sans-serif; 
+    color: #666;
+    -webkit-text-smoothing: antialiased;
+}
+
+/* =========================================
+   2. HEADER (RESTABELECIDO)
+   ========================================= */
+header {
+    background: var(--branco);
+    width: 100%; height: 90px;
+    border-bottom: 1px solid #f2f0ed;
+    display: flex; align-items: center;
+    position: sticky; top: 0; z-index: 1000;
+}
+
+.header-container {
+    width: 94%; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+}
+
+.header-left { display: flex; align-items: center; gap: 20px; }
+.folha-img { height: 35px !important; width: auto; }
+
+.nav-menu ul { display: flex; list-style: none; gap: 20px; }
+.nav-menu ul li a {
+    text-decoration: none; font-size: 13px; text-transform: uppercase;
+    color: var(--marrom-logo); font-weight: 700;
+}
+.nav-menu ul li a.active { color: var(--dourado-folha); }
+
+.social-wrapper { display: flex; align-items: center; gap: 15px; }
+.social-links { display: flex; gap: 12px; }
+.social-links svg { fill: var(--marrom-logo); width: 18px; height: 18px; }
+.assinatura-img { height: 50px !important; width: auto; }
+
+/* =========================================
+   3. HERO SECTION (TEXTO ELEVADO 2,5 DEDOS)
+   ========================================= */
+.hero {
+    min-height: calc(100vh - 90px);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    position: relative; perspective: 1500px;
+    padding-bottom: 20px;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative; z-index: 50; text-align: center;
+    width: 90%; max-width: 600px;
+    margin-top: -130px; /* AJUSTE DESKTOP */
+}
+
+.hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.2rem; line-height: 1.1; margin-bottom: 15px; color: var(--marrom-logo); }
+.titulo-dourado { color: var(--dourado-folha); }
+.titulo-marrom { color: var(--marrom-logo); font-weight: 700; }
+.nome-marca { display: inline-block; text-align: center; }
+.sub-patisserie { font-size: 3rem; }
+
+.cta-group { display: flex; gap: 15px; justify-content: center; margin-top: 25px; }
+.btn-cta {
+    padding: 14px 30px; text-decoration: none; border-radius: 50px;
+    font-weight: 600; text-transform: uppercase; font-size: 11px; color: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.cta-gold { background: var(--dourado-folha); }
+.cta-brown { background: var(--marrom-logo); }
+
+
+/* =========================================
+   4. PRODUTOS E MESA (POSIÇÃO ORIGINAL)
+   ========================================= */
+.product { 
+    position: absolute; z-index: 60; 
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15)); 
+    pointer-events: none; 
+    height: 480px; 
+    bottom: 45px; 
+}
+.left-cake { left: 4%; }
+.right-jars { right: 4%; }
+
+.wood-table {
+    position: absolute; 
+    bottom: -150px; 
+    width: 200%; height: 500px;
+    left: -50%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.1) 100%),
+                repeating-conic-gradient(from 180deg at 50% -100px, transparent 0%, transparent 1%, rgba(74, 55, 40, 0.1) 1.1%, transparent 1.2%),
+                var(--madeira-mel);
+    transform: rotateX(75deg); z-index: 10; border-top: 10px solid #a67c52;
+}
+
+/* =========================================
+   5. RESPONSIVIDADE
+   ========================================= */
+.menu-toggle { 
+    display: none; flex-direction: column; gap: 4px; 
+    background: none; border: none; cursor: pointer;
+    margin-right: 20px; 
+}
+.menu-toggle span { width: 22px; height: 3px; background: var(--marrom-logo); }
+
+/* AJUSTE EXCLUSIVO PARA TABLETS E IPADS (Aumenta os produtos) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .hero {
+        padding-bottom: 450px; /* Garante espaço para os produtos maiores */
+    }
+    .product { 
+        height: 380px !important; /* Aumenta o tamanho consideravelmente nos tablets */
+        bottom: 120px !important; /* Sobe os produtos para preencher o vazio */
+    }
+    .wood-table {
+        height: 450px !important;
+        bottom: -100px !important;
+    }
+}
+
+/* AJUSTE GERAL PARA MOBILE (Celulares) */
+@media (max-width: 1024px) {
+    .menu-toggle { display: flex; }
+    
+    .nav-menu {
+        display: none; position: absolute; top: 90px; left: 0; 
+        width: 100%; background: white; padding: 30px; 
+        border-bottom: 1px solid #eee; text-align: center;
+        z-index: 2000;
+    }
+    .nav-menu.active { display: block; }
+    .nav-menu ul { flex-direction: column; align-items: center; gap: 20px; }
+
+    .hero { 
+        height: auto; 
+        min-height: 100vh;
+        justify-content: flex-start;
+        padding-top: 30px;
+        overflow: hidden;
+    }
+
+    .hero-content { 
+        margin-top: 0; 
+        margin-bottom: 40px; 
+        z-index: 100;
+    }
+    .hero-content h1 { font-size: 2.2rem; }
+    .sub-patisserie { font-size: 2rem; }
+    .cta-group { flex-direction: column; align-items: center; }
+
+    /* Estilo padrão para celulares (Não afetado pelo ajuste de tablet acima) */
+    @media (max-width: 767px) {
+        .hero { padding-bottom: 350px; }
+        .product { height: 220px; bottom: 110px; }
+        .wood-table { height: 400px; bottom: -110px; }
+    }
+}
+
+/* AJUSTE PARA IPHONE SE/5 */
+@media (max-width: 360px) {
+    .header-left { gap: 10px; }
+    .social-links { gap: 8px; }
+    .menu-toggle { margin-right: 12px; }
+    .hero-content h1 { font-size: 1.8rem; }
+    .product { height: 170px; bottom: 100px; }
+}
+
+
+/* ÍCONES LOJINHAS PARA PEDIDOS ON-LINE */
+/* Container Principal */
+.btn-container-gold {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #bca374; 
+    padding: 15px 35px;
+    border-radius: 60px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+/* Texto Superior */
+.text-link {
+    color: white !important;
+    text-decoration: none !important;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 12px;
+    display: block;
+}
+
+/* Alinhamento dos Ícones */
+.cta-icons-inside {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    justify-content: center;
+}
+
+.cta-icons-inside a {
+    text-decoration: none;
+    display: flex;
+}
+
+/* Estilo e Animação dos Ícones */
+.pulse-icon {
+    width: 35px; 
+    height: 35px;
+    object-fit: contain;
+    /* Aplica a animação: nome | duração | ritmo | repetição infinita */
+    animation: pulsar 2s ease-in-out infinite;
+}
+
+/* Define o movimento da animação */
+@keyframes pulsar {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15); /* Aumenta um pouco */
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Faz com que cada ícone comece a pulsar em um tempo levemente diferente (opcional) */
+.cta-icons-inside a:nth-child(2) img { animation-delay: 0.2s; }
+.cta-icons-inside a:nth-child(3) img { animation-delay: 0.4s; }
+.cta-icons-inside a:nth-child(4) img { animation-delay: 0.6s; }
+
+/* Pausa a animação quando o usuário passa o mouse por cima */
+.cta-icons-inside a:hover img {
+    animation-play-state: paused;
+    transform: scale(1.2);
+    transition: 0.2s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
