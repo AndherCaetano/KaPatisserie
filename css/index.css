@@ -70,6 +70,7 @@ header {
 .hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.2rem; line-height: 1.1; margin-bottom: 15px; color: var(--marrom-logo); }
 .titulo-dourado { color: var(--dourado-folha); }
 .titulo-marrom { color: var(--marrom-logo); font-weight: 700; }
+.nome-marca { display: inline-block; text-align: center; }
 .sub-patisserie { font-size: 3rem; }
 
 .cta-group { display: flex; gap: 15px; justify-content: center; margin-top: 25px; }
@@ -134,7 +135,7 @@ header {
 }
 
 /* =========================================
-   5. CARROSSEL DE PRODUTOS (AJUSTADO)
+   5. CARROSSEL DE PRODUTOS
    ========================================= */
 .product-carousel {
     width: 100%;
@@ -156,7 +157,6 @@ header {
     flex-direction: column;
     align-items: center;
     flex-shrink: 0;
-    /* Desktop: exibe cerca de 8 itens */
     width: 12.5vw; 
     padding: 0 10px;
 }
@@ -190,7 +190,7 @@ header {
 .product-carousel:hover .carousel-track { animation-play-state: paused; }
 
 /* =========================================
-   6. RESPONSIVIDADE (TRAVAS SOLICITADAS)
+   6. RESPONSIVIDADE
    ========================================= */
 .menu-toggle { 
     display: none; flex-direction: column; gap: 4px; 
@@ -205,35 +205,50 @@ header {
     .wood-table { bottom: -80px !important; }
 
     .carousel-item {
-        width: 16.66vw; /* 100% / 6 itens = 16.66 */
+        width: 16.66vw; 
     }
     .circle-img { width: 80px; height: 80px; }
 }
 
-/* CELULARES - EXIBIR 3 ITENS */
+/* CELULARES - CORREÇÃO DE CENTRALIZAÇÃO DO MENU */
 @media (max-width: 767px) {
     .menu-toggle { display: flex; }
+    
     .nav-menu {
-        display: none; position: absolute; top: 90px; left: 0; 
-        width: 100%; background: white; padding: 30px; 
+        display: none; 
+        position: absolute; 
+        top: 90px; 
+        left: 0; 
+        width: 100%; 
+        background: white; 
+        padding: 30px; 
         z-index: 2000;
+        text-align: center; /* CENTRALIZA O TEXTO */
+        border-bottom: 1px solid #f2f0ed;
     }
+    
     .nav-menu.active { display: block; }
-    .nav-menu ul { flex-direction: column; gap: 20px; }
+    
+    .nav-menu ul { 
+        flex-direction: column; 
+        align-items: center; /* CENTRALIZA A LISTA */
+        justify-content: center;
+        gap: 20px; 
+        padding: 0;
+    }
 
     .hero { height: auto; min-height: 100vh; padding-top: 20px; padding-bottom: 300px; }
     .hero-content { margin-top: 0; }
     .hero-content h1 { font-size: 2rem; }
     .sub-patisserie { font-size: 1.8rem; }
-    .cta-group { flex-direction: column; }
+    .cta-group { flex-direction: column; align-items: center; }
 
     .product { height: 200px; bottom: 100px; }
     .wood-table { height: 380px; bottom: -100px; }
 
-    /* Ajuste Carrossel Mobile */
     .product-carousel { margin-top: 0; }
     .carousel-item {
-        width: 33.33vw; /* 100% / 3 itens = 33.33 */
+        width: 33.33vw; 
     }
     .circle-img { width: 70px; height: 70px; }
 }
