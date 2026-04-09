@@ -1,5 +1,5 @@
 /* =========================================
-   1. CONFIGURAÇÕES BASE (COM TRAVA DE GPS)
+   1. CONFIGURAÇÕES BASE
    ========================================= */
 :root {
     --marrom-logo: #63412c;
@@ -8,11 +8,7 @@
     --madeira-mel: #d4a373;
 }
 
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 html, body { 
     width: 100%;
@@ -21,11 +17,10 @@ html, body {
     background-color: var(--branco); 
     font-family: 'Poppins', sans-serif; 
     color: #666;
-    -webkit-text-smoothing: antialiased;
 }
 
 /* =========================================
-   2. HEADER (RESTABELECIDO)
+   2. HEADER
    ========================================= */
 header {
     background: var(--branco);
@@ -56,27 +51,25 @@ header {
 .assinatura-img { height: 50px !important; width: auto; }
 
 /* =========================================
-   3. HERO SECTION (TEXTO ELEVADO 2,5 DEDOS)
+   3. HERO SECTION
    ========================================= */
 .hero {
     min-height: calc(100vh - 90px);
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
     position: relative; perspective: 1500px;
-    padding-bottom: 20px;
     overflow: hidden;
 }
 
 .hero-content {
     position: relative; z-index: 50; text-align: center;
     width: 90%; max-width: 600px;
-    margin-top: -130px; /* AJUSTE DESKTOP */
+    margin-top: -130px; 
 }
 
 .hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.2rem; line-height: 1.1; margin-bottom: 15px; color: var(--marrom-logo); }
 .titulo-dourado { color: var(--dourado-folha); }
 .titulo-marrom { color: var(--marrom-logo); font-weight: 700; }
-.nome-marca { display: inline-block; text-align: center; }
 .sub-patisserie { font-size: 3rem; }
 
 .cta-group { display: flex; gap: 15px; justify-content: center; margin-top: 25px; }
@@ -88,16 +81,43 @@ header {
 .cta-gold { background: var(--dourado-folha); }
 .cta-brown { background: var(--marrom-logo); }
 
+/* BOTÃO COMPRE ONLINE */
+.btn-container-gold {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #bca374; 
+    padding: 15px 35px;
+    border-radius: 60px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.15);
+}
+
+.text-link {
+    color: white !important;
+    text-decoration: none !important;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.cta-icons-inside { display: flex; gap: 18px; }
+.pulse-icon {
+    width: 35px; height: 35px;
+    animation: pulsar 2s ease-in-out infinite;
+}
+
+@keyframes pulsar {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
 
 /* =========================================
-   4. PRODUTOS E MESA (POSIÇÃO ORIGINAL)
+   4. PRODUTOS E MESA
    ========================================= */
 .product { 
     position: absolute; z-index: 60; 
     filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15)); 
-    pointer-events: none; 
-    height: 480px; 
-    bottom: 45px; 
+    height: 480px; bottom: 45px; 
 }
 .left-cake { left: 4%; }
 .right-jars { right: 4%; }
@@ -114,258 +134,106 @@ header {
 }
 
 /* =========================================
-   5. RESPONSIVIDADE
+   5. CARROSSEL DE PRODUTOS (AJUSTADO)
+   ========================================= */
+.product-carousel {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    z-index: 5; 
+    padding: 20px 0;
+    margin-top: -40px; 
+}
+
+.carousel-track {
+    display: flex;
+    width: fit-content;
+    animation: scroll 30s linear infinite;
+}
+
+.carousel-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    /* Desktop: exibe cerca de 8 itens */
+    width: 12.5vw; 
+    padding: 0 10px;
+}
+
+.circle-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--dourado-folha);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background: white;
+}
+
+.circle-img img { width: 100%; height: 100%; object-fit: cover; }
+
+.carousel-item span {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--marrom-logo);
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 8px;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.product-carousel:hover .carousel-track { animation-play-state: paused; }
+
+/* =========================================
+   6. RESPONSIVIDADE (TRAVAS SOLICITADAS)
    ========================================= */
 .menu-toggle { 
     display: none; flex-direction: column; gap: 4px; 
     background: none; border: none; cursor: pointer;
-    margin-right: 20px; 
 }
 .menu-toggle span { width: 22px; height: 3px; background: var(--marrom-logo); }
 
-/* AJUSTE EXCLUSIVO PARA TABLETS E IPADS (Aumenta os produtos) */
+/* TABLETS E IPADS - EXIBIR 6 ITENS */
 @media (min-width: 768px) and (max-width: 1024px) {
-    .hero {
-        padding-bottom: 450px; /* Garante espaço para os produtos maiores */
+    .hero { padding-bottom: 400px; }
+    .product { height: 350px !important; bottom: 100px !important; }
+    .wood-table { bottom: -80px !important; }
+
+    .carousel-item {
+        width: 16.66vw; /* 100% / 6 itens = 16.66 */
     }
-    .product { 
-        height: 380px !important; /* Aumenta o tamanho consideravelmente nos tablets */
-        bottom: 120px !important; /* Sobe os produtos para preencher o vazio */
-    }
-    .wood-table {
-        height: 450px !important;
-        bottom: -100px !important;
-    }
+    .circle-img { width: 80px; height: 80px; }
 }
 
-/* AJUSTE GERAL PARA MOBILE (Celulares) */
-@media (max-width: 1024px) {
+/* CELULARES - EXIBIR 3 ITENS */
+@media (max-width: 767px) {
     .menu-toggle { display: flex; }
-    
     .nav-menu {
         display: none; position: absolute; top: 90px; left: 0; 
         width: 100%; background: white; padding: 30px; 
-        border-bottom: 1px solid #eee; text-align: center;
         z-index: 2000;
     }
     .nav-menu.active { display: block; }
-    .nav-menu ul { flex-direction: column; align-items: center; gap: 20px; }
+    .nav-menu ul { flex-direction: column; gap: 20px; }
 
-    .hero { 
-        height: auto; 
-        min-height: 100vh;
-        justify-content: flex-start;
-        padding-top: 30px;
-        overflow: hidden;
+    .hero { height: auto; min-height: 100vh; padding-top: 20px; padding-bottom: 300px; }
+    .hero-content { margin-top: 0; }
+    .hero-content h1 { font-size: 2rem; }
+    .sub-patisserie { font-size: 1.8rem; }
+    .cta-group { flex-direction: column; }
+
+    .product { height: 200px; bottom: 100px; }
+    .wood-table { height: 380px; bottom: -100px; }
+
+    /* Ajuste Carrossel Mobile */
+    .product-carousel { margin-top: 0; }
+    .carousel-item {
+        width: 33.33vw; /* 100% / 3 itens = 33.33 */
     }
-
-    .hero-content { 
-        margin-top: 0; 
-        margin-bottom: 40px; 
-        z-index: 100;
-    }
-    .hero-content h1 { font-size: 2.2rem; }
-    .sub-patisserie { font-size: 2rem; }
-    .cta-group { flex-direction: column; align-items: center; }
-
-    /* Estilo padrão para celulares (Não afetado pelo ajuste de tablet acima) */
-    @media (max-width: 767px) {
-        .hero { padding-bottom: 350px; }
-        .product { height: 220px; bottom: 110px; }
-        .wood-table { height: 400px; bottom: -110px; }
-    }
+    .circle-img { width: 70px; height: 70px; }
 }
-
-/* AJUSTE PARA IPHONE SE/5 */
-@media (max-width: 360px) {
-    .header-left { gap: 10px; }
-    .social-links { gap: 8px; }
-    .menu-toggle { margin-right: 12px; }
-    .hero-content h1 { font-size: 1.8rem; }
-    .product { height: 170px; bottom: 100px; }
-}
-
-
-/* ÍCONES LOJINHAS PARA PEDIDOS ON-LINE */
-/* Container Principal */
-.btn-container-gold {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #bca374; 
-    padding: 15px 35px;
-    border-radius: 60px;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.15);
-    text-align: center;
-}
-
-/* Texto Superior */
-.text-link {
-    color: white !important;
-    text-decoration: none !important;
-    font-weight: bold;
-    font-size: 18px;
-    font-family: 'Arial', sans-serif;
-    margin-bottom: 12px;
-    display: block;
-}
-
-/* Alinhamento dos Ícones */
-.cta-icons-inside {
-    display: flex;
-    gap: 18px;
-    align-items: center;
-    justify-content: center;
-}
-
-.cta-icons-inside a {
-    text-decoration: none;
-    display: flex;
-}
-
-/* Estilo e Animação dos Ícones */
-.pulse-icon {
-    width: 35px; 
-    height: 35px;
-    object-fit: contain;
-    /* Aplica a animação: nome | duração | ritmo | repetição infinita */
-    animation: pulsar 2s ease-in-out infinite;
-}
-
-/* Define o movimento da animação */
-@keyframes pulsar {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.15); /* Aumenta um pouco */
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-/* Faz com que cada ícone comece a pulsar em um tempo levemente diferente (opcional) */
-.cta-icons-inside a:nth-child(2) img { animation-delay: 0.2s; }
-.cta-icons-inside a:nth-child(3) img { animation-delay: 0.4s; }
-.cta-icons-inside a:nth-child(4) img { animation-delay: 0.6s; }
-
-/* Pausa a animação quando o usuário passa o mouse por cima */
-.cta-icons-inside a:hover img {
-    animation-play-state: paused;
-    transform: scale(1.2);
-    transition: 0.2s;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
