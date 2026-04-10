@@ -51,7 +51,7 @@ header {
 .assinatura-img { height: 50px !important; width: auto; }
 
 /* =========================================
-   3. HERO SECTION
+   3. HERO SECTION (CORREÇÃO DE SOBREPOSIÇÃO)
    ========================================= */
 .hero {
     min-height: calc(100vh - 90px);
@@ -64,7 +64,7 @@ header {
 .hero-content {
     position: relative; z-index: 50; text-align: center;
     width: 90%; max-width: 600px;
-    margin-top: -130px; 
+    margin-top: -130px; /* Ajuste Desktop */
 }
 
 .hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.2rem; line-height: 1.1; margin-bottom: 15px; color: var(--marrom-logo); }
@@ -159,6 +159,7 @@ header {
     flex-shrink: 0;
     width: 12.5vw; 
     padding: 0 10px;
+    text-decoration: none; /* Corrigido: remove underline do link */
 }
 
 .circle-img {
@@ -190,7 +191,7 @@ header {
 .product-carousel:hover .carousel-track { animation-play-state: paused; }
 
 /* =========================================
-   6. RESPONSIVIDADE
+   6. RESPONSIVIDADE (TRAVAS E CORREÇÕES)
    ========================================= */
 .menu-toggle { 
     display: none; flex-direction: column; gap: 4px; 
@@ -198,46 +199,41 @@ header {
 }
 .menu-toggle span { width: 22px; height: 3px; background: var(--marrom-logo); }
 
-/* TABLETS E IPADS - EXIBIR 6 ITENS */
+/* TABLETS E IPADS - 6 ITENS */
 @media (min-width: 768px) and (max-width: 1024px) {
-    .hero { padding-bottom: 400px; }
+    .hero { 
+        padding-top: 50px; /* Garante visibilidade do título */
+        padding-bottom: 400px; 
+    }
+    .hero-content { margin-top: 0; } /* Remove margin negativa em tablets */
+    
     .product { height: 350px !important; bottom: 100px !important; }
     .wood-table { bottom: -80px !important; }
 
-    .carousel-item {
-        width: 16.66vw; 
-    }
+    .carousel-item { width: 16.66vw; }
     .circle-img { width: 80px; height: 80px; }
 }
 
-/* CELULARES - CORREÇÃO DE CENTRALIZAÇÃO DO MENU */
+/* CELULARES - 3 ITENS E CENTRALIZAÇÃO */
 @media (max-width: 767px) {
     .menu-toggle { display: flex; }
     
     .nav-menu {
-        display: none; 
-        position: absolute; 
-        top: 90px; 
-        left: 0; 
-        width: 100%; 
-        background: white; 
-        padding: 30px; 
-        z-index: 2000;
-        text-align: center; /* CENTRALIZA O TEXTO */
+        display: none; position: absolute; top: 90px; left: 0; 
+        width: 100%; background: white; padding: 30px; 
+        z-index: 2000; text-align: center;
         border-bottom: 1px solid #f2f0ed;
     }
     
     .nav-menu.active { display: block; }
-    
-    .nav-menu ul { 
-        flex-direction: column; 
-        align-items: center; /* CENTRALIZA A LISTA */
-        justify-content: center;
-        gap: 20px; 
-        padding: 0;
-    }
+    .nav-menu ul { flex-direction: column; align-items: center; justify-content: center; gap: 20px; padding: 0; }
 
-    .hero { height: auto; min-height: 100vh; padding-top: 20px; padding-bottom: 300px; }
+    .hero { 
+        height: auto; 
+        min-height: 100vh; 
+        padding-top: 40px; /* Garante visibilidade do título no celular */
+        padding-bottom: 300px; 
+    }
     .hero-content { margin-top: 0; }
     .hero-content h1 { font-size: 2rem; }
     .sub-patisserie { font-size: 1.8rem; }
@@ -247,8 +243,6 @@ header {
     .wood-table { height: 380px; bottom: -100px; }
 
     .product-carousel { margin-top: 0; }
-    .carousel-item {
-        width: 33.33vw; 
-    }
+    .carousel-item { width: 33.33vw; }
     .circle-img { width: 70px; height: 70px; }
 }
