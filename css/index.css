@@ -103,13 +103,25 @@ header {
 
 .cta-icons-inside { display: flex; gap: 18px; }
 .pulse-icon {
-    width: 35px; height: 35px;
+    width: 35px; 
+    height: 35px;
     animation: pulsar 2s ease-in-out infinite;
 }
+
 
 @keyframes pulsar {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.15); }
+}
+
+
+/* Ajuste específico para o ícone do iFood e do Ka! 
+   Como eles não têm respiro na arte, 30px neles parece maior que 30px no Whats.
+   Isso equaliza a percepção visual: */
+.cta-icons-inside a:nth-child(1) .pulse-icon,
+.cta-icons-inside a:nth-child(2) .pulse-icon {
+    width: 50px !important; 
+    height: 50px !important;
 }
 
 /* =========================================
