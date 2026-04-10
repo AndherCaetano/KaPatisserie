@@ -1,0 +1,147 @@
+/* =========================================
+   1. LAYOUT DA PÁGINA SOBRE
+   ========================================= */
+.sobre-container {
+    padding: 60px 20px;
+    background-color: #fdfbf9; /* Off-white elegante para leitura */
+    min-height: calc(100vh - 90px);
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 1; /* Mantém abaixo do menu sanduíche */
+}
+
+.sobre-content {
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+}
+
+.sobre-titulo {
+    font-family: 'Playfair Display', serif;
+    color: var(--marrom-logo);
+    font-size: 3rem;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* =========================================
+   2. PERFIL E APRESENTAÇÃO
+   ========================================= */
+.perfil-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 50px;
+    text-align: left;
+}
+
+.foto-perfil {
+    flex-shrink: 0;
+    width: 320px;
+    height: 320px;
+    border: 1px solid var(--dourado-folha);
+    padding: 12px;
+    background-color: #fff;
+    box-shadow: 0 10px 30px rgba(99, 65, 44, 0.05);
+}
+
+.foto-perfil img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.texto-apresentacao p.destaque {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: var(--dourado-folha);
+}
+
+.texto-apresentacao strong {
+    color: var(--marrom-logo);
+    font-weight: 700;
+}
+
+/* =========================================
+   3. TEXTO SECUNDÁRIO E LOGO FINAL
+   ========================================= */
+.texto-secundario {
+    margin: 60px auto;
+    max-width: 750px;
+}
+
+.texto-secundario p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--marrom-logo);
+    font-weight: 300;
+}
+
+.logo-final {
+    margin: 50px 0;
+}
+
+.logo-final img {
+    width: 130px;
+    height: auto;
+    transition: transform 0.5s ease;
+}
+
+.logo-final img:hover {
+    transform: rotate(5deg) scale(1.1);
+}
+
+/* Faixa decorativa final (Referência Imagem 18) */
+.sobre-footer-detalhe {
+    height: 40px;
+    background-color: var(--marrom-logo);
+    width: 100%;
+}
+
+/* =========================================
+   4. RESPONSIVIDADE E CORREÇÃO DE GPS
+   ========================================= */
+@media (max-width: 1024px) {
+    /* Força o menu sanduíche a ficar na frente nesta página */
+    .nav-menu.active {
+        z-index: 9999 !important;
+    }
+
+    .perfil-wrapper {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .foto-perfil {
+        width: 280px;
+        height: 280px;
+    }
+
+    .sobre-titulo {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .sobre-container {
+        padding: 40px 15px;
+    }
+
+    .texto-apresentacao p.destaque {
+        font-size: 1.1rem;
+    }
+
+    .texto-secundario p {
+        font-size: 1rem;
+    }
+
+    .foto-perfil {
+        width: 100%;
+        max-width: 250px;
+    }
+}
