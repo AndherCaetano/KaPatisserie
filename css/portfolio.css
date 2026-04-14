@@ -12,6 +12,11 @@
 
 .portfolio-header {
     margin-bottom: 50px;
+    display: flex;         /* Transforma em flexbox para alinhar os filhos */
+    flex-direction: column; /* Coloca um embaixo do outro */
+    align-items: center;    /* Centraliza horizontalmente no eixo cruzado */
+    text-align: center;     /* Garante que o texto dentro deles também centralize */
+
 }
 
 .portfolio-header h1 {
@@ -21,12 +26,16 @@
     margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 2px;
+    width: 100%;            /* Ocupa a largura total para centralizar o texto */
 }
 
 .portfolio-header p {
     color: #888;
     font-weight: 300;
     font-size: 1.1rem;
+    max-width: 600px;       /* Opcional: limita a largura do subtítulo para melhor leitura */
+    margin: 0 auto;         /* Centraliza o bloco do subtítulo caso tenha max-width */
+
 }
 
 /* =========================================
@@ -96,24 +105,97 @@
     font-style: italic;
 }
 
+
 /* =========================================
    3. CORREÇÃO CRÍTICA DO MENU SANDUÍCHE
    ========================================= */
+/* No portfolio.css */
+
+/* Garante a visibilidade do botão no Mobile/Tablet */
+
+
+/* Garante a visibilidade do botão no Mobile/Tablet */
+/* =========================================
+   3. CORREÇÃO DEFINITIVA: MENU CORTINA
+   ========================================= */
+
 @media (max-width: 1024px) {
-    /* Força o menu a ficar na frente dos títulos da página */
-    .nav-menu.active {
-        display: block !important;
+    /* Força o container do menu a se comportar como uma cortina */
+    #nav-list {
+        display: none; /* Esconde por padrão */
         position: absolute;
-        top: 90px;
+        top: 70px; /* Ajuste conforme a altura do seu header */
         left: 0;
         width: 100%;
-        background: white;
-        padding: 40px 20px;
-        border-bottom: 1px solid #eee;
-        text-align: center;
-        z-index: 9999 !important; /* Prioridade máxima de camada */
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        background-color: rgba(255, 255, 255, 0.98); /* Fundo branco sólido */
+        padding: 40px 0;
+        z-index: 9999;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.05);
     }
+
+    /* Quando o JS adiciona a classe .active, ele vira um Flex vertical */
+    #nav-list.active {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center; /* Centraliza os links horizontalmente */
+        justify-content: center;
+    }
+
+    /* Ajusta a lista de links para empilhar */
+    #nav-list ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    #nav-list ul li {
+        margin: 15px 0; /* Espaçamento entre os itens da lista */
+    }
+
+   #nav-list ul li a {
+    font-family: 'Poppins', sans-serif; /* Mantém a fonte padrão */
+    font-size: 1.1rem;                 /* Tamanho igual para todos */
+    text-transform: uppercase;
+    color: #63412c;                    /* Marrom padrão para links inativos */
+    font-weight: 700;                  /* Peso negrito para todos */
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: block;
+    padding: 10px 0;
+}
+   
+/* Realce para a página ativa (classe .active que já está no seu HTML) */
+#nav-list ul li a.active {
+    color: #b3926e !important;         /* Cor dourada/bronze para a página atual */
+}
+   
+
+    /* Garante que o botão sanduíche esteja visível e estilizado */
+    .menu-toggle {
+        display: flex !important;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+    }
+
+    .menu-toggle span {
+        width: 25px;
+        height: 3px;
+        background-color: #63412c;
+        border-radius: 2px;
+    }
+}
+
+
+
+
 
     /* Garante que o conteúdo do portfólio não sobreponha o menu aberto */
     .portfolio-header h1, 
@@ -149,3 +231,45 @@
         height: 180px;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
