@@ -1,0 +1,379 @@
+/* ARQUIVO: portfolio-internas.css
+   DESCRIÇÃO: Estilos da galeria com correções de layout, menu flutuante e alinhamento conforme Imagem 3.
+*/
+
+:root {
+    --marrom-logo: #63412c;
+    --dourado-folha: #c5a982;
+    --bege-suave: #fcfaf8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff;
+    color: #333;
+    overflow-x: hidden; /*Mantém vísivel o topo o tempo todo, se quiser 
+    parar o congelamento deixe ''hidden'' ou ''visible'' para manter */
+}
+
+/* --- 1. HEADER E NAVEGAÇÃO (PADRÃO IMAGEM 3) --- */
+header {
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid #f2f0ed;
+    position: sticky;
+    top: 0;
+    z-index: 9999; /* Aumentado para garantir prioridade total - estava 9000 */
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 15px 15px;
+    display: flex;
+    justify-content: space-between; /* Folha/Menu esquerda | Redes/Logo direita */
+    align-items: center;
+    position: relative;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.folha-img {
+    height: 40px;
+    width: auto;
+}
+
+/* NAVEGAÇÃO DESKTOP */
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-menu ul li a {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--marrom-logo);
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.nav-menu ul li a.active,
+.nav-menu ul li a:hover {
+    color: var(--dourado-folha);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.social-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links svg {
+    width: 22px;
+    fill: var(--marrom-logo);
+    transition: 0.3s;
+}
+
+.assinatura-img {
+    height: 65px;
+    width: auto;
+    border-radius: 50%;
+}
+
+/* MENU SANDUÍCHE */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    width: 100%;
+    height: 3px;
+    background-color: var(--marrom-logo);
+}
+
+/* --- 2. CONTEÚDO DA GALERIA --- */
+.gallery-container {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 40px 20px 100px 20px;
+}
+
+/* LINK VOLTAR AO PORTFÓLIO (CORREÇÃO VISUAL) */
+.btn-back {
+    text-decoration: none;
+    color: var(--marrom-logo);
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+    margin-bottom: 30px;
+}
+
+.btn-back:hover {
+    color: var(--dourado-folha);
+    transform: translateX(-5px);
+}
+
+.gallery-header { 
+text-align: center; 
+margin-bottom: 50px;
+display: flex;           /* Ativa o modo flexbox */
+flex-direction: column;  /* Força a quebra de linha entre H1 e P */
+align-items: center;     /* Garante o alinhamento central dos itens flex */ 
+
+/* TRECHO PARA CONGELAR */
+    position: -webkit-sticky; /* Suporte para Safari */
+    position: sticky;
+    top: 70px;               /* Ajuste este valor conforme a altura do seu header principal */
+    background-color: #fff;  /* Fundo sólido para não transparecer as fotos por baixo */
+    padding: 20px 0;         /* Espaço interno para não colar nas bordas ao rolar */
+    z-index: 100;            /* Garante que fique acima das fotos, mas abaixo do menu sanduíche */
+    width: 100%;             /* Garante que o fundo branco cubra a largura total ao rolar */
+
+}
+
+.gallery-header h1 { 
+font-family: 'Playfair Display', serif; 
+color: var(--marrom-logo); 
+font-size: 3.5rem; 
+margin-bottom: 10px; 
+width: 100%;             /* Garante que ocupe a largura total para centralizar */
+}
+
+@media (max-width: 768px) {
+    .gallery-header h1 {
+        font-size: 2.5rem; /* Reduz um pouco o tamanho da fonte no celular */
+    }
+}
+
+
+.gallery-header p { 
+color: #888; 
+font-size: 1.2rem;
+max-width: 600px;        /* Evita que a frase fique longa demais em desktops */
+ }
+
+.gallery-filters { display: flex; justify-content: center; gap: 12px; margin-bottom: 50px; flex-wrap: wrap; }
+.filter-btn { background: #fff; border: 1px solid #eee; padding: 10px 22px; border-radius: 50px; cursor: pointer; font-size: 12px; text-transform: uppercase; transition: 0.3s; }
+.filter-btn.active { background: var(--dourado-folha); color: white; border-color: var(--dourado-folha); }
+
+/* MOSAICO MASONRY */
+.gallery-grid { width: 100%; position: relative; min-height: 400px; }
+.gallery-item { background: white; position: absolute; width: 23.5%; border: 1px solid #f2f0ed; padding: 15px; transition: opacity 0.5s ease; opacity: 0; display: none; }
+.gallery-item.show { display: flex; flex-direction: column; opacity: 1; }
+.item-frame img { width: 100%; height: auto; display: block; }
+.item-info h3 { font-size: 18px; margin-top: 15px; color: var(--marrom-logo); }
+.item-info p { font-size: 14px; color: #777; }
+
+/* 3. BOTÕES E RODAPÉ */
+.load-more-container { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 15px; margin: 60px 0; }
+.btn-toggle { background: none; border: 1px solid var(--marrom-logo); padding: 12px 35px; font-weight: 600; color: var(--marrom-logo); cursor: pointer; text-transform: uppercase; transition: 0.3s; }
+.btn-toggle:hover { background: var(--marrom-logo); color: #fff; }
+
+.gallery-footer { width: 100%; background-color: var(--bege-suave); padding: 80px 20px; text-align: center; border-top: 1px solid #f2f0ed; }
+.footer-box p { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--marrom-logo); margin-bottom: 30px; }
+.btn-cta-gallery { display: inline-block; background: var(--dourado-folha); color: #fff; padding: 15px 35px; text-decoration: none; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
+
+.back-to-top { position: fixed; bottom: 30px; right: 30px; background: var(--marrom-logo); color: white; width: 45px; height: 45px; border-radius: 50%; border: none; cursor: pointer; opacity: 0; visibility: hidden; transition: 0.4s; z-index: 3000; font-size: 20px; }
+.back-to-top.active { opacity: 1; visibility: visible; }
+
+/* --- RESPONSIVIDADE (TABLETS E MOBILE) --- */
+
+@media (max-width: 1024px) {
+
+    .menu-toggle { display: flex; }  /* foi removido::: Aumentado para garantir prioridade total */
+
+    @media (max-width: 1024px) {
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        z-index: 100000; /* Deve ser maior que qualquer item da galeria ou título */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        border-top: 1px solid #f2f0ed; /* Linha sutil para separar do header */
+
+    }
+
+.nav-menu.active {
+        display: block !important; /* Garante a exibição ao clique */
+    }
+}
+
+    @media (max-width: 1024px) {
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        z-index: 100000; /* Deve ser maior que qualquer item da galeria ou título */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    @media (max-width: 1024px) {
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        z-index: 100000; /* Deve ser maior que qualquer item da galeria ou título */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    @media (max-width: 1024px) {
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        z-index: 100000; /* Deve ser maior que qualquer item da galeria ou título */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    @media (max-width: 1024px) {
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        z-index: 100000; /* Deve ser maior que qualquer item da galeria ou título */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    @media (max-width: 1024px) {
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        z-index: 100000; /* Deve ser maior que qualquer item da galeria ou título */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    @media (max-width: 1024px) {
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        z-index: 100000; /* Deve ser maior que qualquer item da galeria ou título */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    @media (max-width: 1024px) {
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        z-index: 100000; /* Deve ser maior que qualquer item da galeria ou título */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+    @media (max-width: 1024px) {
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100vw;
+        /* Se houver um deslocamento para a direita, use margens negativas 
+           equivalentes ao padding do seu header-container (que é 40px no seu código) */
+        margin-left: -20px;
+        margin-right: -20px;
+        
+        background: #fff;
+        z-index: 100000; /* Deve ser maior que qualquer item da galeria ou título */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    /* Classe ativada pelo JS */
+    .nav-menu.active { display: block !important; }
+
+    .nav-menu ul {
+        flex-direction: column;
+        padding: 10px 0;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+        margin: 0;
+    }
+
+    /* Ajuste para garantir que os itens do menu não tenham margens que encolham o fundo */
+    .nav-menu ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-menu ul li a {
+        display: block;
+        padding: 10px 0;
+        font-size: 18px; /* Aumentado para melhor legibilidade no mobile */
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-grid { display: grid !important; 
+    grid-template-columns: repeat(2, 1fr) !important; 
+    position: static !important; gap: 15px; height: auto !important; }
+    .gallery-item { width: 100% !important; position: static !important; }
+}
+
+/* Garante que o container da galeria e títulos fiquem em uma camada inferior */
+.gallery-container {
+    position: relative;
+    z-index: 1; 
+}
